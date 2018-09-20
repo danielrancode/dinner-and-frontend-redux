@@ -1,7 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ProgramsList from '../ProgramsList'
+import { connect } from 'react-redux'
 
-const MyPrograms = () => (
-  <div>Hello from MyPrograms</div>
-)
+const MyPrograms = () => {
+  return (
+    <div>
+      <p>Hello from MyPrograms</p>
+      <ProgramsList />
+    </div>
+  )
+}
 
-export default MyPrograms
+export default connect()(MyPrograms)

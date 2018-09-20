@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../assets/css//App.css';
-import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Home from './containers/Home'
 import MyPrograms from './containers/MyPrograms'
 import ProgramView from './containers/ProgramView'
 
-const App = ({store}) => (
-      <Provider store={store}>
+const App = () => {
+return (
         <Router>
-        <div class="navbar">
-          <Route path="/" component={Home} exact />
-          <Route path="/programs" component={MyPrograms} exact />
-          <Route path="/programs/:id" component={ProgramView} />
-        </div>
-        </Router>
-      </Provider>
-    )
+          <div className="navbar">
 
+            <ul>
+              <li>
+                <Link to='/'>Home</Link>
+              </li>
+              <li>
+                <Link to='/programs'>My Programs</Link>
+              </li>
+              <li>
+                <Link to='/programs/:id'>Program View</Link>
+              </li>
+            </ul>
+
+            <Route path="/" component={Home} exact />
+            <Route path="/programs" component={MyPrograms} exact />
+            <Route path="/programs/:id" component={ProgramView} />
+          </div>
+        </Router>
+    )
+}
 export default App;

@@ -1,32 +1,40 @@
-Navbar
+App <== currentUser: {},
+        userPrograms: [],
+        restaurantsResults: [],
+        eventsResults: [],
+        currentProgram: {},
+        currentRestaurant: {},
+        currentEvent: {},
+        searchParams: {}
 
 ‘/signup’
-SignUp
+SignUpForm <== username: '', passowrd: ''
 
 ‘/login’
-LogIn
+LogInForm <== username: '', passowrd: ''
 
 ‘/‘ & ‘/users/:id’
-Search
-ShuffleContainer
-	Program
-	EditProgram
+Home
+  SearchForm
+  RestaurantsList
+    Restaurant
+  EventsList
+    Event
 	Map
-	Button(s)
 
 ‘/users/:id/programs’
-MYPROGRAMS
-ProgramsContainer
-ProgramsList
-	Program
-		Restaurant
-		Event
-		Map
+MyPrograms
+  ProgramsList
+  	Program
+  		Restaurant
+  		Event
+  Map
 
 ‘/users/:id/programs/:id’
-EditProgram
-	Restaurant
-	SearchRestaurant
-	Event
-	SearchEvent
-	Buttons
+ViewProgram
+  SearchForm
+  RestaurantsList
+    Restaurant
+  EventsList
+    Event
+  Map

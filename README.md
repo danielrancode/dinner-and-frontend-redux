@@ -1,17 +1,17 @@
-App <== currentUser: {},
+Store's state <== currentUser: {},
         userPrograms: [],
         restaurantsResults: [],
         eventsResults: [],
         currentProgram: {},
         currentRestaurant: {},
         currentEvent: {},
-        searchParams: {}
+        currentSearchParams: {}
 
 ‘/signup’
-SignUpForm <== username: '', passowrd: ''
+SignUpForm <== username: '', password: ''
 
 ‘/login’
-LogInForm <== username: '', passowrd: ''
+LogInForm <== username: '', password: ''
 
 ‘/‘ & ‘/users/:id’
 Home

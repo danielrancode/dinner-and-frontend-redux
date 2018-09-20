@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import '../assets/css//App.css';
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Home from './containers/Home'
+import MyPrograms from './containers/MyPrograms'
+import ProgramView from './containers/ProgramView'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = ({store}) => (
+      <Provider store={store}>
+        <Router>
+        <div class="navbar">
+          <Route path="/" component={Home} exact />
+          <Route path="/programs" component={MyPrograms} exact />
+          <Route path="/programs/:id" component={ProgramView} />
+        </div>
+        </Router>
+      </Provider>
+    )
 
 export default App;

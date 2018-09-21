@@ -1,4 +1,24 @@
-// restaurant actions
+// search restaurants
+export const searchRestaurants = () => {
+  return (dispatch) => {
+    dispatch({ type: 'START_ADDING_RESTAURANTS_REQUEST'})
+    return fetch('http://localhost:3000/api/v1/restaurants/search?location=11238')
+      .then(res => res.json())
+      .then(data => dispatch({ type: 'ADD_RESTAURANTS', data }))
+  }
+}
+
+// search events
+export const searchEvents = () => {
+  return (dispatch) => {
+    dispatch({ type: 'START_ADDING_EVENTS_REQUEST'})
+    return fetch('http://localhost:3000/api/v1/events/search?lat=40.719389&lon=-74.046469')
+      .then(res => res.json())
+      .then(data => dispatch({ type: 'ADD_EVENTS', data }))
+  }
+}
+
+// select restaurant
 export const selectRestaurant = (restaurant) => {
   return {
     type: 'SELECT_RESTAURANT',
@@ -6,29 +26,11 @@ export const selectRestaurant = (restaurant) => {
   }
 }
 
-// event actions
+// select event
 export const selectEvent = (event) => {
   return {
     type: 'SELECT_EVENT',
     payload: event,
-  }
-}
-
-// search
-export const searchRestaurantsAndEvents = (searchParams) => {
-  return {
-    type: 'SEARCH_RESTAURANTS_AND_EVENTS',
-    payload: searchParams,
-  }
-}
-
-// search with thunk
-export const searchRestaurants = () => {
-  return (dispatch) => {
-    dispatch({ type: 'START_ADDING_RESTAURANTS_REQUEST'})
-    return fetch('http://localhost:3000/api/v1/restaurants/search?location=11238')
-      .then(res => res.json())
-      .then(data => dispatch({ type: 'ADD_RESTAURANTS', data }))
   }
 }
 

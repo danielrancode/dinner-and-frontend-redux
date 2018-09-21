@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from  'react-redux'
-import { shuffle, searchRestaurantsAndEvents, searchRestaurants } from '../actions.js'
+import { shuffle, searchRestaurants, searchEvents } from '../actions.js'
 
 class SearchForm extends Component {
   state = {
@@ -17,6 +17,11 @@ class SearchForm extends Component {
   handleChange = (e) => {
     console.log(e.target.parentNode.parentNode)
     this.setState({params: {...this.state.params, [e.target.name]: e.target.value }})
+  }
+
+  handleClick = (e) => {
+    this.props.searchRestaurants()
+    this.props.searchEvents()
   }
 
   render() {
@@ -46,11 +51,11 @@ class SearchForm extends Component {
               <option value='now'>now</option>
             </select>
         </label>
-        <input type='button' value='search' onClick={() => this.props.searchRestaurants()}/>
-        <input type='button' value='shuffle' onClick={() => this.props.shuffle(this.state.params)}/>
+        <input type='button' value='search' onClick={() => this.handleClick()}/>
+        <input type='button' value='shuffle' onClick={() => this.handleClick()}/>
       </form>
     )
   }
 }
 
-export default connect(null, {shuffle, searchRestaurantsAndEvents, searchRestaurants})(SearchForm)
+export default connect(null, {shuffle, searchRestaurants, searchEvents})(SearchForm)

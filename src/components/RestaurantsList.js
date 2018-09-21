@@ -1,5 +1,3 @@
-// TODO: change RestaurantsList to RestaurantList
-
 import React from 'react';
 import { connect } from 'react-redux'
 import Restaurant from './Restaurant';

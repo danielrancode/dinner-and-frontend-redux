@@ -8,6 +8,7 @@ const Home = () => (
   <div>
     <SearchForm />
     <RestaurantsList />
+    <EventsList />
   </div>
 )
 

@@ -1,26 +1,20 @@
 import React from 'react';
 import { connect } from  'react-redux'
+import { selectRestaurant } from '../actions'
 
 const Restaurant = (props) => {
-  console.log(props)
+  // console.log("Restaurant props: ", props)
   const { name, alias } = props.restaurant
 
-  const handleClick = () => {
-    props.dispatch({
-      type: 'SELECT_RESTAURANT',
-      payload: props.restaurant
-    })
-  }
-
   return (
-    <li onClick={handleClick}>
+    <li onClick={() => props.selectRestaurant(props.restaurant)}>
       {name}, {alias}
     </li>
   )
 }
 
-function mapDispatchToProps() {
-  return {}
+const mapStateToProps = (state) => {
+  return state
 }
 
-export default connect()(Restaurant)
+export default connect(mapStateToProps, {selectRestaurant} )(Restaurant)

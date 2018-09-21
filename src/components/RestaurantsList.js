@@ -14,6 +14,7 @@ const RestaurantsList = ({ restaurants }) => {
 
 }
 const mapStateToProps = (state) => {
+  console.log("currentRestaurant: ", state.currentRestaurant)
   return {restaurants: state.restaurantsResults}
 }
 

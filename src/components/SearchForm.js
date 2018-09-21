@@ -3,11 +3,12 @@ import { connect } from  'react-redux'
 
 class SearchForm extends Component {
   state = {
+    display: 'full',
     foodType: '',
     eventType: '',
     location: {},
     date: {},
-    time: {}
+    time: {},
   }
 
   handleChange = (e) => {
@@ -16,11 +17,12 @@ class SearchForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
+    this.setState({display: 'top'})
+    // console.log(this.state)
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <form onSubmit={this.handleSubmit}>
         <label>foodType: <input type='text' name='foodType' value={this.state.foodType} onChange={this.handleChange}/></label>
@@ -48,7 +50,9 @@ class SearchForm extends Component {
               <option value='90210'>90210</option>
               <option value='10025'>10025</option>
             </select>
-        s</label>
+        </label>
+        <button type='submit' name='submit'>Search</button>
+        <button type='shuffle' name='shuffle'>Shuffle</button>
       </form>
     )
   }

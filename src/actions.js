@@ -15,7 +15,7 @@ export const selectEvent = (event) => {
 }
 
 // search
-export const searchRestaurantAndEvent = (searchParams) => {
+export const searchRestaurantsAndEvents = (searchParams) => {
   return {
     type: 'SEARCH_RESTAURANTS_AND_EVENTS',
     payload: searchParams,

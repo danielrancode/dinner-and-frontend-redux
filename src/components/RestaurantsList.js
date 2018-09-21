@@ -1,20 +1,20 @@
+// TODO: change RestaurantsList to RestaurantList
+
 import React from 'react';
 import { connect } from 'react-redux'
 import Restaurant from './Restaurant';
 
-
-const RestaurantsList = (props) => {
-  console.log("from RestaurantsList - props:", props)
+const RestaurantsList = ({ restaurants }) => {
+  console.log("from RestaurantsList - props:", restaurants)
   return (
-    <div>
-      <h1>Hello from RestaurantsList</h1>
-      <Restaurant />
-    </div>
+    <ul>
+      {restaurants.map(r => <Restaurant key={r.id} restaurant={r}/>)}
+    </ul>
   )
 
 }
 const mapStateToProps = (state) => {
-  return state
+  return {restaurants: state.restaurantsResults}
 }
 
 export default connect(mapStateToProps)(RestaurantsList)

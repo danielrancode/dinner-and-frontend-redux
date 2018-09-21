@@ -95,6 +95,8 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch(action.type) {
+    case 'SELECT_RESTAURANT':
+      return { ...state, currentRestaurant: action.payload }
     default:
     return state;
   }

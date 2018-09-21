@@ -38,17 +38,13 @@ class SearchForm extends Component {
         <label>
           date:
             <select name='date' value={this.state.location} onChange={this.handleChange}>
-              <option value='11238'>11238</option>
-              <option value='90210'>90210</option>
-              <option value='10025'>10025</option>
+              <option value='today'>today</option>
             </select>
           </label>
         <label>
           time:
             <select name='time' value={this.state.location} onChange={this.handleChange}>
-              <option value='11238'>11238</option>
-              <option value='90210'>90210</option>
-              <option value='10025'>10025</option>
+              <option value='now'>now</option>
             </select>
         </label>
         <button type='submit' name='submit'>Search</button>

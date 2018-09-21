@@ -97,7 +97,29 @@ export default function reducer(state = initialState, action) {
   switch(action.type) {
     case 'SELECT_RESTAURANT':
       return { ...state, currentRestaurant: action.payload }
+    case 'SELECT_EVENT':
+      return { ...state, currentEvent: action.payload }
+    case 'SEARCH_RESTAURANTS_AND_EVENTS':
+      return { ...state, currentSearchParams: action.payload }
+    case 'SELECT_PROGRAM':
+      return { ...state, currentProgram: action.payload}
+    case 'SHUFFLE':
+      return state
+    case 'CREATE_PROGRAM':
+      return state
+    case 'EDIT_PROGRAM':
+      return state
+    case 'UPDATE_PROGRAM':
+      return state
+    case 'DELETE_PROGRAM':
+      return state
+    case 'CREATE_USER':
+      return state
+    case 'LOG_IN':
+      return state
+    case 'LOG_OUT':
+      return state
     default:
-    return state;
+      return state;
   }
 }

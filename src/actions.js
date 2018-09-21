@@ -22,6 +22,16 @@ export const searchRestaurantsAndEvents = (searchParams) => {
   }
 }
 
+// search with thunk
+export const searchRestaurants = () => {
+  return (dispatch) => {
+    dispatch({ type: 'START_ADDING_RESTAURANTS_REQUEST'})
+    return fetch('http://localhost:3000/api/v1/restaurants/search?location=11238')
+      .then(res => res.json())
+      .then(data => dispatch({ type: 'ADD_RESTAURANTS', data }))
+  }
+}
+
 // shuffle
 export const shuffle = (data) => {
   return {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from  'react-redux'
-import { shuffle, searchRestaurantsAndEvents } from '../actions.js'
+import { shuffle, searchRestaurantsAndEvents, searchRestaurants } from '../actions.js'
 
 class SearchForm extends Component {
   state = {
@@ -15,14 +15,15 @@ class SearchForm extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({...this.state, params: {...this.state.params, [e.target.name]: e.target.value }})
+    console.log(e.target.parentNode.parentNode)
+    this.setState({params: {...this.state.params, [e.target.name]: e.target.value }})
   }
 
   render() {
     let params = this.state.params
 
     return (
-      <form>
+      <form className={this.state.display}>
         <label>foodType: <input type='text' name='foodType' value={params.foodType} onChange={this.handleChange}/></label>
         <label>eventType: <input type='text' name='eventType' value={params.eventType} onChange={this.handleChange}/></label>
         <label>
@@ -45,11 +46,11 @@ class SearchForm extends Component {
               <option value='now'>now</option>
             </select>
         </label>
-        <input type='button' value='search' onClick={() => this.props.searchRestaurantsAndEvents(this.state.params)}/>
+        <input type='button' value='search' onClick={() => this.props.searchRestaurants()}/>
         <input type='button' value='shuffle' onClick={() => this.props.shuffle(this.state.params)}/>
       </form>
     )
   }
 }
 
-export default connect(null, {shuffle, searchRestaurantsAndEvents})(SearchForm)
+export default connect(null, {shuffle, searchRestaurantsAndEvents, searchRestaurants})(SearchForm)

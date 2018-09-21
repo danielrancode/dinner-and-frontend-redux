@@ -1,3 +1,5 @@
+import locationData from './assets/locationData.js'
+
 const initialState = {
   currentUser: {name: 'daniel', password: "hello!", id: 100},
   userPrograms: [],
@@ -102,6 +104,9 @@ export default function reducer(state = initialState, action) {
       return { ...state, currentEvent: action.payload }
     case 'SEARCH_RESTAURANTS_AND_EVENTS':
       return { ...state, currentSearchParams: action.payload }
+    case 'ADD_RESTAURANTS':
+    debugger
+      return { ...state, restaurantsResults: action.data.businesses }
     case 'SELECT_PROGRAM':
       return { ...state, currentProgram: action.payload}
     case 'SHUFFLE':

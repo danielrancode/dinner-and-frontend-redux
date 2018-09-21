@@ -6,7 +6,7 @@ import Map from '../Map';
 
 const Home = () => (
   <div>
-    <h1>Hello from Home</h1>
+    <SearchForm />
     <RestaurantsList />
   </div>
 )

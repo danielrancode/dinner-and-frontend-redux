@@ -3,7 +3,6 @@ import { connect } from  'react-redux'
 import { selectEvent } from '../actions'
 
 const Event = (props) => {
-  // console.log("Restaurant props: ", props)
   const { image_url, title, type, datetime, venue, address, extended_address } = props.event
 
   return (
@@ -21,7 +20,7 @@ const Event = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return state.event
 }
 
 export default connect(mapStateToProps, {selectEvent} )(Event)

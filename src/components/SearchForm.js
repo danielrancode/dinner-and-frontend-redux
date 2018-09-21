@@ -15,7 +15,6 @@ class SearchForm extends Component {
   }
 
   handleChange = (e) => {
-    console.log(e.target.parentNode.parentNode)
     this.setState({params: {...this.state.params, [e.target.name]: e.target.value }})
   }
 
@@ -26,6 +25,7 @@ class SearchForm extends Component {
 
   render() {
     let params = this.state.params
+    console.log(params)
 
     return (
       <form className={this.state.display}>

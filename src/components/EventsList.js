@@ -3,18 +3,17 @@ import { connect } from 'react-redux'
 import Event from './Event';
 
 const EventsList = ({ events }) => {
-  debugger
   console.log("from EventsList - props:", events)
   return (
     <ul>
       {events.map(e => <Event key={e.id} event={e}/>)}
     </ul>
   )
-
 }
+
 const mapStateToProps = (state) => {
-  console.log("currentEvent: ", state.currentEvent)
-  return {events: state.eventsResults}
+  console.log("currentEvent: ", state.event.currentEvent)
+  return {events: state.search.eventsResults}
 }
 
 export default connect(mapStateToProps)(EventsList)

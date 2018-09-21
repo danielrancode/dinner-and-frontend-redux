@@ -24,7 +24,7 @@ const Restaurant = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return state.search
 }
 
 export default connect(mapStateToProps, {selectRestaurant} )(Restaurant)

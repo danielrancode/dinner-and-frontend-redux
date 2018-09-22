@@ -19,6 +19,7 @@ const initialUserState = {
 }
 
 const initialSearchState = {
+  type: '',
   restaurantsResults: [],
   eventsResults: [],
   currentSearchParams: {},
@@ -92,7 +93,11 @@ const program = (state = initialProgramState, action) => {
 const event = (state = initialEventState, action) => {
   switch(action.type) {
     case 'SELECT_EVENT':
-      return { ...state, currentEvent: action.payload }
+      if (state.currentEvent === action.payload) {
+        return { ...state, currentEvent: {} }
+      } else {
+        return { ...state, currentEvent: action.payload }        
+      }
     default:
       return state;
   }
@@ -101,7 +106,11 @@ const event = (state = initialEventState, action) => {
 const restaurant = (state = initialRestaurantState, action) => {
   switch(action.type) {
     case 'SELECT_RESTAURANT':
-      return { ...state, currentRestaurant: action.payload }
+      if (state.currentRestaurant === action.payload) {
+        return { ...state, currentRestaurant: {} }
+      } else {
+        return { ...state, currentRestaurant: action.payload }
+      }
     default:
       return state;
   }

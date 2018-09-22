@@ -5,6 +5,7 @@ import { shuffle, searchRestaurants, searchEvents } from '../actions.js'
 class SearchForm extends Component {
   state = {
     display: 'full',
+    type: '',
     params: {
       foodType: '',
       eventType: '',
@@ -18,14 +19,22 @@ class SearchForm extends Component {
     this.setState({params: {...this.state.params, [e.target.name]: e.target.value }})
   }
 
-  handleClick = (e) => {
-    this.props.searchRestaurants()
-    this.props.searchEvents()
+  handleClickSearch = (e) => {
+    this.setState({type: 'search', display: 'top'})
+    this.props.searchRestaurants(this.state)
+    this.props.searchEvents(this.state)
+  }
+
+  handleClickShuffle = (e) => {
+    let params = this.state.params
+    this.setState({type: 'shuffle', display: 'top'})
+    this.props.searchRestaurants(this.state)
+    this.props.searchEvents(this.state)
   }
 
   render() {
     let params = this.state.params
-    console.log(params)
+    // console.log(this.state)
 
     return (
       <form className={this.state.display}>
@@ -51,11 +60,17 @@ class SearchForm extends Component {
               <option value='now'>now</option>
             </select>
         </label>
-        <input type='button' value='search' onClick={() => this.handleClick()}/>
-        <input type='button' value='shuffle' onClick={() => this.handleClick()}/>
+        <input type='button' value='search' onClick={() => this.handleClickSearch()}/>
+        <input type='button' value='shuffle' onClick={() => this.handleClickShuffle()} hidden/>
       </form>
     )
   }
 }
+
+// const mapStateToProps = (state) => {
+//   debugger
+//   console.log("current search type:", state.search.type)
+//   return { type: state.type }
+// }
 
 export default connect(null, {shuffle, searchRestaurants, searchEvents})(SearchForm)

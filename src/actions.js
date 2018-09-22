@@ -1,5 +1,5 @@
 // search restaurants
-export const searchRestaurants = () => {
+export const searchRestaurants = (searchParams) => {
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_RESTAURANTS_REQUEST'})
     return fetch('http://localhost:3000/api/v1/restaurants/search?location=11238')
@@ -9,7 +9,7 @@ export const searchRestaurants = () => {
 }
 
 // search events
-export const searchEvents = () => {
+export const searchEvents = (searchParams) => {
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_EVENTS_REQUEST'})
     return fetch('http://localhost:3000/api/v1/events/search?lat=40.719389&lon=-74.046469')

@@ -15,6 +15,7 @@ const Event = (props) => {
         <li>{extended_address}</li>
         <li>{datetime}</li>
       </ul>
+      <button>SELECT/UNSELECT</button>
     </li>
   )
 }

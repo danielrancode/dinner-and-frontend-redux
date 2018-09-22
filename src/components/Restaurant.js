@@ -19,6 +19,7 @@ const Restaurant = (props) => {
         <li>{url}</li>
         <li>{image_url}</li>
       </ul>
+      <button>SELECT/UNSELECT</button>
     </li>
   )
 }

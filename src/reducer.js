@@ -1,3 +1,5 @@
+import '*' from './reducers'
+
 // import locationData from './assets/locationData.js'
 import { combineReducers } from 'redux'
 

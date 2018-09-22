@@ -26,7 +26,7 @@ class SearchForm extends Component {
   }
 
   handleClickShuffle = (e) => {
-    let params = this.state.params
+    // let params = this.state.params
     this.setState({type: 'shuffle', display: 'top'})
     this.props.searchRestaurants(this.state)
     this.props.searchEvents(this.state)
@@ -66,11 +66,5 @@ class SearchForm extends Component {
     )
   }
 }
-
-// const mapStateToProps = (state) => {
-//   debugger
-//   console.log("current search type:", state.search.type)
-//   return { type: state.type }
-// }
 
 export default connect(null, {shuffle, searchRestaurants, searchEvents})(SearchForm)

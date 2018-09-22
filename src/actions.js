@@ -43,12 +43,26 @@ export const shuffle = (data) => {
 }
 
 // program CRUD actions
-export const createProgram = (program) => {
-  return {
-    type: 'CREATE_PROGRAM',
-    payload: program
+export const createProgram = (data) => {
+  return (dispatch) => {
+    dispatch({ type: 'START_SAVING_PROGRAM_REQUEST'})
+    return fetch('http://localhost:3000/api/v1/programs', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({data: data})
+      })
+      .then(res => dispatch({ type: 'SAVE_SUCCESS_MESSAGE' }))
+      // .then(data => console.log(data.json()))
   }
 }
+
+// export const saveSuccessMessage = () => {
+//   return {
+//     type: 'SAVE_SUCCESS_MESSAGE',
+//   }
+// }
 
 export const editProgram = (program) => {
   return {

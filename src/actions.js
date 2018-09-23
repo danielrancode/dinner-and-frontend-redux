@@ -19,7 +19,6 @@ export const searchEvents = (searchParams) => {
 }
 
 export const fetchPrograms = () => {
-  console.log("HIT FETCH!!!!!")
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_PROGRAMS_REQUEST'})
     return fetch('http://localhost:3000/api/v1/programs')

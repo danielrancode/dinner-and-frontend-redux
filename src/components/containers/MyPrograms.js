@@ -13,7 +13,6 @@ class MyPrograms extends Component {
   render() {
     return (
       <div>
-        <p>Hello from MyPrograms</p>
         <ProgramsList programs={this.props.programs}/>
       </div>
     )

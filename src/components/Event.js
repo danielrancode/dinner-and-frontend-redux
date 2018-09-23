@@ -3,12 +3,13 @@ import { connect } from  'react-redux'
 import { selectEvent } from '../actions'
 
 const Event = (props) => {
-  const { image_url, title, type, datetime, address, extended_address } = props.event
+  const { performers, title, type, datetime, address, extended_address } = props.event
+  console.log(props.event)
 
   return (
     <li onClick={() => props.selectEvent(props.event)}>
       <ul>
-        <li>{image_url}</li>
+        <li>{performers.image}</li>
         <li>{title}</li>
         <li>{type}</li>
         <li>{address}</li>

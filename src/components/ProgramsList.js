@@ -3,21 +3,19 @@ import { connect } from 'react-redux'
 import Program from './Program'
 
 const ProgramsList = ({ programs }) => {
-  console.log("programs:", programs)
   if (programs) {
     return (
       <ul>
-      <li>        <h1>programslist</h1></li>
         {programs.map(p => <Program key={p.id} program={p}/>)}
       </ul>
     )
   } else {
-
-  }
       return (
       <h1>no programs!</h1>
-      )
+    )
+  }
 }
+
 
 const mapStateToProps = (state) => {
   return { programs: state.program.programs }

@@ -7,7 +7,6 @@ class MyPrograms extends Component {
 
 
   componentDidMount() {
-    debugger
     this.props.fetchPrograms(this.props.user.currentUser.id)
   }
 

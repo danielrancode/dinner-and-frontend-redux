@@ -18,10 +18,10 @@ export const searchEvents = (searchParams) => {
   }
 }
 
-export const fetchPrograms = () => {
+export const fetchPrograms = (userId) => {
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_PROGRAMS_REQUEST'})
-    return fetch('http://localhost:3000/api/v1/programs')
+    return fetch('http://localhost:3000/api/v1/users/${userId}/programs')
     .then(res => res.json())
     .then(data => dispatch({ type: 'ADD_PROGRAMS', data}))
     // .then(data => console.log(data))
@@ -53,10 +53,10 @@ export const shuffle = (data) => {
 }
 
 // program CRUD actions
-export const createProgram = (data) => {
+export const createProgram = (userId, data) => {
   return (dispatch) => {
     dispatch({ type: 'START_SAVING_PROGRAM_REQUEST'})
-    return fetch('http://localhost:3000/api/v1/programs', {
+    return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json"

@@ -7,7 +7,8 @@ class MyPrograms extends Component {
 
 
   componentDidMount() {
-    this.props.fetchPrograms()
+    debugger
+    this.props.fetchPrograms(this.props.user.currentUser.id)
   }
 
   render() {

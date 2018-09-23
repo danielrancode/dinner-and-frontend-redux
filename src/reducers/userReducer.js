@@ -1,4 +1,4 @@
-let currentUser = {name: 'daniel', password: "hello!", id: 100}
+let currentUser = {name: 'Daniel', username: 'daniel', password: "rein", id: 1}
 
 const initialUserState = currentUser ? { loggedIn: true, currentUser: currentUser } : { loggedIn: false }
 

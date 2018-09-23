@@ -5,6 +5,7 @@ import Event from './Event'
 
 
 const Program = ({ program }) => {
+  debugger
   let restaurant = JSON.parse(program.restaurant.json_data)
   let event = JSON.parse(program.event.json_data)
   return (

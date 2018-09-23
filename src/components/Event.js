@@ -21,7 +21,8 @@ const Event = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  return state.event
+  // debugger
+  return state.program
 }
 
 export default connect(mapStateToProps, {selectEvent} )(Event)

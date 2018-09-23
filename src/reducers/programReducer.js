@@ -1,5 +1,6 @@
 const initialProgramState = {
   programs: [],
+  loadingPrograms: false,
   currentProgram: null,
   currentEvent: null,
   currentRestaurant: null,
@@ -7,6 +8,10 @@ const initialProgramState = {
 
 export const program = (state = initialProgramState, action) => {
   switch(action.type) {
+    case 'START_ADDING_PROGRAMS_REQUEST':
+      return { ...state, loadingPrograms: true }
+    case 'ADD_PROGRAMS':
+      return { ...state, programs: action.programs, loadingprograms: false }
     case 'SELECT_EVENT':
       if (state.currentEvent === action.payload) {
         return { ...state, currentEvent: null }

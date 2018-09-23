@@ -19,8 +19,7 @@ const EventsList = ({ events, currentEvent }) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log("currentEvent: ", state.event.currentEvent)
-  return {events: state.search.eventsResults, currentEvent: state.event.currentEvent}
+  return {events: state.search.eventsResults, currentEvent: state.program.currentEvent}
 }
 
 export default connect(mapStateToProps)(EventsList)

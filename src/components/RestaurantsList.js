@@ -19,7 +19,7 @@ const RestaurantsList = ({ restaurants, currentRestaurant }) => {
 }
 
 const mapStateToProps = (state) => {
-  return {restaurants: state.search.restaurantsResults, currentRestaurant: state.restaurant.currentRestaurant}
+  return {restaurants: state.search.restaurantsResults, currentRestaurant: state.program.currentRestaurant}
 }
 
 export default connect(mapStateToProps)(RestaurantsList)

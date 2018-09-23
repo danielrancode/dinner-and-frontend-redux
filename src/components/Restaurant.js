@@ -4,7 +4,17 @@ import { selectRestaurant } from '../actions'
 
 const Restaurant = (props) => {
   // console.log("Restaurant props: ", props)
-  const { name, categories, display_phone, location, price, rating, review_count, url, coordinates, image_url } = props.restaurant
+  const {
+    name,
+    categories,
+    display_phone,
+    location,
+    price,
+    rating,
+    review_count,
+    url,
+    image_url
+  } = props.restaurant
 
   return (
     <li onClick={() => props.selectRestaurant(props.restaurant)}>

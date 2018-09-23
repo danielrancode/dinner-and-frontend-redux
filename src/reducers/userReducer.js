@@ -1,6 +1,6 @@
 let currentUser = {name: 'daniel', password: "hello!", id: 100}
 
-const initialUserState = currentUser ? { loggedIn: true, currentUser: user } : { loggedIn: false }
+const initialUserState = currentUser ? { loggedIn: true, currentUser: currentUser } : { loggedIn: false }
 
 const user = (state = initialUserState, action) => {
   switch(action.type) {

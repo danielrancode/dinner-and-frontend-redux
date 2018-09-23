@@ -1,7 +1,7 @@
 import React from 'react';
 import '../assets/css//App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
-import Home from './containers/Home'
+import ProgramMaker from './containers/ProgramMaker'
 import MyPrograms from './containers/MyPrograms'
 import ProgramView from './containers/ProgramView'
 
@@ -22,7 +22,7 @@ return (
               </li>
             </ul>
 
-            <Route path="/" component={Home} exact />
+            <Route path="/" component={ProgramMaker} exact />
             <Route path="/programs" component={MyPrograms} exact />
             <Route path="/programs/:id" component={ProgramView} />
           </div>

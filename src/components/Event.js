@@ -15,13 +15,13 @@ const Event = (props) => {
         <li>{extended_address}</li>
         <li>{datetime}</li>
       </ul>
-      <button>SELECT/UNSELECT</button>
     </li>
   )
 }
 
 const mapStateToProps = (state) => {
-  return state.event
+  // debugger
+  return state.program
 }
 
 export default connect(mapStateToProps, {selectEvent} )(Event)

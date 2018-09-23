@@ -7,12 +7,12 @@ import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
 
 
-const Home = (props) => {
+const ProgramMaker = (props) => {
 
   const handleClick = (e) => {
     props.createProgram({
-      restaurant_data: JSON.stringify(props.restaurant.currentRestaurant),
-      event_data: JSON.stringify(props.event.currentEvent)
+      restaurant_data: JSON.stringify(props.program.currentRestaurant),
+      event_data: JSON.stringify(props.program.currentEvent)
     })
   }
 
@@ -30,4 +30,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { createProgram })(Home)
+export default connect(mapStateToProps, { createProgram })(ProgramMaker)

@@ -4,15 +4,24 @@ import Program from './Program'
 
 const ProgramsList = ({ programs }) => {
   console.log("programs:", programs)
+  if (programs) {
+    return (
+      <ul>
+      <li>        <h1>programslist</h1></li>
+        {programs.map(p => <Program key={p.id} program={p}/>)}
+      </ul>
+    )
+  } else {
+
+  }
       return (
-        <ul>
-          {programs.map(p => <Program key={p.id} program={p}/>)}
-        </ul>
+      <h1>no programs!</h1>
       )
 }
 
 const mapStateToProps = (state) => {
   return { programs: state.program.programs }
 }
+
 
 export default connect(mapStateToProps)(ProgramsList)

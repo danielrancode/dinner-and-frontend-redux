@@ -1,7 +1,7 @@
 import React from 'react';
 import Restaurant from './Restaurant'
 import Event from './Event'
-import { connect } from  'react-redux'
+// import { connect } from  'react-redux'
 
 
 const Program = ({ program }) => {

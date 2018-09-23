@@ -19,9 +19,10 @@ export const searchEvents = (searchParams) => {
 }
 
 export const fetchPrograms = (userId) => {
+  debugger
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_PROGRAMS_REQUEST'})
-    return fetch('http://localhost:3000/api/v1/users/${userId}/programs')
+    return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`)
     .then(res => res.json())
     .then(data => dispatch({ type: 'ADD_PROGRAMS', data}))
     // .then(data => console.log(data))

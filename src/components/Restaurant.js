@@ -20,16 +20,15 @@ const Restaurant = (props) => {
     <li onClick={() => props.selectRestaurant(props.restaurant)}>
       <ul>
         <li>{name}</li>
-        <li>{categories.map(c => c.title).join(', ')}</li>
+        {/*}<li>{categories.map(c => c.title).join(', ')}</li>*/}
         <li>{display_phone}</li>
-        <li>{location.display_address.join(', ')}</li>
+        {/*<li>{location.display_address.join(', ')}</li>*/}
         <li>{price}</li>
         <li>{rating}</li>
         <li>{review_count}</li>
         <li>{url}</li>
         <li>{image_url}</li>
       </ul>
-      <button>SELECT/UNSELECT</button>
     </li>
   )
 }

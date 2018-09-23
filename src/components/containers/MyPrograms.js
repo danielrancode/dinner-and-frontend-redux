@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ProgramsList from '../ProgramsList'
 import { connect } from 'react-redux'
 import { fetchPrograms } from '../../actions.js'
 
-const MyPrograms = () => {
-  fetchPrograms()
-  return (
-    <div>
-      <p>Hello from MyPrograms</p>
-      <ProgramsList />
-    </div>
-  )
+class MyPrograms extends Component {
+
+
+  componentDidMount() {
+    this.props.fetchPrograms()
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Hello from MyPrograms</p>
+        <ProgramsList programs={this.props.programs}/>
+      </div>
+    )
+  }
+}
+const mapStateToProps = (state) => {
+  return state
 }
 
-export default MyPrograms
+export default connect(mapStateToProps, { fetchPrograms })(MyPrograms)

@@ -11,7 +11,7 @@ export const program = (state = initialProgramState, action) => {
     case 'START_ADDING_PROGRAMS_REQUEST':
       return { ...state, loadingPrograms: true }
     case 'ADD_PROGRAMS':
-      return { ...state, programs: action.programs, loadingprograms: false }
+      return { ...state, programs: action.data, loadingprograms: false }
     case 'SELECT_EVENT':
       if (state.currentEvent === action.payload) {
         return { ...state, currentEvent: null }

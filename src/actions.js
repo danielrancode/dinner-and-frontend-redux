@@ -33,33 +33,11 @@ export const fetchPrograms = (userId) => {
   }
 }
 
-// select restaurant
-export const selectRestaurant = (restaurant) => {
-  return {
-    type: 'SELECT_RESTAURANT',
-    payload: restaurant,
-  }
-}
-
-// select event
-export const selectEvent = (event) => {
-  return {
-    type: 'SELECT_EVENT',
-    payload: event,
-  }
-}
-
-// shuffle
-export const shuffle = (data) => {
-  return {
-    type: 'SHUFFLE',
-    payload: data
-  }
-}
 
 // program CRUD actions
 export const createProgram = (userId, data) => {
   return (dispatch) => {
+    debugger
     dispatch({ type: 'START_SAVING_PROGRAM_REQUEST'})
     return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`, {
         method: 'POST',
@@ -79,6 +57,33 @@ export const createProgram = (userId, data) => {
       .then(jsonRes => {
         console.log("jsonRes:", jsonRes)
         dispatch({ type: 'SAVE_SUCCESS' })
+      })
+      .catch(res => res.json()
+      .then(e => console.log(e)
+        // dispatch({ type: 'LOGIN_FAILURE', message: e.message }))
+      ))
+  }
+}
+export const createUser = (params) => {
+  return (dispatch) => {
+    dispatch({ type: 'START_CREATE_USER_REQUEST'})
+    return fetch(`http://localhost:3000/api/v1/users`, {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({user: params})
+      })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw res
+        }}
+      )
+      .then(jsonRes => {
+        console.log("jsonRes:", jsonRes)
+        dispatch({ type: 'CREATE_USER_SUCCESS' })
       })
       .catch(res => res.json()
       .then(e => console.log(e)
@@ -127,6 +132,31 @@ export const logoutUser = () => {
 //   }
 // }
 
+
+// select restaurant
+export const selectRestaurant = (restaurant) => {
+  return {
+    type: 'SELECT_RESTAURANT',
+    payload: restaurant,
+  }
+}
+
+// select event
+export const selectEvent = (event) => {
+  return {
+    type: 'SELECT_EVENT',
+    payload: event,
+  }
+}
+
+// shuffle
+export const shuffle = (data) => {
+  return {
+    type: 'SHUFFLE',
+    payload: data
+  }
+}
+
 export const editProgram = (program) => {
   return {
     type: 'EDIT_PROGRAM',
@@ -145,13 +175,5 @@ export const deleteProgram = (program) => {
   return {
     type: 'DELETE_PROGRAM',
     payload: program
-  }
-}
-
-// user
-export const createUser = (params) => {
-  return {
-    type: 'CREATE_USER',
-    payload: params
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import { createUser } from '../actions'
 
 class SignUpForm extends Component {
 
@@ -12,6 +13,8 @@ class SignUpForm extends Component {
   handleSubmit(e) {
     e.preventDefault()
     console.log(this.state)
+    this.props.createUser(this.state)
+    this.setState({ name: '', username: '', password: '' })
   }
 
   render() {
@@ -26,4 +29,4 @@ class SignUpForm extends Component {
   }
 }
 
-export default SignUpForm
+export default connect(null, {createUser})(SignUpForm)

@@ -20,9 +20,9 @@ class SignUpForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
-        <label>name:<input type='text' name='name' onChange={this.handleChange.bind(this)}/></label>
-        <label>username:<input type='text' name='username' onChange={this.handleChange.bind(this)}/></label>
-        <label>password:<input type='password' name='password' onChange={this.handleChange.bind(this)}/></label>
+        <label>name:<input type='text' name='name' value={this.state.name} onChange={this.handleChange.bind(this)} /></label>
+        <label>username:<input type='text' name='username' value={this.state.username} onChange={this.handleChange.bind(this)}/></label>
+        <label>password:<input type='password' name='password' value={this.state.password} onChange={this.handleChange.bind(this)}/></label>
         <button type='submit'>Submit</button>
       </form>
     )

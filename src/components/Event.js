@@ -4,7 +4,6 @@ import { selectEvent } from '../actions'
 
 const Event = (props) => {
   const { performers, title, type, datetime, address, extended_address } = props.event
-  console.log(props.event)
 
   return (
     <li onClick={() => props.selectEvent(props.event)}>
@@ -21,7 +20,6 @@ const Event = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  // debugger
   return state.program
 }
 

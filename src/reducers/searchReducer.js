@@ -5,6 +5,7 @@ const initialSearchState = {
     currentSearchParams: {},
     loadingEvents: false,
     loadingRestaurants: false,
+
   }
 
 const search = (state = initialSearchState, action) => {

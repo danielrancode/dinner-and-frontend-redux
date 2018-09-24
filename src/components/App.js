@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import ProgramMaker from './containers/ProgramMaker'
 import MyPrograms from './containers/MyPrograms'
 import ProgramView from './containers/ProgramView'
+import SignUp from './containers/SignUp'
+import LogIn from './containers/LogIn'
 
 const App = () => {
 return (
@@ -25,6 +27,8 @@ return (
             <Route path="/" component={ProgramMaker} exact />
             <Route path="/programs" component={MyPrograms} exact />
             <Route path="/programs/:id" component={ProgramView} />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={LogIn} />
           </div>
         </Router>
     )

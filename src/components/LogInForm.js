@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import { loginUser } from '../actions'
 
 class LogInForm extends Component {
 
@@ -11,7 +12,8 @@ class LogInForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log(this.state)
+    this.props.loginUser(this.state)
+    this.setState({ username: '', password: '' })
   }
 
   render() {
@@ -25,4 +27,4 @@ class LogInForm extends Component {
   }
 }
 
-export default LogInForm
+export default connect(null, {loginUser})(LogInForm)

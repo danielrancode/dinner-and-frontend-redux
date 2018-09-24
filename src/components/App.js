@@ -6,11 +6,13 @@ import MyPrograms from './containers/MyPrograms'
 import ProgramView from './containers/ProgramView'
 import SignUp from './containers/SignUp'
 import LogIn from './containers/LogIn'
+import { connect } from 'react-redux'
 
-const App = () => {
+const App = (props) => {
 return (
         <Router>
-          <div className="navbar">
+          <div className="wrapper">
+          <h1>{props.message}</h1>
 
             <ul>
               <li>
@@ -33,4 +35,9 @@ return (
         </Router>
     )
 }
-export default App;
+
+const mapStateToProps = (state) => {
+  return state.user
+}
+
+export default connect(mapStateToProps)(App);

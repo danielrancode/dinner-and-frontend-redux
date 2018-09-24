@@ -1,6 +1,7 @@
-let currentUser = {name: 'Daniel', username: 'daniel', password: "rein", id: 1}
+// let currentUser = {name: 'Daniel', username: 'daniel', password: "rein", id: 1}
+let currentUser = {}
 
-const initialUserState = currentUser ? { loggedIn: true, currentUser: currentUser } : { loggedIn: false }
+const initialUserState = currentUser ? { loggingIn: false, failedLogin: false, message: '', loggedIn: true, currentUser: currentUser } : { loggedIn: false }
 
 const user = (state = initialUserState, action) => {
   switch(action.type) {
@@ -8,20 +9,29 @@ const user = (state = initialUserState, action) => {
       return state
     case 'LOGIN_REQUEST':
       return {
+        ...state,
         loggingIn: true,
-        user: action.user
       }
     case 'LOGIN_SUCCESS':
       return {
+        ...state,
+        loggingIn: false,
+        failedLogin: false,
         loggedIn: true,
-        user: action.user
+        currentUser: action.user
       }
     case 'LOGIN_FAILURE':
       return {
-        loggedIn: false
+        ...state,
+        loggedIn: false,
+        failedLogin: true,
+        loggedIn: false,
+        currentUser: '',
+        message: action.message
       }
     case 'LOGOUT':
       return {
+        ...state,
         loggedIn: false
       }
     default:

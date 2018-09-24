@@ -21,7 +21,12 @@ export const searchEvents = (searchParams) => {
 export const fetchPrograms = (userId) => {
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_PROGRAMS_REQUEST'})
-    return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`)
+    return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
     .then(res => res.json())
     .then(data => dispatch({ type: 'ADD_PROGRAMS', data}))
     // .then(data => console.log(data))
@@ -59,12 +64,60 @@ export const createProgram = (userId, data) => {
     return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`, {
         method: 'POST',
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem('jwt')}`
         },
         body: JSON.stringify({data: data})
       })
-      .then(res => dispatch({ type: 'SAVE_SUCCESS_MESSAGE' }))
-      // .then(data => console.log(data.json()))
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw res
+        }}
+      )
+      .then(jsonRes => {
+        console.log("jsonRes:", jsonRes)
+        dispatch({ type: 'SAVE_SUCCESS' })
+      })
+      .catch(res => res.json()
+      .then(e => console.log(e)
+        // dispatch({ type: 'LOGIN_FAILURE', message: e.message }))
+      ))
+  }
+}
+
+
+export const loginUser = (params) => {
+  return (dispatch) => {
+    dispatch({ type: 'LOGIN_REQUEST'})
+    return fetch('http://localhost:3000/api/v1/login', {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify( {user: params})})
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        } else {
+          throw res
+        }}
+      )
+      .then(jsonRes => {
+        console.log("jsonRes:", jsonRes)
+        localStorage.setItem('jwt', jsonRes.jwt)
+        dispatch({ type: 'LOGIN_SUCCESS', user: jsonRes.user})
+      })
+      .catch(res => res.json()
+      .then(e =>
+        dispatch({ type: 'LOGIN_FAILURE', message: e.message }))
+      )
+  }
+}
+
+export const logoutUser = () => {
+  return {
+    type: 'LOG_OUT',
   }
 }
 
@@ -100,18 +153,5 @@ export const createUser = (params) => {
   return {
     type: 'CREATE_USER',
     payload: params
-  }
-}
-
-export const logIn = (params) => {
-  return {
-    type: 'LOG_IN',
-    payload: params
-  }
-}
-
-export const logOut = () => {
-  return {
-    type: 'LOG_OUT',
   }
 }

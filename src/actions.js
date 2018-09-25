@@ -21,7 +21,7 @@ export const searchEvents = (searchParams) => {
 export const fetchPrograms = (userId) => {
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_PROGRAMS_REQUEST'})
-    debugger
+
     return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`, {
       method: 'GET',
       headers: {
@@ -49,19 +49,20 @@ export const createProgram = (userId, data) => {
       })
       .then(res => {
         if (res.ok) {
-          return res.json()
-        } else {
+          console.log(res)
+          dispatch({ type: 'SAVE_SUCCESS' })
+      } else {
           throw res
         }}
       )
-      .then(jsonRes => {
-        console.log("jsonRes:", jsonRes)
-        dispatch({ type: 'SAVE_SUCCESS' })
-      })
-      .catch(res => res.json()
-      .then(e => console.log(e)
+      // .then(jsonRes => {
+      //   console.log("jsonRes:", jsonRes)
+        // dispatch({ type: 'SAVE_SUCCESS' })
+      // })
+      // .catch(res => res.json()
+      // .then(e => console.log(e)
         // dispatch({ type: 'LOGIN_FAILURE', message: e.message }))
-      ))
+      // ))
   }
 }
 

@@ -27,8 +27,7 @@ export const program = (state = initialProgramState, action) => {
     case 'SELECT_PROGRAM':
       return { ...state, currentProgram: action.program}
     case 'SAVE_SUCCESS':
-    debugger
-      return state
+      return { ...state, message: "Program saved!"}
     case 'EDIT_PROGRAM':
       return state
     case 'UPDATE_PROGRAM':

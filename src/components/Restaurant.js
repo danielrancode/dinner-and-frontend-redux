@@ -19,7 +19,7 @@ const Restaurant = (props) => {
   return (
     <li onClick={() => props.selectRestaurant(props.restaurant)}>
       <ul>
-        <li>{name}</li>
+        <li><h3>{name}</h3></li>
         <li>{categories.map(c => c.title).join(', ')}</li>
         <li>{display_phone}</li>
         <li>{location.display_address.join(', ')}</li>

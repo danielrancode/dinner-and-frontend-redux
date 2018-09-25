@@ -1,14 +1,9 @@
-// let currentUser = {name: 'Daniel', username: 'daniel', password: "rein", id: 1}
-let currentUser = {}
-
-const initialUserState = currentUser ? {
+const initialUserState = {
   loggingIn: false,
   failedLogin: false,
-  loggedIn: true,
+  loggedIn: false,
   message: '',
-  currentUser: currentUser
-} : {
-  loggedIn: false
+  currentUser: {}
 }
 
 const user = (state = initialUserState, action) => {
@@ -39,10 +34,7 @@ const user = (state = initialUserState, action) => {
         message: action.message
       }
     case 'LOGOUT':
-      return {
-        ...state,
-        loggedIn: false
-      }
+      return initialUserState
     default:
       return state;
   }

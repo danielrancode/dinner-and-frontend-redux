@@ -22,6 +22,8 @@ const search = (state = initialSearchState, action) => {
       return { ...state, eventsResults: action.data.events, loadingEvents: false }
     case 'SHUFFLE':
       return state
+    case 'LOGOUT':
+      return initialSearchState
     default:
       return state;
   }

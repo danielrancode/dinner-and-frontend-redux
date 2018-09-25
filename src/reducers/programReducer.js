@@ -34,6 +34,8 @@ export const program = (state = initialProgramState, action) => {
       return state
     case 'DELETE_PROGRAM':
       return state
+    case 'LOGOUT':
+      return initialProgramState
     default:
       return state;
   }

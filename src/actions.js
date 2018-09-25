@@ -122,9 +122,10 @@ export const loginUser = (params) => {
   }
 }
 
-export const logoutUser = () => {
+export const logout = () => {
+  localStorage.removeItem('jwt')
   return {
-    type: 'LOG_OUT',
+    type: 'LOGOUT',
   }
 }
 

@@ -72,6 +72,69 @@ const App = (props) => {
         </Router>
     )
 }
+// const App = (props) => {
+//   return props.user.loggedIn ? (
+//         <Router>
+//           <div className="wrapper">
+//           <h1>{props.user.message}</h1>
+//           <button onClick={props.logout}>Log Out</button>
+//
+//             <ul>
+//               <li>
+//                 <Link to='/'>Home</Link>
+//               </li>
+//               <li>
+//                 <Link to='/signup'>Sign Up</Link>
+//               </li>
+//               <li>
+//                 <Link to='/login'>Log In</Link>
+//               </li>
+//               <li>
+//                 <Link to='/programs'>My Programs</Link>
+//               </li>
+//               <li>
+//                 <Link to='/programs/:id'>Program View</Link>
+//               </li>
+//             </ul>
+//
+//             <Route path="/" component={ProgramMaker} exact />
+//             <Route path="/programs" component={MyPrograms} exact />
+//             <Route path="/programs/:id" component={ProgramView} />
+//             <Route path="/signup" component={SignUp} />
+//             <Route path="/login" component={LogIn} />
+//           </div>
+//         </Router>
+//     ) : (
+//         <Router>
+//           <div className="wrapper">
+//           <h1>{props.user.message}</h1>
+//             <ul>
+//               <li>
+//                 <Link to='/'>Home</Link>
+//               </li>
+//               <li>
+//                 <Link to='/signup'>Sign Up</Link>
+//               </li>
+//               <li>
+//                 <Link to='/login'>Log In</Link>
+//               </li>
+//               <li>
+//                 <Link to='/programs'>My Programs</Link>
+//               </li>
+//               <li>
+//                 <Link to='/programs/:id'>Program View</Link>
+//               </li>
+//             </ul>
+//
+//             <Route path="/" component={ProgramMaker} exact />
+//             <Route path="/programs" component={MyPrograms} exact />
+//             <Route path="/programs/:id" component={ProgramView} />
+//             <Route path="/signup" component={SignUp} />
+//             <Route path="/login" component={LogIn} />
+//           </div>
+//         </Router>
+//     )
+// }
 
 const mapStateToProps = (state) => {
   return state

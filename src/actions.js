@@ -1,18 +1,19 @@
 // search restaurants
-export const searchRestaurants = (searchParams) => {
+export const searchRestaurants = ({ params }) => {
+  debugger
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_RESTAURANTS_REQUEST'})
-    return fetch('http://localhost:3000/api/v1/restaurants/search?location=11238')
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/restaurants/search?location=${params.zipcode}`)
       .then(res => res.json())
       .then(data => dispatch({ type: 'ADD_RESTAURANTS', data }))
   }
 }
 
 // search events
-export const searchEvents = (searchParams) => {
+export const searchEvents = ({ params }) => {
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_EVENTS_REQUEST'})
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/events/search?lat=40.719389&lon=-74.046469`)
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/events/search?lat=${params.lat}&lon=${params.lon}`)
       .then(res => res.json())
       .then(data => dispatch({ type: 'ADD_EVENTS', data }))
   }

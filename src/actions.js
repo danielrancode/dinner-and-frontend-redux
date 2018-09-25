@@ -12,7 +12,7 @@ export const searchRestaurants = (searchParams) => {
 export const searchEvents = (searchParams) => {
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_EVENTS_REQUEST'})
-    return fetch('http://localhost:3000/api/v1/events/search?lat=40.719389&lon=-74.046469')
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/events/search?lat=40.719389&lon=-74.046469`)
       .then(res => res.json())
       .then(data => dispatch({ type: 'ADD_EVENTS', data }))
   }
@@ -22,7 +22,7 @@ export const fetchPrograms = (userId) => {
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_PROGRAMS_REQUEST'})
 
-    return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`, {
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${userId}/programs`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
@@ -39,7 +39,7 @@ export const fetchPrograms = (userId) => {
 export const createProgram = (userId, data) => {
   return (dispatch) => {
     dispatch({ type: 'START_SAVING_PROGRAM_REQUEST'})
-    return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`, {
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${userId}/programs`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -69,7 +69,7 @@ export const createProgram = (userId, data) => {
 export const createUser = (params) => {
   return (dispatch) => {
     dispatch({ type: 'START_CREATE_USER_REQUEST'})
-    return fetch(`http://localhost:3000/api/v1/users`, {
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export const createUser = (params) => {
 export const loginUser = (params) => {
   return (dispatch) => {
     dispatch({ type: 'LOGIN_REQUEST'})
-    return fetch('http://localhost:3000/api/v1/login', {
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },

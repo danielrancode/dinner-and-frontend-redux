@@ -1,9 +1,8 @@
 // search restaurants
 export const searchRestaurants = ({ params }) => {
-  debugger
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_RESTAURANTS_REQUEST'})
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/restaurants/search?location=${params.zipcode}`)
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/restaurants/search?term=${params.foodType}&location=${params.zipcode}`)
       .then(res => res.json())
       .then(data => dispatch({ type: 'ADD_RESTAURANTS', data }))
   }

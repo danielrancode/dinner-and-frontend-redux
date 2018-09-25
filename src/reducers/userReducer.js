@@ -16,7 +16,6 @@ const user = (state = initialUserState, action) => {
         loggingIn: true,
       }
     case 'LOGIN_SUCCESS':
-    debugger
       return {
         message: `Hello, ${action.user.name}!`,
         loggingIn: false,

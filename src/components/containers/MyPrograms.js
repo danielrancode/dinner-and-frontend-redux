@@ -11,10 +11,13 @@ class MyPrograms extends Component {
   }
 
   render() {
-    return (
+    return (this.props.program.programs.length > 0) ?
+    (
       <div>
         <ProgramsList programs={this.props.programs}/>
       </div>
+    ) : (
+      <h1>no Programs</h1>
     )
   }
 }

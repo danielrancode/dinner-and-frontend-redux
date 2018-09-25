@@ -21,6 +21,7 @@ export const searchEvents = (searchParams) => {
 export const fetchPrograms = (userId) => {
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_PROGRAMS_REQUEST'})
+    debugger
     return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`, {
       method: 'GET',
       headers: {
@@ -37,7 +38,6 @@ export const fetchPrograms = (userId) => {
 // program CRUD actions
 export const createProgram = (userId, data) => {
   return (dispatch) => {
-    debugger
     dispatch({ type: 'START_SAVING_PROGRAM_REQUEST'})
     return fetch(`http://localhost:3000/api/v1/users/${userId}/programs`, {
         method: 'POST',
@@ -64,6 +64,7 @@ export const createProgram = (userId, data) => {
       ))
   }
 }
+
 export const createUser = (params) => {
   return (dispatch) => {
     dispatch({ type: 'START_CREATE_USER_REQUEST'})

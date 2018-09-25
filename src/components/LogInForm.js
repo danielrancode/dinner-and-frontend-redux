@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions'
 
@@ -18,11 +18,14 @@ class LogInForm extends Component {
 
   render() {
     return (
+      <Fragment>
+      <h1>{this.props.message}</h1>
       <form onSubmit={this.handleSubmit.bind(this)}>
-        <label>username:<input type='text' name='username' onChange={this.handleChange.bind(this)}/></label>
-        <label>password:<input type='password' name='password' onChange={this.handleChange.bind(this)}/></label>
+        <label>username:<input type='text' name='username' value={this.state.username} onChange={this.handleChange.bind(this)}/></label>
+        <label>password:<input type='password' name='password' value={this.state.password} onChange={this.handleChange.bind(this)}/></label>
         <button type='submit'>Submit</button>
       </form>
+      </Fragment>
     )
   }
 }

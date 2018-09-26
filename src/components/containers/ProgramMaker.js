@@ -11,8 +11,8 @@ const ProgramMaker = (props) => {
 
   const handleClick = (e) => {
     props.createProgram(props.user.currentUser.id, {
-      restaurant_data: JSON.stringify(props.program.currentRestaurant),
-      event_data: JSON.stringify(props.program.currentEvent)
+      restaurant_data: JSON.stringify(props.search.currentRestaurant),
+      event_data: JSON.stringify(props.search.currentEvent)
     })
   }
 

@@ -1,11 +1,12 @@
 const initialSearchState = {
     type: '',
+    currentSearchParams: {},
     restaurantsResults: [],
     eventsResults: [],
-    currentSearchParams: {},
+    currentEvent: null,
+    currentRestaurant: null,
     loadingEvents: false,
     loadingRestaurants: false,
-
   }
 
 const search = (state = initialSearchState, action) => {
@@ -20,6 +21,18 @@ const search = (state = initialSearchState, action) => {
     case 'ADD_EVENTS':
       console.log( "ADD EVENTS:", action.data.events)
       return { ...state, eventsResults: action.data.events, loadingEvents: false }
+    case 'SELECT_EVENT':
+      if (state.currentEvent === action.payload) {
+        return { ...state, currentEvent: null }
+      } else {
+        return { ...state, currentEvent: action.payload }
+      }
+    case 'SELECT_RESTAURANT':
+      if (state.currentRestaurant === action.payload) {
+        return { ...state, currentRestaurant: null }
+      } else {
+        return { ...state, currentRestaurant: action.payload }
+      }
     case 'SHUFFLE':
       return state
     case 'LOGOUT':

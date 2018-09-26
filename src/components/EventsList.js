@@ -19,7 +19,7 @@ const EventsList = ({ events, currentEvent }) => {
 }
 
 const mapStateToProps = (state) => {
-  return {events: state.search.eventsResults, currentEvent: state.program.currentEvent}
+  return {events: state.search.eventsResults, currentEvent: state.search.currentEvent}
 }
 
 export default connect(mapStateToProps)(EventsList)

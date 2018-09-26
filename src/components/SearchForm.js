@@ -32,23 +32,24 @@ class SearchForm extends Component {
 
   handleChange = (e) => {
     console.log(this.state.params)
-    this.setState({params: {...this.state.params, [e.target.name]: e.target.value }})
-    if (e.target.name === 'zipcode' && e.target.value !== this.state.params.zipcode && e.target.value.length == 5) {
+    if (e.target.name === 'zipcode' && e.target.value !== this.state.params.zipcode && e.target.value.length === 5) {
       let zip = e.target.value
       let lat = this.lattitudeOfZipCode(zip)
       let lon = this.longitudeOfZipCode(zip)
       if (lat && lon ) {
         this.setState({params: {...this.state.params, zipcode: zip, lat: lat, lon: lon }})
       } else {
-        this.setState({params: {...this.state.params, lat: null, lon: null }})
+        this.setState({params: {...this.state.params, zipcode: zip, lat: null, lon: null }})
       }
+    } else {
+      this.setState({params: {...this.state.params, [e.target.name]: e.target.value }})
     }
   }
 
   handleClickSearch = (e) => {
     // this.setState({type: 'search', display: 'top'})
     let p = this.state.params
-    if (!!p.foodType && !!p.eventType && !!p.lat && !!p.lon && p.zipcode.length == 5) {
+    if (!!p.foodType && !!p.eventType && !!p.lat && !!p.lon && p.zipcode.length === 5) {
       this.setState({message: ''})
       this.props.searchRestaurants(this.state)
       this.props.searchEvents(this.state)
@@ -65,6 +66,7 @@ class SearchForm extends Component {
   }
 
   render() {
+    console.log("hit render")
     let params = this.state.params
 
     return (

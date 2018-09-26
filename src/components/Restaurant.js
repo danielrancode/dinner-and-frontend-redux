@@ -3,7 +3,7 @@ import { connect } from  'react-redux'
 import { selectRestaurant } from '../actions'
 
 const Restaurant = (props) => {
-  // console.log("Restaurant props: ", props)
+  // console.log("Restaurant.coordinates: ", props.restaurant.coordinates)
   const {
     name,
     categories,

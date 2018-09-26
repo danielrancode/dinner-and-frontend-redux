@@ -12,7 +12,7 @@ export const searchRestaurants = ({ params }) => {
 export const searchEvents = ({ params }) => {
   return (dispatch) => {
     dispatch({ type: 'START_ADDING_EVENTS_REQUEST'})
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/events/search?lat=${params.lat}&lon=${params.lon}`)
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/events/search?lat=${params.lat}&lon=${params.lon}&q=${params.eventType}`)
       .then(res => res.json())
       .then(data => dispatch({ type: 'ADD_EVENTS', data }))
   }

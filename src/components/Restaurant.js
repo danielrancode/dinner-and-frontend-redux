@@ -20,6 +20,7 @@ const Restaurant = (props) => {
     <li onClick={() => props.selectRestaurant(props.restaurant)}>
       <ul>
         <li><h3>{name}</h3></li>
+        <img src={image_url} style={{width: 200}}/>
         <li>{categories.map(c => c.title).join(', ')}</li>
         <li>{display_phone}</li>
         <li>{location.display_address.join(', ')}</li>
@@ -27,7 +28,6 @@ const Restaurant = (props) => {
         <li>{rating}</li>
         <li>{review_count}</li>
         <li>{url}</li>
-        <li>{image_url}</li>
       </ul>
     </li>
   )

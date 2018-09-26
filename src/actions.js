@@ -72,7 +72,7 @@ export const createProgram = (userId, data) => {
 export const createUser = (params) => {
   return (dispatch) => {
     dispatch({ type: types.START_CREATE_USER_REQUEST})
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users`, {
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users`, {
         method: 'POST',
         headers: {
           "Content-Type": "application/json",
@@ -88,12 +88,13 @@ export const createUser = (params) => {
       )
       .then(jsonRes => {
         console.log("jsonRes:", jsonRes)
-        dispatch({ type: types.CREATE_USER_SUCCESS })
+        localStorage.setItem('jwt', jsonRes.jwt)
+        dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user})
       })
-      .catch(res => res.json()
-      .then(e => console.log(e)
-        // dispatch({ type: types.LOGIN_FAILURE', message: e.message }))
-      ))
+      .catch(res => res.json().then(jsonRes => {
+        dispatch({ type: types.LOGIN_FAILURE, message: jsonRes.error })
+      })
+      )
   }
 }
 
@@ -101,11 +102,12 @@ export const createUser = (params) => {
 export const loginUser = (params) => {
   return (dispatch) => {
     dispatch({ type: types.LOGIN_REQUEST})
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`, {
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`, {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify( {user: params})})
+      body: JSON.stringify({user: params})
+    })
       .then(res => {
         if (res.ok) {
           return res.json()
@@ -114,14 +116,10 @@ export const loginUser = (params) => {
         }}
       )
       .then(jsonRes => {
-        console.log("jsonRes:", jsonRes)
         localStorage.setItem('jwt', jsonRes.jwt)
-        dispatch({ type: types.LOGIN_SUCCESS, user: jsonRes.user})
+        dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user})
       })
-      .catch(res => res.json()
-      .then(e =>
-        dispatch({ type: types.LOGIN_FAILURE, message: e.message }))
-      )
+      .catch(res => res.json().then(jsonRes => dispatch({ type: types.LOGIN_FAILURE, message: jsonRes.message })))
   }
 }
 
@@ -129,6 +127,21 @@ export const logout = () => {
   localStorage.removeItem('jwt')
   return {
     type: types.LOGOUT,
+  }
+}
+
+export const fetchCurrentUser = () => {
+  return (dispatch) => {
+    dispatch({ type: types.LOGIN_REQUEST})
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users`, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      }
+    })
+    .then(res => res.json())
+    .then(jsonRes => dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user }))
   }
 }
 

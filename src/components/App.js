@@ -7,13 +7,13 @@ import ProgramView from './containers/ProgramView'
 import SignUp from './containers/SignUp'
 import LogIn from './containers/LogIn'
 import { connect } from 'react-redux'
-import { logout } from '../actions'
+import { loginUser, logout } from '../actions'
 
 const App = (props) => {
   return props.user.loggedIn ? (
         <Router>
           <div className="wrapper">
-          <h1>{props.user.message}</h1>
+          <h1>Hello, {props.user.currentUser.name}!</h1>
           <button onClick={props.logout}>Log Out</button>
 
             <ul>
@@ -140,4 +140,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { logout })(App);
+export default connect(mapStateToProps, { loginUser, logout })(App);

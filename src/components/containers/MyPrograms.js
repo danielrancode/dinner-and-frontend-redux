@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ProgramsList from '../ProgramsList'
 import { connect } from 'react-redux'
 import { fetchPrograms } from '../../actions.js'
+import withAuth from '../hoc/withAuth'
 
 class MyPrograms extends Component {
 
@@ -25,4 +26,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { fetchPrograms })(MyPrograms)
+export default withAuth(connect(mapStateToProps, { fetchPrograms })(MyPrograms))

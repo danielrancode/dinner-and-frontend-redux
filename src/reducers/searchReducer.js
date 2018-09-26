@@ -14,14 +14,12 @@ const initialSearchState = {
 const search = (state = initialSearchState, action) => {
   switch(action.type) {
     case types.START_ADDING_RESTAURANTS_REQUEST:
-      return { ...state, loadingRestaurants: true }
+      return { ...state, currentRestaurant: null, restaurantsResults: [], currenloadingRestaurants: true }
     case types.ADD_RESTAURANTS:
-      console.log( "ADD RESTAURANTS:", action.data.business)
       return { ...state, restaurantsResults: action.data.businesses, loadingRestaurants: false }
     case types.START_ADDING_EVENTS_REQUEST:
-      return { ...state, loadingEvents: true }
+      return { ...state, currentEvent: null, eventsResults: [],loadingEvents: true }
     case types.ADD_EVENTS:
-      console.log( "ADD EVENTS:", action.data.events)
       return { ...state, eventsResults: action.data.events, loadingEvents: false }
     case types.SELECT_EVENT:
       if (state.currentEvent === action.payload) {

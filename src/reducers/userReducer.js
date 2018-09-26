@@ -1,3 +1,5 @@
+import * as types from '../types.js'
+
 const initialUserState = {
   loggingIn: false,
   failedLogin: false,
@@ -8,14 +10,12 @@ const initialUserState = {
 
 const user = (state = initialUserState, action) => {
   switch(action.type) {
-    case 'CREATE_USER':
-      return state
-    case 'LOGIN_REQUEST':
+    case types.LOGIN_REQUEST:
       return {
         ...state,
         loggingIn: true,
       }
-    case 'LOGIN_SUCCESS':
+    case types.LOGIN_SUCCESS:
       return {
         message: `Hello, ${action.user.name}!`,
         loggingIn: false,
@@ -23,16 +23,16 @@ const user = (state = initialUserState, action) => {
         loggedIn: true,
         currentUser: action.user
       }
-    case 'LOGIN_FAILURE':
+    case types.LOGIN_FAILURE:
       return {
         ...state,
-        loggedIn: false,
+        loggingIn: false,
         failedLogin: true,
         loggedIn: false,
         currentUser: '',
         message: action.message
       }
-    case 'LOGOUT':
+    case types.LOGOUT:
       return initialUserState
     default:
       return state;

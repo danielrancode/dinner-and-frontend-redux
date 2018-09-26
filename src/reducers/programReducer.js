@@ -1,3 +1,5 @@
+import * as types from '../types.js'
+
 const initialProgramState = {
   programs: [],
   loadingPrograms: false,
@@ -8,35 +10,21 @@ const initialProgramState = {
 
 export const program = (state = initialProgramState, action) => {
   switch(action.type) {
-    case 'START_ADDING_PROGRAMS_REQUEST':
+    case types.START_ADDING_PROGRAMS_REQUEST:
       return { ...state, loadingPrograms: true }
-    case 'ADD_PROGRAMS':
+    case types.ADD_PROGRAMS:
       return { ...state, programs: action.data, loadingprograms: false }
-      //////////////// compied to search reducer
-    // case 'SELECT_EVENT':
-    //   if (state.currentEvent === action.payload) {
-    //     return { ...state, currentEvent: null }
-    //   } else {
-    //     return { ...state, currentEvent: action.payload }
-    //   }
-    // case 'SELECT_RESTAURANT':
-    //   if (state.currentRestaurant === action.payload) {
-    //     return { ...state, currentRestaurant: null }
-    //   } else {
-    //     return { ...state, currentRestaurant: action.payload }
-    //   }
-      /////////////////////////////////
-    case 'SELECT_PROGRAM':
+    case types.SELECT_PROGRAM:
       return { ...state, currentProgram: action.program}
-    case 'SAVE_SUCCESS':
+    case types.SAVE_SUCCESS:
       return { ...state, message: "Program saved!"}
-    case 'EDIT_PROGRAM':
+    case types.EDIT_PROGRAM:
       return state
-    case 'UPDATE_PROGRAM':
+    case types.UPDATE_PROGRAM:
       return state
-    case 'DELETE_PROGRAM':
+    case types.DELETE_PROGRAM:
       return state
-    case 'LOGOUT':
+    case types.LOGOUT:
       return initialProgramState
     default:
       return state;

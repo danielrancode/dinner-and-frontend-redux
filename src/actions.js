@@ -1,26 +1,29 @@
+import * as types from './types.js'
+
+
 // search restaurants
 export const searchRestaurants = ({ params }) => {
   return (dispatch) => {
-    dispatch({ type: 'START_ADDING_RESTAURANTS_REQUEST'})
+    dispatch({ type: types.START_ADDING_RESTAURANTS_REQUEST})
     return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/restaurants/search?term=${params.foodType}&location=${params.zipcode}`)
       .then(res => res.json())
-      .then(data => dispatch({ type: 'ADD_RESTAURANTS', data }))
+      .then(data => dispatch({ type: types.ADD_RESTAURANTS, data }))
   }
 }
 
 // search events
 export const searchEvents = ({ params }) => {
   return (dispatch) => {
-    dispatch({ type: 'START_ADDING_EVENTS_REQUEST'})
+    dispatch({ type: types.START_ADDING_EVENTS_REQUEST})
     return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/events/search?lat=${params.lat}&lon=${params.lon}&q=${params.eventType}`)
       .then(res => res.json())
-      .then(data => dispatch({ type: 'ADD_EVENTS', data }))
+      .then(data => dispatch({ type: types.ADD_EVENTS, data }))
   }
 }
 
 export const fetchPrograms = (userId) => {
   return (dispatch) => {
-    dispatch({ type: 'START_ADDING_PROGRAMS_REQUEST'})
+    dispatch({ type: types.START_ADDING_PROGRAMS_REQUEST})
 
     return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${userId}/programs`, {
       method: 'GET',
@@ -29,7 +32,7 @@ export const fetchPrograms = (userId) => {
       }
     })
     .then(res => res.json())
-    .then(data => dispatch({ type: 'ADD_PROGRAMS', data}))
+    .then(data => dispatch({ type: types.ADD_PROGRAMS, data}))
     // .then(data => console.log(data))
   }
 }
@@ -38,7 +41,7 @@ export const fetchPrograms = (userId) => {
 // program CRUD actions
 export const createProgram = (userId, data) => {
   return (dispatch) => {
-    dispatch({ type: 'START_SAVING_PROGRAM_REQUEST'})
+    dispatch({ type: types.START_SAVING_PROGRAM_REQUEST})
     return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${userId}/programs`, {
         method: 'POST',
         headers: {
@@ -50,25 +53,25 @@ export const createProgram = (userId, data) => {
       .then(res => {
         if (res.ok) {
           console.log(res)
-          dispatch({ type: 'SAVE_SUCCESS' })
+          dispatch({ type: types.SAVE_SUCCESS })
       } else {
           throw res
         }}
       )
       // .then(jsonRes => {
       //   console.log("jsonRes:", jsonRes)
-        // dispatch({ type: 'SAVE_SUCCESS' })
+        // dispatch({ type: types.SAVE_SUCCESS' })
       // })
       // .catch(res => res.json()
       // .then(e => console.log(e)
-        // dispatch({ type: 'LOGIN_FAILURE', message: e.message }))
+        // dispatch({ type: types.LOGIN_FAILURE', message: e.message }))
       // ))
   }
 }
 
 export const createUser = (params) => {
   return (dispatch) => {
-    dispatch({ type: 'START_CREATE_USER_REQUEST'})
+    dispatch({ type: types.START_CREATE_USER_REQUEST})
     return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users`, {
         method: 'POST',
         headers: {
@@ -85,11 +88,11 @@ export const createUser = (params) => {
       )
       .then(jsonRes => {
         console.log("jsonRes:", jsonRes)
-        dispatch({ type: 'CREATE_USER_SUCCESS' })
+        dispatch({ type: types.CREATE_USER_SUCCESS })
       })
       .catch(res => res.json()
       .then(e => console.log(e)
-        // dispatch({ type: 'LOGIN_FAILURE', message: e.message }))
+        // dispatch({ type: types.LOGIN_FAILURE', message: e.message }))
       ))
   }
 }
@@ -97,7 +100,7 @@ export const createUser = (params) => {
 
 export const loginUser = (params) => {
   return (dispatch) => {
-    dispatch({ type: 'LOGIN_REQUEST'})
+    dispatch({ type: types.LOGIN_REQUEST})
     return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`, {
       method: "POST",
       mode: "cors",
@@ -113,11 +116,11 @@ export const loginUser = (params) => {
       .then(jsonRes => {
         console.log("jsonRes:", jsonRes)
         localStorage.setItem('jwt', jsonRes.jwt)
-        dispatch({ type: 'LOGIN_SUCCESS', user: jsonRes.user})
+        dispatch({ type: types.LOGIN_SUCCESS, user: jsonRes.user})
       })
       .catch(res => res.json()
       .then(e =>
-        dispatch({ type: 'LOGIN_FAILURE', message: e.message }))
+        dispatch({ type: types.LOGIN_FAILURE, message: e.message }))
       )
   }
 }
@@ -125,13 +128,13 @@ export const loginUser = (params) => {
 export const logout = () => {
   localStorage.removeItem('jwt')
   return {
-    type: 'LOGOUT',
+    type: types.LOGOUT,
   }
 }
 
 // export const saveSuccessMessage = () => {
 //   return {
-//     type: 'SAVE_SUCCESS_MESSAGE',
+//     type: types.SAVE_SUCCESS_MESSAGE',
 //   }
 // }
 
@@ -139,7 +142,7 @@ export const logout = () => {
 // select restaurant
 export const selectRestaurant = (restaurant) => {
   return {
-    type: 'SELECT_RESTAURANT',
+    type: types.SELECT_RESTAURANT,
     payload: restaurant,
   }
 }
@@ -147,7 +150,7 @@ export const selectRestaurant = (restaurant) => {
 // select event
 export const selectEvent = (event) => {
   return {
-    type: 'SELECT_EVENT',
+    type: types.SELECT_EVENT,
     payload: event,
   }
 }
@@ -155,28 +158,28 @@ export const selectEvent = (event) => {
 // shuffle
 export const shuffle = (data) => {
   return {
-    type: 'SHUFFLE',
+    type: types.SHUFFLE,
     payload: data
   }
 }
 
 export const editProgram = (program) => {
   return {
-    type: 'EDIT_PROGRAM',
+    type: types.EDIT_PROGRAM,
     payload: program
   }
 }
 
 export const updateProgram = (program) => {
   return {
-    type: 'UPDATE_PROGRAM',
+    type: types.UPDATE_PROGRAM,
     payload: program
   }
 }
 
 export const deleteProgram = (program) => {
   return {
-    type: 'DELETE_PROGRAM',
+    type: types.DELETE_PROGRAM,
     payload: program
   }
 }

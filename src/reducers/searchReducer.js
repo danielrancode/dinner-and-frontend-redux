@@ -1,3 +1,5 @@
+import * as types from '../types.js'
+
 const initialSearchState = {
     type: '',
     currentSearchParams: {},
@@ -11,31 +13,31 @@ const initialSearchState = {
 
 const search = (state = initialSearchState, action) => {
   switch(action.type) {
-    case 'START_ADDING_RESTAURANTS_REQUEST':
+    case types.START_ADDING_RESTAURANTS_REQUEST:
       return { ...state, loadingRestaurants: true }
-    case 'ADD_RESTAURANTS':
+    case types.ADD_RESTAURANTS:
       console.log( "ADD RESTAURANTS:", action.data.business)
       return { ...state, restaurantsResults: action.data.businesses, loadingRestaurants: false }
-    case 'START_ADDING_EVENTS_REQUEST':
+    case types.START_ADDING_EVENTS_REQUEST:
       return { ...state, loadingEvents: true }
-    case 'ADD_EVENTS':
+    case types.ADD_EVENTS:
       console.log( "ADD EVENTS:", action.data.events)
       return { ...state, eventsResults: action.data.events, loadingEvents: false }
-    case 'SELECT_EVENT':
+    case types.SELECT_EVENT:
       if (state.currentEvent === action.payload) {
         return { ...state, currentEvent: null }
       } else {
         return { ...state, currentEvent: action.payload }
       }
-    case 'SELECT_RESTAURANT':
+    case types.SELECT_RESTAURANT:
       if (state.currentRestaurant === action.payload) {
         return { ...state, currentRestaurant: null }
       } else {
         return { ...state, currentRestaurant: action.payload }
       }
-    case 'SHUFFLE':
+    case types.SHUFFLE:
       return state
-    case 'LOGOUT':
+    case types.LOGOUT:
       return initialSearchState
     default:
       return state;

@@ -18,5 +18,6 @@ export const SELECT_EVENT = 'SELECT_EVENT'
 //////// to be implemented
 export const SHUFFLE = 'SHUFFLE'
 export const EDIT_PROGRAM = 'EDIT_PROGRAM'
+export const SELECT_PROGRAM = 'SELECT_PROGRAM'
 export const UPDATE_PROGRAM = 'UPDATE_PROGRAM'
 export const DELETE_PROGRAM = 'DELETE_PROGRAM'

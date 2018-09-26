@@ -10,10 +10,12 @@ import { createProgram } from '../../actions.js'
 const ProgramMaker = (props) => {
 
   const handleClick = (e) => {
-    props.createProgram(props.user.currentUser.id, {
-      restaurant_data: JSON.stringify(props.search.currentRestaurant),
-      event_data: JSON.stringify(props.search.currentEvent)
-    })
+    if (props.user.loggedIn) {
+      props.createProgram(props.user.currentUser.id, {
+        restaurant_data: JSON.stringify(props.search.currentRestaurant),
+        event_data: JSON.stringify(props.search.currentEvent)
+      })
+    }
   }
 
   return (

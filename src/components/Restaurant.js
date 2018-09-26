@@ -4,33 +4,42 @@ import { selectRestaurant } from '../actions'
 
 const Restaurant = (props) => {
   // console.log("Restaurant.coordinates: ", props.restaurant.coordinates)
-  const {
-    name,
-    categories,
-    display_phone,
-    location,
-    price,
-    rating,
-    review_count,
-    url,
-    image_url
-  } = props.restaurant
+  if (props.restaurant) {
+    const {
+      name,
+      categories,
+      display_phone,
+      location,
+      price,
+      rating,
+      review_count,
+      url,
+      image_url
+    } = props.restaurant
 
-  return (
-    <li onClick={() => props.selectRestaurant(props.restaurant)}>
-      <ul>
-        <li><h3>{name}</h3></li>
-        <img src={image_url} alt="text" style={{width: 200}}/>
-        <li>{categories.map(c => c.title).join(', ')}</li>
-        <li>{display_phone}</li>
-        <li>{location.display_address.join(', ')}</li>
-        <li>{price}</li>
-        <li>{rating}</li>
-        <li>{review_count}</li>
-        <li>{url}</li>
-      </ul>
-    </li>
-  )
+    return (
+      <li onClick={() => props.selectRestaurant(props.restaurant)}>
+        <ul>
+          <li><h3>{name}</h3></li>
+          <img src={image_url} alt="text" style={{width: 200}}/>
+          <li>{categories.map(c => c.title).join(', ')}</li>
+          <li>{display_phone}</li>
+          <li>{location.display_address.join(', ')}</li>
+          <li>{price}</li>
+          <li>{rating}</li>
+          <li>{review_count}</li>
+          <li>{url}</li>
+        </ul>
+      </li>
+    )
+  } else {
+    return (
+      <li onClick={e => console.log(e.target)}>
+        Empty Restaurant
+      </li>
+    )
+  }
+
 }
 
 const mapStateToProps = (state) => {

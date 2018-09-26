@@ -12,11 +12,11 @@ const Program = ({ program }) => {
       <h1>Program {program.id}</h1>
       <h3>Restaurant:</h3>
       <ul>
-        <Restaurant key={restaurant.id} restaurant={restaurant}/>
+        <Restaurant key={restaurant ? restaurant.id : null} restaurant={restaurant}/>
       </ul>
       <h3>Event:</h3>
       <ul>
-        <Event key={event.id} event={event} />
+        <Event key={event ? event.id : null} event={event} />
       </ul>
     </Fragment>
   )

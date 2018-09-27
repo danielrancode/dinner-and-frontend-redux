@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 import { createUser } from '../actions'
 
@@ -18,6 +19,9 @@ class SignUpForm extends Component {
   }
 
   render() {
+    if (this.props.loggedIn) {
+      return <Redirect to="/" />
+    }
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
         <label>name:<input type='text' name='name' value={this.state.name} onChange={this.handleChange.bind(this)} /></label>
@@ -29,4 +33,8 @@ class SignUpForm extends Component {
   }
 }
 
-export default connect(null, {createUser})(SignUpForm)
+const mapStateToProps = (state) => {
+  return state.user
+}
+
+export default connect(mapStateToProps, {createUser})(SignUpForm)

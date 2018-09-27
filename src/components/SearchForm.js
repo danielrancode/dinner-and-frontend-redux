@@ -48,6 +48,7 @@ class SearchForm extends Component {
 
   handleClickSearch = (e) => {
     // this.setState({type: 'search', display: 'top'})
+    e.preventDefault()
     let p = this.state.params
     if (!!p.foodType && !!p.eventType && !!p.lat && !!p.lon && p.zipcode.length === 5) {
       this.setState({message: ''})
@@ -66,7 +67,6 @@ class SearchForm extends Component {
   }
 
   render() {
-    console.log("hit render")
     let params = this.state.params
 
     return (
@@ -75,7 +75,7 @@ class SearchForm extends Component {
           <label>foodType: <input type='text' name='foodType' value={params.foodType} onChange={this.handleChange}/></label>
           <label>eventType: <input type='text' name='eventType' value={params.eventType} onChange={this.handleChange}/></label>
           <label>Zipcode: <input type='text' name='zipcode' value={params.zipcode} onChange={this.handleChange.bind(this)}/></label>
-          <input type='button' value='search' onClick={() => this.handleClickSearch()}/>
+          <button type='submit' name='search' onClick={(e) => this.handleClickSearch(e)}>Search</button>
           <input type='button' value='shuffle' onClick={() => this.handleClickShuffle()} hidden/>
         </form>
         <h1>{this.state.message}</h1>

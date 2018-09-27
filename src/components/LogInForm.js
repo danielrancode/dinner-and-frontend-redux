@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions'
 
@@ -17,6 +18,9 @@ class LogInForm extends Component {
   }
 
   render() {
+    if (this.props.loggedIn) {
+      return <Redirect to="/" />
+    }
     return (
       <Fragment>
       <h1>{this.props.message}</h1>
@@ -30,4 +34,7 @@ class LogInForm extends Component {
   }
 }
 
-export default connect(null, {loginUser})(LogInForm)
+const mapStateToProps = (state) => {
+  return state.user
+}
+export default connect(mapStateToProps, {loginUser})(LogInForm)

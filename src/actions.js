@@ -69,6 +69,35 @@ export const createProgram = (userId, data) => {
   }
 }
 
+export const deleteProgram = (program) => {
+  return (dispatch) => {
+    console.log("hit deleteProgram, program id:", program.id, "user id:", program.user_id)
+    dispatch({ type: types.START_DELETING_PROGRAM_REQUEST})
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${program.user_id}/programs/${program.id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('jwt')}`
+        },
+      })
+      .then(res => {
+        if (res.ok) {
+          console.log(res)
+          dispatch({ type: types.DELETE_SUCCESS })
+      } else {
+          throw res
+        }}
+      )
+      // .then(jsonRes => {
+      //   console.log("jsonRes:", jsonRes)
+        // dispatch({ type: types.SAVE_SUCCESS' })
+      // })
+      // .catch(res => res.json()
+      // .then(e => console.log(e)
+        // dispatch({ type: types.LOGIN_FAILURE', message: e.message }))
+      // ))
+  }
+}
+
 export const createUser = (params) => {
   return (dispatch) => {
     dispatch({ type: types.START_CREATE_USER_REQUEST})
@@ -186,13 +215,6 @@ export const editProgram = (program) => {
 export const updateProgram = (program) => {
   return {
     type: types.UPDATE_PROGRAM,
-    payload: program
-  }
-}
-
-export const deleteProgram = (program) => {
-  return {
-    type: types.DELETE_PROGRAM,
     payload: program
   }
 }

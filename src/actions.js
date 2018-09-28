@@ -58,6 +58,7 @@ export const createProgram = (userId, data) => {
         if (res.ok) {
           console.log(res)
           dispatch({ type: types.SAVE_SUCCESS })
+          dispatch(fetchPrograms(userId))
       } else {
           throw res
         }}
@@ -153,6 +154,7 @@ export const loginUser = (params) => {
       .then(jsonRes => {
         localStorage.setItem('jwt', jsonRes.jwt)
         dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user})
+        dispatch(fetchPrograms(jsonRes.user.id))
       })
       .catch(res => res.json().then(jsonRes => dispatch({ type: types.LOGIN_FAILURE, message: jsonRes.message })))
   }
@@ -177,8 +179,8 @@ export const fetchCurrentUser = () => {
     .then(res => res.json())
     // .then(res => console.log("res:", res))
     .then(jsonRes => {
-      console.log("jsonRes", jsonRes)
-      return dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user })
+      dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user })
+      dispatch(fetchPrograms(jsonRes.user.id))
     } )
   }
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SearchForm from '../SearchForm';
 import RestaurantsList from '../RestaurantsList';
 import EventsList from '../EventsList';
+import MiniProgramsList from '../MiniProgramsList';
 // import Map from '../Map';
 import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
@@ -24,6 +25,7 @@ const ProgramMaker = (props) => {
       <h1>{props.program.message}</h1>
       <RestaurantsList />
       <EventsList />
+      <MiniProgramsList />
       {props.user.loggedIn ? <button onClick={e => handleClick(e)}>Save Program</button> : <Link to="/login"><button>Save Program</button></Link>}
     </div>
   )

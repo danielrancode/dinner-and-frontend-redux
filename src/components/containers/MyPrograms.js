@@ -12,7 +12,6 @@ class MyPrograms extends Component {
   }
 
   render() {
-    debugger
     return (this.props.program.programs.length > 0) ?
     (
       <div>

@@ -14,22 +14,12 @@ const App = (props) => {
         <Router>
           <div className="wrapper">
           <button onClick={props.logout}>Log Out</button>
-
             <ul>
               <li>
                 <Link to='/'>Home</Link>
               </li>
               <li>
-                <Link to='/signup'>Sign Up</Link>
-              </li>
-              <li>
-                <Link to='/login'>Log In</Link>
-              </li>
-              <li>
                 <Link to='/programs'>My Programs</Link>
-              </li>
-              <li>
-                <Link to='/programs/:id'>Program View</Link>
               </li>
             </ul>
 
@@ -48,16 +38,7 @@ const App = (props) => {
                 <Link to='/'>Home</Link>
               </li>
               <li>
-                <Link to='/signup'>Sign Up</Link>
-              </li>
-              <li>
-                <Link to='/login'>Log In</Link>
-              </li>
-              <li>
-                <Link to='/programs'>My Programs</Link>
-              </li>
-              <li>
-                <Link to='/programs/:id'>Program View</Link>
+                <Link to='/login'>Sign Up / Log In</Link>
               </li>
             </ul>
 

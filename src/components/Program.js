@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Restaurant from './Restaurant'
 import Event from './Event'
 import { connect } from  'react-redux'
-import { deleteProgram } from '../actions'
+import { deleteProgram, fetchPrograms } from '../actions'
 
 
 const Program = ({ program, deleteProgram }) => {
@@ -11,6 +11,7 @@ const Program = ({ program, deleteProgram }) => {
 
   const handleClick = (e) => {
     deleteProgram(program)
+    fetchPrograms(program.user_id)
   }
 
   return (
@@ -37,4 +38,4 @@ const mapStateToProps = (state) => {
 //   return state.program
 // }
 
-export default connect(mapStateToProps, {deleteProgram})(Program)
+export default connect(mapStateToProps, {deleteProgram, fetchPrograms})(Program)

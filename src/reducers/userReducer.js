@@ -17,6 +17,11 @@ const user = (state = initialUserState, action) => {
         ...state,
         loggingIn: true,
       }
+    case types.LOGIN_SUCCESS:
+      return {
+        ...state,
+        loggingIn: false,
+      }
     case types.SET_CURRENT_USER:
       return {
         ...state,
@@ -30,7 +35,7 @@ const user = (state = initialUserState, action) => {
         loggingIn: false,
         failedLogin: true,
         loggedIn: false,
-        currentUser: '',
+        currentUser: {},
         message: action.message
       }
     case types.LOGOUT:

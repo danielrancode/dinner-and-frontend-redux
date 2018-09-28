@@ -31,7 +31,6 @@ class SearchForm extends Component {
   }
 
   handleChange = (e) => {
-    console.log(this.state.params)
     if (e.target.name === 'zipcode' && e.target.value !== this.state.params.zipcode && e.target.value.length === 5) {
       let zip = e.target.value
       let lat = this.lattitudeOfZipCode(zip)

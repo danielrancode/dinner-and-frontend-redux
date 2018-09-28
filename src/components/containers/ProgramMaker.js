@@ -6,6 +6,7 @@ import EventsList from '../EventsList';
 // import Map from '../Map';
 import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
+import withAuth from '../hoc/withAuth'
 
 
 const ProgramMaker = (props) => {
@@ -20,6 +21,7 @@ const ProgramMaker = (props) => {
   return (
     <div>
       <SearchForm />
+      <h1>{props.program.message}</h1>
       <RestaurantsList />
       <EventsList />
       {props.user.loggedIn ? <button onClick={e => handleClick(e)}>Save Program</button> : <Link to="/login"><button>Save Program</button></Link>}
@@ -31,4 +33,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default connect(mapStateToProps, { createProgram })(ProgramMaker)
+export default withAuth(connect(mapStateToProps, { createProgram })(ProgramMaker))

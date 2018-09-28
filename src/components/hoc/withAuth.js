@@ -5,12 +5,13 @@ import * as actions from '../../actions'
 
 const withAuth = (WrappedComponent) => {
   class AuthorizedComponent extends Component {
-    componentDidmount() {
+    componentDidMount() {
       if (localStorage.getItem('jwt') && !this.props.loggedIn) this.props.fetchCurrentUser()
     }
 
     render() {
       if (localStorage.getItem('jwt') && this.props.loggedIn) {
+        console.log("Logged in")
         return <WrappedComponent />
       } else if (localStorage.getItem('jwt') && this.props.loggingIn) {
         return (<h1>logging in........................</h1>)
@@ -33,7 +34,7 @@ const withAuth = (WrappedComponent) => {
     }
   }
 
-  return connect(mapStateToProps, mapDispatchToProps)(AuthorizedComponent)
+  return connect(mapStateToProps, actions)(AuthorizedComponent)
 }
 
 export default withAuth

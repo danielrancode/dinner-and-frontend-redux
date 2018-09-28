@@ -24,15 +24,19 @@ export const searchEvents = ({ params }) => {
 export const fetchPrograms = (userId) => {
   return (dispatch) => {
     dispatch({ type: types.START_ADDING_PROGRAMS_REQUEST})
+    console.log("FETCH PROGRAMS")
 
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${userId}/programs`, {
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${userId}/programs`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
     .then(res => res.json())
-    .then(data => dispatch({ type: types.ADD_PROGRAMS, data}))
+    .then(data => {
+      console.log(data)
+      dispatch({ type: types.ADD_PROGRAMS, data}
+      )})
     // .then(data => console.log(data))
   }
 }
@@ -71,9 +75,8 @@ export const createProgram = (userId, data) => {
 
 export const deleteProgram = (program) => {
   return (dispatch) => {
-    console.log("hit deleteProgram, program id:", program.id, "user id:", program.user_id)
     dispatch({ type: types.START_DELETING_PROGRAM_REQUEST})
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${program.user_id}/programs/${program.id}`, {
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${program.user_id}/programs/${program.id}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('jwt')}`
@@ -86,7 +89,7 @@ export const deleteProgram = (program) => {
       } else {
           throw res
         }}
-      )
+      ).then(x => dispatch(fetchPrograms(program.user_id)))
       // .then(jsonRes => {
       //   console.log("jsonRes:", jsonRes)
         // dispatch({ type: types.SAVE_SUCCESS' })
@@ -133,8 +136,11 @@ export const loginUser = (params) => {
     dispatch({ type: types.LOGIN_REQUEST})
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/login`, {
       method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
+      // mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      Accept: "application/json"
+    },
       body: JSON.stringify({user: params})
     })
       .then(res => {
@@ -161,16 +167,19 @@ export const logout = () => {
 
 export const fetchCurrentUser = () => {
   return (dispatch) => {
-    dispatch({ type: types.LOGIN_REQUEST})
-    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users`, {
+    dispatch(() => ({ type: types.LOGIN_REQUEST}))
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/user`, {
       method: "GET",
-      mode: "cors",
       headers: {
         Authorization: `Bearer ${localStorage.getItem('jwt')}`
       }
     })
     .then(res => res.json())
-    .then(jsonRes => dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user }))
+    // .then(res => console.log("res:", res))
+    .then(jsonRes => {
+      console.log("jsonRes", jsonRes)
+      return dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user })
+    } )
   }
 }
 

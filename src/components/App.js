@@ -13,7 +13,6 @@ const App = (props) => {
   return props.user.loggedIn ? (
         <Router>
           <div className="wrapper">
-          <h1>Hello, {props.user.currentUser.name}!</h1>
           <button onClick={props.logout}>Log Out</button>
 
             <ul>
@@ -44,7 +43,6 @@ const App = (props) => {
     ) : (
         <Router>
           <div className="wrapper">
-          <h1>{props.user.message}</h1>
             <ul>
               <li>
                 <Link to='/'>Home</Link>

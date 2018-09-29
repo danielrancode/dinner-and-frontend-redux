@@ -11,7 +11,6 @@ const withAuth = (WrappedComponent) => {
 
     render() {
       if (localStorage.getItem('jwt') && this.props.loggedIn) {
-        console.log("Logged in")
         return <WrappedComponent />
       } else if (localStorage.getItem('jwt') && this.props.loggingIn) {
         return (<h1>logging in........................</h1>)

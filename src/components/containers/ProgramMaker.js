@@ -4,10 +4,12 @@ import SearchForm from '../SearchForm';
 import RestaurantsList from '../RestaurantsList';
 import EventsList from '../EventsList';
 import MiniProgramsList from '../MiniProgramsList';
-// import Map from '../Map';
+import MapContainer from './MapContainer';
 import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
 import withAuth from '../hoc/withAuth'
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+
 
 
 const ProgramMaker = (props) => {
@@ -25,6 +27,7 @@ const ProgramMaker = (props) => {
       <h1>{props.program.message}</h1>
       <RestaurantsList />
       <EventsList />
+      <MapContainer />
       <MiniProgramsList />
       {props.user.loggedIn ? <button onClick={e => handleClick(e)}>Save Program</button> : <Link to="/login"><button>Save Program</button></Link>}
     </div>

@@ -24,8 +24,6 @@ export const searchEvents = ({ params }) => {
 export const fetchPrograms = (userId) => {
   return (dispatch) => {
     dispatch({ type: types.START_ADDING_PROGRAMS_REQUEST})
-    console.log("FETCH PROGRAMS")
-
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/users/${userId}/programs`, {
       method: 'GET',
       headers: {
@@ -34,7 +32,6 @@ export const fetchPrograms = (userId) => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       dispatch({ type: types.ADD_PROGRAMS, data}
       )})
     // .then(data => console.log(data))

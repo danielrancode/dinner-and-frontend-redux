@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import Program from './Program'
 
 const ProgramsList = ({ programs }) => {
-  console.log("programs: ", programs)
   if (programs) {
     return (
       <ul>

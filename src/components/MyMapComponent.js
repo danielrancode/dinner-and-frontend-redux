@@ -16,8 +16,8 @@ const MyMapComponent = compose(
     console.log("props", props)
     return (
       <GoogleMap defaultZoom={14} defaultCenter={{ lat: -34, lng: 150 }}>
-        {!props.restaurant && <Marker position={{ lat: -34, lng: 150 }} />}
-        {!props.event && <Marker position={{ lat: -34.01, lng: 150 }} />}
+        {props.restaurant && <Marker position={{ lat: props.restaurant.coordinates.latitude, lng: props.restaurant.coordinates.longitude}} />}
+        {props.event && <Marker position={{lat: props.event.venue.location.lat, lng: props.event.venue.location.lon}} />}
       </GoogleMap>
     )
   })

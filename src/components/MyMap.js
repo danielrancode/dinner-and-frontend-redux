@@ -1,19 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
 import MyMapComponent from './MyMapComponent'
 import { connect } from 'react-redux'
 
-class MyMap extends Component {
+const MyMap = ({restaurant, event}) => {
 
-  state = {
-    restaurant: this.props.restaurant,
-    event: this.props.event
-  }
-
-  render() {
-    return <MyMapComponent restaurant={this.state.restaurant} event={this.state.event} />
-  }
+  return (
+    <MyMapComponent restaurant={restaurant} event={event} />
+  )
 }
-
 
 const mapStateToProps = (state) => {
   return {restaurant: state.search.currentRestaurant, event: state.search.currentEvent}

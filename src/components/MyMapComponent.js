@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose, withProps } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
 const MyMapComponent = compose(
   withProps({
@@ -13,15 +13,13 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )((props) => {
+    console.log("props", props)
     return (
-      <GoogleMap defaultZoom={8} defaultCenter={{ lat: -34, lng: 150 }}>
-        {props.isMarkerShown && <Marker position={{ lat: 34, lng: 150 }} />}
+      <GoogleMap defaultZoom={14} defaultCenter={{ lat: -34, lng: 150 }}>
+        {!props.restaurant && <Marker position={{ lat: -34, lng: 150 }} />}
+        {!props.event && <Marker position={{ lat: -34.01, lng: 150 }} />}
       </GoogleMap>
     )
   })
 
-const mapStateToProps = (state) => {
-  return {restaurant: state.search.currentRestaurant, event: state.search.currentEvent}
-}
-
-export default connect(mapStateToProps)(MyMapComponent)
+export default MyMapComponent

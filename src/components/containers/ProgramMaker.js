@@ -7,6 +7,7 @@ import MiniProgramsList from '../MiniProgramsList';
 import MapContainer from './MapContainer';
 // import MapContainer2 from './MapContainer2';
 import MyMapComponent from '../MyMapComponent'
+import MyMap from '../MyMap'
 import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
 import withAuth from '../hoc/withAuth'
@@ -29,7 +30,7 @@ const ProgramMaker = (props) => {
       <h1>{props.program.message}</h1>
       <RestaurantsList />
       <EventsList />
-      <MyMapComponent />
+      <MyMap />
       <MiniProgramsList />
       {props.user.loggedIn ? <button onClick={e => handleClick(e)}>Save Program</button> : <Link to="/login"><button>Save Program</button></Link>}
     </div>

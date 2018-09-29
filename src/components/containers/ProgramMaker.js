@@ -5,6 +5,7 @@ import RestaurantsList from '../RestaurantsList';
 import EventsList from '../EventsList';
 import MiniProgramsList from '../MiniProgramsList';
 import MapContainer from './MapContainer';
+// import MapContainer2 from './MapContainer2';
 import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
 import withAuth from '../hoc/withAuth'

@@ -24,6 +24,8 @@ import { connect } from 'react-redux'
 
     }
 
+
+
     return (
       <Map
         style={{width: "400px", height: "400px", position: "absolute"}}
@@ -116,6 +118,7 @@ import { connect } from 'react-redux'
         </Map>
       )
     } else {
+      
       return (
         <h1>NO MAP!!</h1>
       )

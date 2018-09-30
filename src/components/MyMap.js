@@ -4,12 +4,7 @@ import { connect } from 'react-redux'
 
 const MyMap = ({restaurant, event}) => {
 
-
-  // state = {restaurant: this.props.restaurant, event: this.props.event}
-
   const center = () => {
-    // let restaurant = this.props.restaurant
-    // let event = this.props.event
     if (!!restaurant && !event) {
       return { lat: restaurant.coordinates.latitude, lng: restaurant.coordinates.longitude }
     } else if (!!(restaurant && event)) {
@@ -20,11 +15,6 @@ const MyMap = ({restaurant, event}) => {
       return { lat: 40.7128, lng: -74.0060 }
     }
   }
-
-  // componentDidMount() {
-  //   console.log("hit componentDidMount")
-  //   this.setState({restaurant: this.props.restaurant, event: this.props.event})
-  // }
 
     return (<MyMapComponent
               restaurant={restaurant}

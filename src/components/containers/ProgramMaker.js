@@ -4,8 +4,6 @@ import SearchForm from '../SearchForm';
 import RestaurantsList from '../RestaurantsList';
 import EventsList from '../EventsList';
 import MiniProgramsList from '../MiniProgramsList';
-import MapContainer from './MapContainer';
-// import MapContainer2 from './MapContainer2';
 import MyMapComponent from '../MyMapComponent'
 import MyMap from '../MyMap'
 import { connect } from  'react-redux'
@@ -30,7 +28,7 @@ const ProgramMaker = (props) => {
       <h1>{props.program.message}</h1>
       <RestaurantsList />
       <EventsList />
-      <MyMap />
+      {props.search.currentRestaurant && props.search.currentEvent && <MyMap />}
       <MiniProgramsList />
       {props.user.loggedIn ? <button onClick={e => handleClick(e)}>Save Program</button> : <Link to="/login"><button>Save Program</button></Link>}
     </div>

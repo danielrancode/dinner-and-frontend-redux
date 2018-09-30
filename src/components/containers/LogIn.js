@@ -1,12 +1,15 @@
 import React, { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import LogInForm from '../LogInForm'
+// import '../../assets/css/Login.css'
 
 const LogIn = () => {
   return (
     <Fragment>
       <LogInForm />
-      <h5>Don't have an account? <Link to="/signup">Sign Up</Link></h5>
+      <div>
+        <h5>Don't have an account? <Link to="/signup">Sign Up</Link></h5>
+      </div>
     </Fragment>
   )
 }

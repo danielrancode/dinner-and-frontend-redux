@@ -8,6 +8,8 @@ import SignUp from './containers/SignUp'
 import LogIn from './containers/LogIn'
 import { connect } from 'react-redux'
 import { loginUser, logout } from '../actions'
+import '../assets/css/App.css'
+// import Button from '@material-ui/core/Button'
 
 const App = (props) => {
   return props.user.loggedIn ? (
@@ -33,14 +35,14 @@ const App = (props) => {
     ) : (
         <Router>
           <div className="wrapper">
-            <ul>
+            {/*}<ul>
               <li>
                 <Link to='/'>Home</Link>
               </li>
               <li>
                 <Link to='/login'>Sign Up / Log In</Link>
               </li>
-            </ul>
+            </ul>*/}
 
             <Route path="/" component={ProgramMaker} exact />
             <Route path="/programs" component={MyPrograms} exact />

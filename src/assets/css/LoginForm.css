@@ -1,0 +1,36 @@
+.form-container {
+    font-size: 25px;
+    margin: auto;
+    padding: 30px;
+    color: #464a4c;
+    /* border: 1px solid black; */
+    background-color: #f2f2f2
+}
+
+.button {
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 1em;
+  color: #464a4c;
+}
+
+label {
+  padding: 20px
+}
+
+.form-entry {
+  text-align: center;
+  justify-content: center;
+
+  display: flex;
+  flex-direction: row;
+  /* font-size: 20px; */
+  padding: 20px
+}
+
+input {
+  font-size: 30px;
+  border-radius: 5px;
+  border: dotted #464a4c 0.5px;
+}

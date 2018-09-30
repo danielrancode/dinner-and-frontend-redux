@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router'
 import { connect } from 'react-redux'
 import { createUser } from '../actions'
+import '../assets/css/LoginForm.css'
+
 
 class SignUpForm extends Component {
 
@@ -23,11 +25,34 @@ class SignUpForm extends Component {
       return <Redirect to="/" />
     }
     return (
-      <form onSubmit={this.handleSubmit.bind(this)}>
-        <label>name:<input type='text' name='name' value={this.state.name} onChange={this.handleChange.bind(this)} /></label>
-        <label>username:<input type='text' name='username' value={this.state.username} onChange={this.handleChange.bind(this)}/></label>
-        <label>password:<input type='password' name='password' value={this.state.password} onChange={this.handleChange.bind(this)}/></label>
-        <button type='submit'>Submit</button>
+      <form onSubmit={this.handleSubmit.bind(this)} className="form-container">
+      <div className="form-entry">
+        <div>
+          <label>name:</label>
+        </div>
+        <div>
+          <input type='text' name='name' value={this.state.name} onChange={this.handleChange.bind(this)} />
+        </div>
+      </div>
+      <div className="form-entry">
+        <div>
+          <label>username:</label>
+        </div>
+        <div>
+          <input type='text' name='username' value={this.state.username} onChange={this.handleChange.bind(this)}/>
+        </div>
+      </div>
+      <div className="form-entry">
+        <div>
+          <label>password:</label>
+        </div>
+        <div>
+          <input type='password' name='password' value={this.state.password} onChange={this.handleChange.bind(this)}/>
+        </div>
+      </div>
+        <div className="form-entry">
+          <button type='submit' className="button">Sign Up</button>
+        </div>
       </form>
     )
   }

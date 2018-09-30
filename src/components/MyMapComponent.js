@@ -19,9 +19,10 @@ const MyMapComponent = compose(
         DirectionsService.route({
           origin: { lat: this.props.restaurant.coordinates.latitude, lng: this.props.restaurant.coordinates.longitude },
           destination: {lat: this.props.event.venue.location.lat, lng: this.props.event.venue.location.lon},
-          travelMode: google.maps.TravelMode.DRIVING,
+          travelMode: google.maps.TravelMode.WALKING,
         }, (result, status) => {
           if (status === google.maps.DirectionsStatus.OK) {
+            console.log(result)
             this.setState({
               directions: result,
             });

@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "google-maps-react": "^2.0.2",
+    "moment": "^2.22.2",
     "react": "^16.5.2",
+    "react-datepicker": "^1.6.0",
     "react-dom": "^16.5.2",
     "react-google-maps": "^9.4.5",
     "react-redux": "^5.0.7",

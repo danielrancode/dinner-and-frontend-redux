@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from  'react-redux'
 import { shuffle, searchRestaurants, searchEvents } from '../actions.js'
 import locationData from './locationData.js'
+import DatePicker from 'react-datepicker'
+import moment from 'moment'
 
 class SearchForm extends Component {
   state = {
@@ -15,7 +17,7 @@ class SearchForm extends Component {
       zipcode: '',
       lat: null,
       lon: null,
-      date: {},
+      date: moment(),
       time: {},
     },
   }
@@ -77,6 +79,7 @@ class SearchForm extends Component {
           <button type='submit' name='search' onClick={(e) => this.handleClickSearch(e)}>Search</button>
           <input type='button' value='shuffle' onClick={() => this.handleClickShuffle()} hidden/>
         </form>
+        <DatePicker selected={this.state.date} onChange={this.handleDateChange} />
         <h1>{this.state.message}</h1>
       </Fragment>
     )

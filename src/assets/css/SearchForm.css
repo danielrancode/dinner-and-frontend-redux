@@ -1,4 +1,4 @@
-.form-container {
+.search-form {
   display: flex row;
     font-size: 20px;
     margin: auto;
@@ -17,19 +17,17 @@
   color: #464a4c;
 }
 
-label {
+/* label {
   padding: 20px
-}
+} */
 
-.form-entry {
+/* .form-entry {
   text-align: center;
   justify-content: center;
-
   display: flex;
   flex-direction: row;
-  /* font-size: 20px; */
   padding: 20px
-}
+} */
 
 input {
   font-size: 30px;

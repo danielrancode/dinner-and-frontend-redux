@@ -5,6 +5,8 @@ import locationData from './locationData.js'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment'
+import '../assets/css/SearchForm.css'
+
 
 class SearchForm extends Component {
   state = {
@@ -86,7 +88,7 @@ class SearchForm extends Component {
 
     return (
       <Fragment>
-        <form className={this.state.display}>
+        <form className="search-form">
           <label>foodType: <input type='text' name='foodType' value={params.foodType} onChange={this.handleChange.bind(this)}/></label>
           <label>eventType: <input type='text' name='eventType' value={params.eventType} onChange={this.handleChange.bind(this)}/></label>
           <label>Zipcode: <input type='text' name='zipcode' value={params.zipcode} onChange={this.handleChange.bind(this)}/></label>

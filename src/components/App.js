@@ -1,5 +1,4 @@
 import React from 'react';
-import '../assets/css//App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import ProgramMaker from './containers/ProgramMaker'
 import MyPrograms from './containers/MyPrograms'

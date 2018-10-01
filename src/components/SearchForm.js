@@ -3,6 +3,7 @@ import { connect } from  'react-redux'
 import { shuffle, searchRestaurants, searchEvents } from '../actions.js'
 import locationData from './locationData.js'
 import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment'
 
 class SearchForm extends Component {
@@ -18,6 +19,7 @@ class SearchForm extends Component {
       lat: null,
       lon: null,
       date: moment(),
+      dateParam: this.formatDate(moment()),
       time: {},
     },
   }
@@ -32,7 +34,14 @@ class SearchForm extends Component {
     return (i ? i.lon : 0)
   }
 
-  handleChange = (e) => {
+  formatDate(date) {
+    let yyyy = date._d.getFullYear().toString()
+    let mm = (date._d.getMonth() + 1).toString().length === 2 ? (date._d.getMonth() + 1).toString() : `0${date._d.getMonth() + 1}`
+    let dd = date._d.getDate().toString().length === 2 ? date._d.getDate().toString() : `0${date._d.getDate()}`
+    return `${yyyy}-${mm}-${dd}`
+  }
+
+  handleChange(e) {
     if (e.target.name === 'zipcode' && e.target.value !== this.state.params.zipcode && e.target.value.length === 5) {
       let zip = e.target.value
       let lat = this.lattitudeOfZipCode(zip)
@@ -47,7 +56,11 @@ class SearchForm extends Component {
     }
   }
 
-  handleClickSearch = (e) => {
+  handleDateChange(date) {
+    this.setState({params: {...this.state.params, date: date, dateParam: this.formatDate(date) }})
+  }
+
+  handleClickSearch(e) {
     // this.setState({type: 'search', display: 'top'})
     e.preventDefault()
     let p = this.state.params
@@ -69,17 +82,18 @@ class SearchForm extends Component {
 
   render() {
     let params = this.state.params
+    console.log(params)
 
     return (
       <Fragment>
         <form className={this.state.display}>
-          <label>foodType: <input type='text' name='foodType' value={params.foodType} onChange={this.handleChange}/></label>
-          <label>eventType: <input type='text' name='eventType' value={params.eventType} onChange={this.handleChange}/></label>
+          <label>foodType: <input type='text' name='foodType' value={params.foodType} onChange={this.handleChange.bind(this)}/></label>
+          <label>eventType: <input type='text' name='eventType' value={params.eventType} onChange={this.handleChange.bind(this)}/></label>
           <label>Zipcode: <input type='text' name='zipcode' value={params.zipcode} onChange={this.handleChange.bind(this)}/></label>
           <button type='submit' name='search' onClick={(e) => this.handleClickSearch(e)}>Search</button>
           <input type='button' value='shuffle' onClick={() => this.handleClickShuffle()} hidden/>
         </form>
-        <DatePicker selected={this.state.date} onChange={this.handleDateChange} />
+        <DatePicker selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/>
         <h1>{this.state.message}</h1>
       </Fragment>
     )

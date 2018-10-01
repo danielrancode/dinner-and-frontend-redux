@@ -4,7 +4,7 @@ import { selectEvent } from '../actions'
 
 const Event = (props) => {
   if (props.event) {
-    const { performers, title, type, datetime, address, extended_address } = props.event
+    const { performers, title, type, datetime_local, address, extended_address } = props.event
 
     return (
       <li onClick={() => props.selectEvent(props.event)}>
@@ -14,7 +14,7 @@ const Event = (props) => {
           <li>{type}</li>
           <li>{address}</li>
           <li>{extended_address}</li>
-          <li>{datetime}</li>
+          <li>{datetime_local}</li>
         </ul>
       </li>
     )

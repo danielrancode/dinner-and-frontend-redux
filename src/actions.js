@@ -14,8 +14,9 @@ export const searchRestaurants = ({ params }) => {
 // search events
 export const searchEvents = ({ params }) => {
   return (dispatch) => {
+    console.log('actions.js params.dateParam:', params.dateParam)
     dispatch({ type: types.START_ADDING_EVENTS_REQUEST})
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/events/search?lat=${params.lat}&lon=${params.lon}&q=${params.eventType}`)
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/events/search?lat=${params.lat}&lon=${params.lon}&q=${params.eventType}&datetime_utc=${params.dateParam}`)
       .then(res => res.json())
       .then(data => dispatch({ type: types.ADD_EVENTS, data }))
   }

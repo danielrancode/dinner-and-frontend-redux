@@ -1,4 +1,4 @@
-.restaurant {
+.event {
   color: black;
   background-color: white;
   margin-bottom: 30px;
@@ -11,20 +11,20 @@
   justify-content: center;
 }
 
-.rest-name {
+.event-title {
   text-align: center;
   margin: 5px;
   color: black;
   background-color: white;
 }
 
-.rest-data {
+.event-data {
   margin: 0px;
   line-height: 1.6;
   margin: 0px;
 }
 
-.rest-img {
+.event-img {
   display: block;
 /* max-width:230px; */
 /* max-height:250px; */

@@ -5,7 +5,7 @@ import Restaurant from './Restaurant';
 const RestaurantsList = ({ restaurants, currentRestaurant }) => {
   if (currentRestaurant) {
     return (
-      <ul className="restaurants-list" style={{listStyle: 'none'}}>
+      <ul className="restaurants-list" >
         <Restaurant key={currentRestaurant.id} restaurant={currentRestaurant}/>
       </ul>
     )

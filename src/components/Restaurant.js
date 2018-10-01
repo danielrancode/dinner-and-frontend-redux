@@ -20,7 +20,7 @@ const Restaurant = (props) => {
 
     return (
       <li className="restaurant" onClick={() => props.selectRestaurant(props.restaurant)}>
-        <h4 className="rest-data">{name}</h4>
+        <h4 className="rest-name">{name}</h4>
         <img className="rest-img" src={image_url} alt="text" />
           <div className="rest-data">{categories.map(c => c.title).join(', ')}<br/>
             {display_phone}<br/>

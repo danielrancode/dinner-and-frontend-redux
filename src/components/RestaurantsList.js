@@ -5,13 +5,13 @@ import Restaurant from './Restaurant';
 const RestaurantsList = ({ restaurants, currentRestaurant }) => {
   if (currentRestaurant) {
     return (
-      <ul>
+      <ul className="restaurants-list">
         <Restaurant key={currentRestaurant.id} restaurant={currentRestaurant}/>
       </ul>
     )
   } else {
     return (
-      <ul>
+      <ul className="my-map">
         {restaurants.map(r => <Restaurant key={r.id} restaurant={r}/>)}
       </ul>
     )

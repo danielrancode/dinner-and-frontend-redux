@@ -10,7 +10,7 @@ import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
 import withAuth from '../hoc/withAuth'
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-
+import '../../assets/css/ProgramMaker.css'
 
 
 const ProgramMaker = (props) => {
@@ -23,14 +23,18 @@ const ProgramMaker = (props) => {
     }
 
   return (
-    <div>
+    <div className="program-maker">
       <SearchForm />
       <h1>{props.program.message}</h1>
-      <RestaurantsList />
-      <EventsList />
-      {props.search.currentRestaurant && props.search.currentEvent && <MyMap />}
+      <div className="results-wrapper">
+        <RestaurantsList/>
+        <EventsList />
+        {props.search.currentRestaurant && props.search.currentEvent && <MyMap />}
+        {!(props.search.currentRestaurant && props.search.currentEvent) && <div className="my-map"></div>}
+      </div>
+      {props.search.currentRestaurant && props.search.currentEvent && <button onClick={e => handleClick(e)}>Save Program</button>}
       <MiniProgramsList />
-      {props.user.loggedIn ? <button onClick={e => handleClick(e)}>Save Program</button> : <Link to="/login"><button>Save Program</button></Link>}
+
     </div>
   )
 }

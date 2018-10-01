@@ -18,6 +18,7 @@ class SearchForm extends Component {
       foodType: '',
       eventType: '',
       zipcode: '',
+      within: '',
       lat: null,
       lon: null,
       date: moment(),
@@ -89,13 +90,41 @@ class SearchForm extends Component {
     return (
       <Fragment>
         <form className="search-form">
-          <label>foodType: <input type='text' name='foodType' value={params.foodType} onChange={this.handleChange.bind(this)}/></label>
-          <label>eventType: <input type='text' name='eventType' value={params.eventType} onChange={this.handleChange.bind(this)}/></label>
-          <label>Zipcode: <input type='text' name='zipcode' value={params.zipcode} onChange={this.handleChange.bind(this)}/></label>
-          <button type='submit' name='search' onClick={(e) => this.handleClickSearch(e)}>Search</button>
-          <input type='button' value='shuffle' onClick={() => this.handleClickShuffle()} hidden/>
+          <div id="food-and-event">
+            <div>
+              <input type='text' name='foodType' value={params.foodType} onChange={this.handleChange.bind(this)}/>
+            </div>
+            <div>&</div>
+            <div>
+              <input type='text' name='eventType' value={params.eventType} onChange={this.handleChange.bind(this)}/>
+            </div>
+          </div>
+          <div id="location">
+          <div>within</div>
+            <div>
+              <input type='text' name='within' value={params.within} onChange={this.handleChange.bind(this)}/>
+            </div>
+            <div>miles from</div>
+            <div>
+              <input type='text' name='zipcode' value={params.zipcode} onChange={this.handleChange.bind(this)}/>
+            </div>
+          </div>
+          <div id="time">
+          <div>on</div>
+            <div>
+              <DatePicker selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/>
+            </div>
+            <div>at</div>
+            <div>
+            <DatePicker selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/>
+            </div>
+          </div>
+          <div id="buttons">
+            <div>
+              <button type='submit' id='search' onClick={(e) => this.handleClickSearch(e)}>Search</button>
+            </div>
+          </div>
         </form>
-        <DatePicker selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/>
         <h1>{this.state.message}</h1>
       </Fragment>
     )

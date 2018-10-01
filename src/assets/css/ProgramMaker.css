@@ -1,0 +1,27 @@
+.program-maker {
+
+}
+
+.results-wrapper {
+  margin: 10%;
+  display: flex;
+  /* border: 1px dotted white */
+}
+
+.restaurants-list {
+  padding: 10px;
+  /* border: 1px solid green; */
+  width: 33%
+}
+
+.events-list {
+  padding: 10px;
+  /* border: 1px solid blue; */
+  width: 33%
+}
+
+.my-map {
+  padding: 10px;
+  /* border: 1px solid purple; */
+  width: 33%
+}

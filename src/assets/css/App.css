@@ -1,10 +1,19 @@
+body {
+  /* border: 1px dotted red; */
+  color: white;
+  /* height: 100vh; */
+  /* align-items: center; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  background-color: black;}
 .wrapper {
+  /* border: 1px dotted yellow; */
   color: white;
   height: 100vh;
   align-items: center;
   display: flex;
   flex-direction: column;
-  background-color: black;
+  /* background-color: black; */
 }
 
 /* .App-logo {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from  'react-redux'
 import { selectRestaurant } from '../actions'
+import '../assets/css/Restaurant.css'
 
 const Restaurant = (props) => {
   // console.log("Restaurant.coordinates: ", props.restaurant.coordinates)
@@ -18,18 +19,17 @@ const Restaurant = (props) => {
     } = props.restaurant
 
     return (
-      <li onClick={() => props.selectRestaurant(props.restaurant)}>
-        <ul>
-          <li><h3>{name}</h3></li>
-          <img src={image_url} alt="text" style={{width: 200}}/>
-          <li>{categories.map(c => c.title).join(', ')}</li>
-          <li>{display_phone}</li>
-          <li>{location.display_address.join(', ')}</li>
-          <li>{price}</li>
-          <li>{rating}</li>
-          <li>{review_count}</li>
-          <li>{url}</li>
-        </ul>
+      <li className="restaurant" onClick={() => props.selectRestaurant(props.restaurant)}>
+        <h4 className="rest-data">{name}</h4>
+        <img className="rest-img" src={image_url} alt="text" />
+          <div className="rest-data">{categories.map(c => c.title).join(', ')}<br/>
+            {display_phone}<br/>
+            {location.display_address.join(', ')}<br/>
+            {price}<br/>
+            {rating}<br/>
+            {review_count}<br/>
+            <a href={url} target="_blank">view on Yelp</a>
+          </div>
       </li>
     )
   } else {

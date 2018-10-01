@@ -1,0 +1,32 @@
+.restaurant {
+  margin-bottom: 30px;
+  height: 300;
+  width: 250;
+  border: 2px solid white;
+  display: flex column;
+  align-items: center;
+  justify-content: center;
+}
+
+.rest-name {
+  margin: 0px;
+  color: black;
+  background-color: white;
+}
+
+.rest-data {
+  line-height: 1.6;
+  margin: 0px;
+  color: black;
+  background-color: white;
+}
+
+.rest-img {
+  display: block;
+/* max-width:230px; */
+/* max-height:250px; */
+width: 100%;
+height: auto;
+  /* height: 250px; */
+  /* width: 230px; */
+}

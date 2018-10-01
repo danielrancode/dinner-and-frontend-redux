@@ -11,7 +11,7 @@ const RestaurantsList = ({ restaurants, currentRestaurant }) => {
     )
   } else {
     return (
-      <ul className="my-map">
+      <ul className="restaurants-list">
         {restaurants.map(r => <Restaurant key={r.id} restaurant={r}/>)}
       </ul>
     )

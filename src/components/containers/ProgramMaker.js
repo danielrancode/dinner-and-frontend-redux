@@ -1,17 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import SearchForm from '../SearchForm';
 import RestaurantsList from '../RestaurantsList';
 import Restaurant from '../Restaurant';
 import EventsList from '../EventsList';
 import Event from '../Event';
 import MiniProgramsList from '../MiniProgramsList';
-import MyMapComponent from '../MyMapComponent'
+// import MyMapComponent from '../MyMapComponent'
 import MyMap from '../MyMap'
 import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
 import withAuth from '../hoc/withAuth'
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+// import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import '../../assets/css/ProgramMaker.css'
 
 
@@ -32,14 +32,21 @@ const ProgramMaker = ({
 
     <div className="program-maker">
       <SearchForm />
-      <div className="results-wrapper">
-        {restaurantsResults.length > 0 && !currentRestaurant && <RestaurantsList/>}
-        {currentRestaurant && <Restaurant key={currentRestaurant.id} restaurant={currentRestaurant}/>}
-        {eventsResults.length > 0 && !currentEvent && <EventsList />}
-        {currentEvent && <Event key={currentEvent.id} event={currentEvent} />}
-        {currentRestaurant && currentEvent && <MyMap />}
-        {!(currentRestaurant && currentEvent) && <div className="my-map"></div>}
-      </div>
+      {(restaurantsResults.length > 0 || eventsResults.length > 0) && <div className="results-wrapper">
+        <div className="rest-container">
+          {restaurantsResults.length > 0 && !currentRestaurant && <RestaurantsList/>}
+          {currentRestaurant && <Restaurant key={currentRestaurant.id} restaurant={currentRestaurant}/>}
+        </div>
+        <div className="event-container">
+          {eventsResults.length > 0 && !currentEvent && <EventsList />}
+          {currentEvent && <Event key={currentEvent.id} event={currentEvent} />}
+        </div>
+        <div className="map=container">
+          {currentRestaurant && currentEvent && <MyMap />}
+          {!(currentRestaurant && currentEvent) && <div className="my-map"></div>}
+        </div>
+      </div>}
+
       {currentRestaurant && currentEvent && <button onClick={e => handleClick(e)}>Save Program</button>}
       <MiniProgramsList />
 
@@ -48,7 +55,7 @@ const ProgramMaker = ({
 }
 
 const mapStateToProps = (state) => {
-  return {...state.search, currentUSer: state.user.currentUser}
+  return {...state.search, currentUser: state.user.currentUser}
 }
 
 export default withAuth(connect(mapStateToProps, { createProgram })(ProgramMaker))

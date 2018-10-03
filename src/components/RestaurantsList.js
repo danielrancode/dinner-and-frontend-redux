@@ -5,15 +5,19 @@ import Restaurant from './Restaurant';
 const RestaurantsList = ({ restaurants, currentRestaurant }) => {
   if (currentRestaurant) {
     return (
-      <ul className="restaurants-list" >
-        <Restaurant key={currentRestaurant.id} restaurant={currentRestaurant}/>
-      </ul>
+      <div className="restaurants-list" >
+        <ul>
+          <Restaurant key={currentRestaurant.id} restaurant={currentRestaurant}/>
+        </ul>
+      </div>
     )
   } else {
     return (
-      <ul className="restaurants-list">
-        {restaurants.map(r => <Restaurant key={r.id} restaurant={r}/>)}
-      </ul>
+      <div className="restaurants-list" >
+        <ul>
+          {restaurants.map(r => <Restaurant key={r.id} restaurant={r}/>)}
+        </ul>
+      </div>
     )
   }
 }

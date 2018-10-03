@@ -8,7 +8,7 @@ const Event = (props) => {
   if (props.event) {
     const { performers, title, type, datetime_local, address, extended_address } = props.event
     return (
-      <li className="event" onClick={() => props.selectEvent(props.event)}>
+      <div className="event" onClick={() => props.selectEvent(props.event)}>
         <h4 className="event-title">{title}</h4>
         {performers[0].image && <img className="event-img" src={performers[0].image}alt="text" />}
         <div className="event-data">
@@ -17,7 +17,7 @@ const Event = (props) => {
           {extended_address}<br/>
           {datetime_local}
         </div>
-      </li>
+      </div>
     )
   } else {
     return (

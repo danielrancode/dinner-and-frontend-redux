@@ -26,11 +26,11 @@ label {
   display: flex;
   flex-direction: row;
   /* font-size: 20px; */
-  padding: 20px
+  /* padding: 20px */
 }
 
-input {
+/* input {
   font-size: 30px;
   border-radius: 5px;
   border: dotted #464a4c 0.5px;
-}
+} */

@@ -14,15 +14,11 @@ const App = (props) => {
   return props.user.loggedIn ? (
         <Router>
           <div className="wrapper">
-          <button onClick={props.logout}>Log Out</button>
-            <ul>
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <Link to='/programs'>My Programs</Link>
-              </li>
-            </ul>
+          <button onClick={props.logout} hidden>Log Out</button>
+
+                <Link to='/' hidden>Home</Link>
+
+                <Link to='/programs' hidden>My Programs</Link>
 
             <Route path="/" component={ProgramMaker} exact />
             <Route path="/programs" component={MyPrograms} exact />

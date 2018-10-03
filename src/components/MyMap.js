@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import MyMapComponent from './MyMapComponent'
 import { connect } from 'react-redux'
 

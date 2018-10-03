@@ -5,15 +5,19 @@ import Event from './Event';
 const EventsList = ({ events, currentEvent }) => {
   if (currentEvent) {
     return (
-      <ul className="events-list">
-        <Event key={currentEvent.id} event={currentEvent} />
-      </ul>
+      <div className="events-list" >
+        <ul>
+          <Event key={currentEvent.id} event={currentEvent} />
+        </ul>
+      </div>
     )
   } else {
     return (
-      <ul className="events-list">
-        {events.map(e => <Event key={e.id} event={e}/>)}
-      </ul>
+      <div className="events-list" >
+        <ul>
+          {events.map(e => <Event key={e.id} event={e}/>)}
+        </ul>
+      </div>
     )
   }
 }

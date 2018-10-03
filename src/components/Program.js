@@ -9,10 +9,10 @@ const Program = ({ program, deleteProgram }) => {
   let restaurant = JSON.parse(program.restaurant.json_data)
   let event = JSON.parse(program.event.json_data)
 
-  const handleClick = (e) => {
-    deleteProgram(program)
-    fetchPrograms(program.user_id)
-  }
+  // const handleClick = (e) => {
+  //   deleteProgram(program)
+  //   fetchPrograms(program.user_id)
+  // }
 
   return (
     <Fragment>

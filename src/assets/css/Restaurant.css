@@ -2,8 +2,8 @@
   color: black;
   background-color: white;
   margin-bottom: 30px;
-  height: 300;
-  width: 250;
+  /* height: 600px; */
+  /* min-width: 300px; */
   border: 2px solid white;
   border-radius: 20px;
   display: flex column;

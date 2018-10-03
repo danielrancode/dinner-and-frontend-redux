@@ -19,7 +19,7 @@ const Restaurant = (props) => {
     } = props.restaurant
 
     return (
-      <li className="restaurant" onClick={() => props.selectRestaurant(props.restaurant)}>
+      <div className="restaurant" onClick={() => props.selectRestaurant(props.restaurant)}>
         <h4 className="rest-name">{name}</h4>
         <img className="rest-img" src={image_url} alt="text" />
           <div className="rest-data">{categories.map(c => c.title).join(', ')}<br/>
@@ -30,7 +30,7 @@ const Restaurant = (props) => {
             {review_count}<br/>
             <a href={url} target="_blank">view on Yelp</a>
           </div>
-      </li>
+      </div>
     )
   } else {
     return (

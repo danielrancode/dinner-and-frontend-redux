@@ -8,13 +8,16 @@ import LogIn from './containers/LogIn'
 import { connect } from 'react-redux'
 import { loginUser, logout } from '../actions'
 import '../assets/css/App.css'
-// import Button from '@material-ui/core/Button'
-
+import logo from '../assets/logo-horizontal.png'
 const App = (props) => {
   return props.user.loggedIn ? (
+
         <Router>
           <div className="wrapper">
           <button onClick={props.logout} hidden>Log Out</button>
+          <div className="logo-horizontal">
+            <img src={logo}/>
+          </div>
 
                 <Link to='/' hidden>Home</Link>
 

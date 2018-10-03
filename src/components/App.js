@@ -14,14 +14,14 @@ const App = (props) => {
 
         <Router>
           <div className="wrapper">
-          <button onClick={props.logout} hidden>Log Out</button>
-          <div className="logo-horizontal">
-            <img src={logo}/>
-          </div>
 
-                <Link to='/' hidden>Home</Link>
+              <Link to='/'><div className="logo-horizontal">
+                <img src={logo}/>
+              </div></Link>
+              <button onClick={props.logout}>Log Out</button>
 
-                <Link to='/programs' hidden>My Programs</Link>
+
+                <Link to='/programs'>My Programs</Link>
 
             <Route path="/" component={ProgramMaker} exact />
             <Route path="/programs" component={MyPrograms} exact />
@@ -33,14 +33,11 @@ const App = (props) => {
     ) : (
         <Router>
           <div className="wrapper">
-            {/*}<ul>
-              <li>
-                <Link to='/'>Home</Link>
-              </li>
-              <li>
-                <Link to='/login'>Sign Up / Log In</Link>
-              </li>
-            </ul>*/}
+
+          <Link to='/'><div className="logo-horizontal">
+            <img src={logo}/>
+          </div></Link>
+
 
             <Route path="/" component={ProgramMaker} exact />
             <Route path="/programs" component={MyPrograms} exact />

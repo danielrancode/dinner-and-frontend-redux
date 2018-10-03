@@ -15,12 +15,12 @@ class SearchForm extends Component {
     // type: '',
     message: '',
     params: {
-      foodType: '',
-      eventType: '',
-      zipcode: '',
+      foodType: 'dinner',
+      eventType: '...',
+      zipcode: '10019',
       within: '',
-      lat: null,
-      lon: null,
+      lat: 40.7687,
+      lon: -73.9918,
       date: moment(),
       dateParam: this.formatDate(moment()),
       time: {},
@@ -93,24 +93,24 @@ class SearchForm extends Component {
           <div className="main">
             <div className="col">
               <div></div>
-              <div>within</div>
-              <div>on</div>
+              <div hidden>within</div>
+              <div hidden>on</div>
             </div>
             <div className="col">
               <div>
                 <input type='text' name='foodType' value={params.foodType} onChange={this.handleChange.bind(this)}/>
               </div>
               <div>
-                <input type='text' name='within' value={params.within} onChange={this.handleChange.bind(this)}/>
+                <input type='text' name='within' value={params.within} onChange={this.handleChange.bind(this)} hidden/>
               </div>
               <div>
-                <DatePicker selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/>
+                {/*<DatePicker selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/>*/}
               </div>
             </div>
             <div className="col">
               <div>&</div>
-              <div>miles from</div>
-              <div>at</div>
+              <div>at zipcode:</div>
+              <div>on</div>
             </div>
             <div className="col">
               <div>

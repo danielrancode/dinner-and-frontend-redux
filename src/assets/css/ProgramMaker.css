@@ -3,6 +3,7 @@
 } */
 
 .results-wrapper {
+  /* align-items: center; */
   /* margin: 30%; */
   min-width: 100px;
   max-width: 1000px;

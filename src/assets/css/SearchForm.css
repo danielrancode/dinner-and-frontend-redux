@@ -1,45 +1,104 @@
 .search-form {
-  font-size: 10px;
-  margin-top: 50px;
-  color: black;
-  border-radius: 20px;
-  border-style: double;
-  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
-                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
-}
-
-.search-form .main {
-  padding: 1em;
-  /* display: flex; */
-  /* flex-direction: row; */
-}
-
-
-.search-form > div {
   display: flex;
 }
 
-.col {
+.search-form-main {
+  width: 800px;
+  font-size: 20px;
+  margin: 5px;
+  /* background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%); */
+}
+
+.form-row {
+  width: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 5px;
+  background: #fff;
+  margin: 10px;
+  height: 36px;
+}
+
+.pseudo-search-text {
+  /* float: left; */
+  /* vertical-align: baseline; */
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 15px;
+  color: #333;
+}
+
+.pseudo-input-restaurant {
+  width: 100%;
+}
+
+.pseudo-input-event {
+  width: 100%;
+}
+
+.pseudo-input-location {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.pseudo-input-date {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.location-input {
+  outline-width: 0;
+  border: none;
+  font-size: 15px;
+  color: #333;
+}
+input {
+  outline-width: 0;
+  border: none;
+  font-size: 15px;
+  color: #333;
+    /* display: inline-block; */
+    /* position: relative; */
+    /* box-sizing: border-box; */
+}
+
+/* .search-form .main {
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+} */
+
+
+/* .search-form > div {
+  display: flex;
+} */
+
+/* .col {
   display: flex;
   flex-direction: column;
   text-align: center;
 
-}
+} */
 
-.col > div {
+/* .col > div {
   font-size: 20px;
   padding: 1em;
   flex: 30%;
   white-space: nowrap;
-}
+} */
 
 
 #buttons {
     /* display: flex; */
-    justify-content: center;
+    /* justify-content: center; */
 }
 
-#search {
+/* #search {
   font-size: 17px;
   font-family: sans-serif;
   font-weight: bold;
@@ -48,11 +107,4 @@
   margin: 1em;
   border-style: outset;
   color: #464a4c;
-}
-
-
-input {
-  font-size: 15px;
-  border-radius: 5px;
-  border: dotted #464a4c 0.5px;
-}
+} */

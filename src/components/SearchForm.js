@@ -3,9 +3,12 @@ import { connect } from  'react-redux'
 import { shuffle, searchRestaurants, searchEvents } from '../actions.js'
 import locationData from './locationData.js'
 import DatePicker from 'react-datepicker'
+import LocationSearchInput from './LocationSearchInput.js'
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment'
 import '../assets/css/SearchForm.css'
+
+
 
 
 class SearchForm extends Component {
@@ -16,7 +19,7 @@ class SearchForm extends Component {
     message: '',
     params: {
       foodType: 'dinner',
-      eventType: '...',
+      eventType: 'concert',
       zipcode: '10019',
       within: '',
       lat: 40.7687,
@@ -85,53 +88,49 @@ class SearchForm extends Component {
 
   render() {
     let params = this.state.params
+    // const url=`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLEMAPS_API_KEY}&libraries=places`
+    // console.log("url", url)
     console.log(params)
 
     return (
-      <Fragment>
         <form className="search-form">
-          <div className="main">
-            <div className="col">
-              <div></div>
-              <div hidden>within</div>
-              <div hidden>on</div>
+          <div className="search-form-main">
+            <div className="form-row restaurant-and-event">
+              <label className="pseudo-input-restaurant">
+                <span className="pseudo-search-text" >Find</span>
+                <span>
+                  <input type='text' name='foodType' placeholder="dinner" onChange={this.handleChange.bind(this)}/>
+                </span>
+              </label>
+              <label className="pseudo-input-event">
+                  <span className="pseudo-search-text" >&</span>
+                  <span>
+                    <input type='text' name='eventType' placeholder="concert" onChange={this.handleChange.bind(this)}/>
+                  </span>
+              </label>
             </div>
-            <div className="col">
-              <div>
-                <input type='text' name='foodType' value={params.foodType} onChange={this.handleChange.bind(this)}/>
-              </div>
-              <div>
-                <input type='text' name='within' value={params.within} onChange={this.handleChange.bind(this)} hidden/>
-              </div>
-              <div>
-                {/*<DatePicker selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/>*/}
-              </div>
-            </div>
-            <div className="col">
-              <div>&</div>
-              <div>at zipcode:</div>
-              <div>on</div>
-            </div>
-            <div className="col">
-              <div>
-                <input type='text' name='eventType' value={params.eventType} onChange={this.handleChange.bind(this)}/>
-              </div>
-              <div>
-                <input type='text' name='zipcode' value={params.zipcode} onChange={this.handleChange.bind(this)}/>
-              </div>
-              <div>
-                <DatePicker selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/>
-              </div>
+
+            <div className="form-row location-and-date">
+              <label className="pseudo-input-location">
+                <span className="pseudo-search-text">Near</span>
+                <span>
+                  <LocationSearchInput className="location-input"/>
+                </span>
+              </label>
+              <label className="pseudo-input-date">
+                <span className="pseudo-search-text">On</span>
+                <span>
+                  <DatePicker className="date-input" selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/>
+                </span>
+              </label>
             </div>
           </div>
-          <div id="buttons">
-            <div>
-              <button type='submit' id='search' onClick={(e) => this.handleClickSearch(e)}>Search</button>
-            </div>
-          </div>
+
+          <button type='submit' id='search' onClick={(e) => this.handleClickSearch(e)}>Search</button>
+
+          <h1>{!!this.state.message && this.state.message}</h1>
+
         </form>
-        <h1>{this.state.message}</h1>
-      </Fragment>
     )
   }
 }

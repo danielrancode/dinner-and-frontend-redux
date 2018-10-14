@@ -1,0 +1,11 @@
+.navbar {
+  background-color: lightgray;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-horizontal > img {
+  height: 85px;
+}

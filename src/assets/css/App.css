@@ -1,6 +1,7 @@
 body {
   color: white;
-  background-color: black;}
+  background-color: black;
+}
 
 .wrapper {
   color: white;
@@ -8,9 +9,4 @@ body {
   align-items: center;
   display: flex;
   flex-direction: column;
-}
-
-
-.logo-horizontal > img {
-  height: 200px;
 }

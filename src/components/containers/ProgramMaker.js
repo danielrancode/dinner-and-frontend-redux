@@ -1,18 +1,15 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-import SearchForm from '../SearchForm';
 import RestaurantsList from '../RestaurantsList';
 import Restaurant from '../Restaurant';
 import EventsList from '../EventsList';
 import Event from '../Event';
 import MiniProgramsList from '../MiniProgramsList';
-// import MyMapComponent from '../MyMapComponent'
 import MyMap from '../MyMap'
 import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
 import withAuth from '../hoc/withAuth'
-// import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 import '../../assets/css/ProgramMaker.css'
+
 
 
 const ProgramMaker = ({
@@ -31,7 +28,6 @@ const ProgramMaker = ({
   return (
 
     <div className="program-maker">
-      <SearchForm />
       {(restaurantsResults.length > 0 || eventsResults.length > 0) && <div className="results-wrapper">
         <div className="rest-container">
           {restaurantsResults.length > 0 && !currentRestaurant && <RestaurantsList/>}

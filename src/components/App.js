@@ -8,16 +8,14 @@ import LogIn from './containers/LogIn'
 import { connect } from 'react-redux'
 import { loginUser, logout } from '../actions'
 import '../assets/css/App.css'
-import logo from '../assets/logo-horizontal.png'
+import Navbar from './Navbar.js'
+
 const App = (props) => {
   return props.user.loggedIn ? (
 
         <Router>
           <div className="wrapper">
-
-              <Link to='/'><div className="logo-horizontal">
-                <img src={logo}/>
-              </div></Link>
+            <Navbar />
               <button onClick={props.logout}>Log Out</button>
 
 
@@ -34,9 +32,8 @@ const App = (props) => {
         <Router>
           <div className="wrapper">
 
-          <Link to='/'><div className="logo-horizontal">
-            <img src={logo}/>
-          </div></Link>
+          <Navbar />
+
 
 
             <Route path="/" component={ProgramMaker} exact />

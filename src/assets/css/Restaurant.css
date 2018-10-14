@@ -11,6 +11,16 @@
   justify-content: center;
 }
 
+.selected {
+
+  border: 5px solid red
+
+}
+
+.unselected > .restaurant {
+color: grey
+}
+
 .rest-name {
   text-align: center;
   margin: 5px;

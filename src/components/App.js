@@ -16,7 +16,7 @@ const App = (props) => {
         <Router>
           <div className="wrapper">
             <Navbar />
-              <button onClick={props.logout}>Log Out</button>
+            <button onClick={props.logout}>Log Out</button>
 
 
                 <Link to='/programs'>My Programs</Link>

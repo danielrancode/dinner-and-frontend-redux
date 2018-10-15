@@ -9,10 +9,14 @@ import SearchForm from './SearchForm';
 const Navbar = () => {
   return (
     <div className="navbar">
-        <div className="logo-horizontal">
-          <img src={logo}/>
+      <div className="navbar-content">
+        <div className="attached-to-left">
+          <div className="logo-horizontal">
+            <img src={logo}/>
+          </div>
+          <SearchForm />
         </div>
-        <SearchForm />
+      </div>
     </div>
   )
 }

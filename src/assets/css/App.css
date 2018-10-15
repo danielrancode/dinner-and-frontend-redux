@@ -10,3 +10,42 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.hello {
+  align-self: flex-start;
+  border: 5px solid purple;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+
+.ex {
+  min-width: 600px;
+  overflow: auto;
+  width: 100vw;
+  border: 3px solid white;
+  display: flex;
+  justify-content: center;
+}
+
+/* .one {
+  flex-grow:1;
+  font-size: 150px;
+  background-color: yellow;
+} */
+
+.two {
+  /* min-width: 100px; */
+  /* flex-grow:0; */
+  font-size: 150px;
+  background-color: red;
+}
+
+
+/* .three {
+  flex-grow:1;
+  font-size: 150px;
+  background-color: blue;
+} */

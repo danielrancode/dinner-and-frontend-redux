@@ -1,9 +1,22 @@
 .navbar {
+  align-self: flex-start;
   background-color: lightgray;
   display: flex;
-  width: 100%;
-  align-items: center;
   justify-content: center;
+}
+
+.navbar-content {
+  min-width: 900px;
+  overflow: auto;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.attached-to-left {
+  display: flex;
+  align-items: center;
 }
 
 .logo-horizontal > img {

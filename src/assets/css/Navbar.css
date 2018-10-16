@@ -1,5 +1,7 @@
 .navbar {
-  border: 5px solid purple;
+  min-height: 112px;
+  position: relative;
+  /* border: 5px solid purple; */
   align-self: flex-start;
   background-color: lightgray;
   display: flex;

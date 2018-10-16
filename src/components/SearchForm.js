@@ -13,32 +13,32 @@ import '../assets/css/SearchForm.css'
 
 class SearchForm extends Component {
   state = {
-    locationLib: locationData,
-    display: 'full',
+    // locationLib: locationData,
+    // display: 'full',
     // type: '',
     message: '',
     params: {
       foodType: 'dinner',
       eventType: 'concert',
-      zipcode: '10019',
-      within: '',
+      // zipcode: '10019',
+      // within: '',
       lat: 40.7687,
       lon: -73.9918,
       date: moment(),
       dateParam: this.formatDate(moment()),
-      time: {},
+      // time: {},
     },
   }
 
-  lattitudeOfZipCode(zipcode) {
-    let i = this.state.locationLib.find(e => e.zip === zipcode)
-    return (i ? i.lat : 0)
-  }
-
-  longitudeOfZipCode(zipcode) {
-    let i = this.state.locationLib.find(e => e.zip === zipcode)
-    return (i ? i.lon : 0)
-  }
+  // lattitudeOfZipCode(zipcode) {
+  //   let i = this.state.locationLib.find(e => e.zip === zipcode)
+  //   return (i ? i.lat : 0)
+  // }
+  //
+  // longitudeOfZipCode(zipcode) {
+  //   let i = this.state.locationLib.find(e => e.zip === zipcode)
+  //   return (i ? i.lon : 0)
+  // }
 
   formatDate(date) {
     let yyyy = date._d.getFullYear().toString()
@@ -48,22 +48,27 @@ class SearchForm extends Component {
   }
 
   handleChange(e) {
-    if (e.target.name === 'zipcode' && e.target.value !== this.state.params.zipcode && e.target.value.length === 5) {
-      let zip = e.target.value
-      let lat = this.lattitudeOfZipCode(zip)
-      let lon = this.longitudeOfZipCode(zip)
-      if (lat && lon ) {
-        this.setState({params: {...this.state.params, zipcode: zip, lat: lat, lon: lon }})
-      } else {
-        this.setState({params: {...this.state.params, zipcode: zip, lat: null, lon: null }})
-      }
-    } else {
+    // if (e.target.name === 'zipcode' && e.target.value !== this.state.params.zipcode && e.target.value.length === 5) {
+    //   let zip = e.target.value
+    //   let lat = this.lattitudeOfZipCode(zip)
+    //   let lon = this.longitudeOfZipCode(zip)
+    //   if (lat && lon ) {
+    //     this.setState({params: {...this.state.params, zipcode: zip, lat: lat, lon: lon }})
+    //   } else {
+    //     this.setState({params: {...this.state.params, zipcode: zip, lat: null, lon: null }})
+    //   }
+    // } else {
       this.setState({params: {...this.state.params, [e.target.name]: e.target.value }})
-    }
+    // }
   }
 
   handleDateChange(date) {
     this.setState({params: {...this.state.params, date: date, dateParam: this.formatDate(date) }})
+  }
+
+  handleLocationChange(address, latLng) {
+    console.log("hit handleLocationChange!!!!")
+    this.setState({params: {...this.state.params, lat: latLng.lat, lon: latLng.lng}})
   }
 
   handleClickSearch(e) {
@@ -82,7 +87,7 @@ class SearchForm extends Component {
     let params = this.state.params
     // const url=`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLEMAPS_API_KEY}&libraries=places`
     // console.log("url", url)
-    console.log(params)
+    console.log("SearchForm params:", params)
 
     return (
         <form className="search-form">
@@ -106,7 +111,7 @@ class SearchForm extends Component {
               <label className="pseudo-input-location">
                 <span className="pseudo-search-text">Near</span>
                 <span>
-                  <LocationSearchInput className="location-input"/>
+                  <LocationSearchInput className="location-input" onChange={this.handleLocationChange.bind(this)}/>
                 </span>
               </label>
               <label className="pseudo-input-date">

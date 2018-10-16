@@ -1,0 +1,32 @@
+.location-search-input {
+  /* background-color: red; */
+}
+
+.autocomplete-dropdown-container {
+  position: absolute;
+  width: 300px;
+  padding-top: 7px;
+}
+
+/* .loading {
+  position: absolute;
+  padding: 3px;
+  background-color: white;
+  color: black;
+} */
+
+.suggestion-item {
+  padding: 4px;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: white;
+}
+
+.suggestion-item--active {
+  padding: 3px;
+  font-weight: bold;
+  color: white;
+  font-size: 15px;
+  background-color: red;
+}

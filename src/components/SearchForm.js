@@ -67,7 +67,6 @@ class SearchForm extends Component {
   }
 
   handleClickSearch(e) {
-    // this.setState({type: 'search', display: 'top'})
     e.preventDefault()
     let p = this.state.params
     if (!!p.foodType && !!p.eventType && !!p.lat && !!p.lon && p.zipcode.length === 5) {
@@ -77,13 +76,6 @@ class SearchForm extends Component {
     } else {
       this.setState({message: 'invalid search params'})
     }
-  }
-
-  handleClickShuffle = (e) => {
-    // let params = this.state.params
-    // this.setState({type: 'shuffle', display: 'top'})
-    this.props.searchRestaurants(this.state)
-    this.props.searchEvents(this.state)
   }
 
   render() {

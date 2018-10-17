@@ -10,6 +10,18 @@
   justify-content: center;
 }
 
+.current-restaurant {
+  color: black;
+  background-color: green;
+  margin-bottom: 30px;
+  /* height: 600px; */
+  width: 300px;
+  border: 2px solid white;
+  display: flex column;
+  align-items: center;
+  justify-content: center;
+}
+
 .selected {
 
   border: 5px solid red

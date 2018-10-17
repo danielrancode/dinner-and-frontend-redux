@@ -18,6 +18,19 @@
   background-color: white;
 }
 
+.current-event {
+  color: black;
+  background-color: red;
+  margin-bottom: 30px;
+  /* height: 500px; */
+  width: 300px;
+  border: 2px solid white;
+  border-radius: 20px;
+  display: flex column;
+  align-items: center;
+  justify-content: center;
+}
+
 .event-data {
   margin: 0px;
   line-height: 1.6;

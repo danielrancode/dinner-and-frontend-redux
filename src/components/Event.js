@@ -5,10 +5,11 @@ import '../assets/css/Event.css'
 
 
 const Event = (props) => {
+  console.log("event props:", props)
   if (props.event) {
     const { performers, title, type, datetime_local, address, extended_address } = props.event
     return (
-      <div className="event" onClick={() => props.selectEvent(props.event)}>
+      <div className={props.selected ? "current-event" : "event"} onClick={() => props.selectEvent(props.event)}>
         <h4 className="event-title">{title}</h4>
         {performers[0].image && <img className="event-img" src={performers[0].image}alt="text" />}
         <div className="event-data">

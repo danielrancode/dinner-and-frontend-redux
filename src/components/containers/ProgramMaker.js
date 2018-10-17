@@ -30,12 +30,10 @@ const ProgramMaker = ({
     <div className="program-maker">
       {(restaurantsResults.length > 0 || eventsResults.length > 0) && <div className="results-wrapper">
         <div className="rest-container">
-          {restaurantsResults.length > 0 && !currentRestaurant && <RestaurantsList/>}
-          {currentRestaurant && <Restaurant key={currentRestaurant.id} restaurant={currentRestaurant}/>}
+          {restaurantsResults.length > 0 && <RestaurantsList/>}
         </div>
         <div className="event-container">
-          {eventsResults.length > 0 && !currentEvent && <EventsList />}
-          {currentEvent && <Event key={currentEvent.id} event={currentEvent} />}
+          {eventsResults.length > 0 && <EventsList />}
         </div>
         <div className="map-container">
           <MyMap />

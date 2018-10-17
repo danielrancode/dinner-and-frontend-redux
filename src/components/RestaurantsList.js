@@ -3,23 +3,18 @@ import { connect } from 'react-redux'
 import Restaurant from './Restaurant';
 
 const RestaurantsList = ({ restaurants, currentRestaurant }) => {
-  if (currentRestaurant) {
     return (
       <div className="restaurants-list" >
         <ul>
-          <Restaurant key={currentRestaurant.id} restaurant={currentRestaurant}/>
+        {restaurants.map(r =>
+          (currentRestaurant && r.id === currentRestaurant.id) ?
+            <Restaurant key={r.id} restaurant={r} selected={true}/>
+          :
+            <Restaurant key={r.id} restaurant={r} selected={false}/>
+        )}
         </ul>
       </div>
     )
-  } else {
-    return (
-      <div className="restaurants-list" >
-        <ul>
-          {restaurants.map(r => <Restaurant key={r.id} restaurant={r}/>)}
-        </ul>
-      </div>
-    )
-  }
 }
 
 const mapStateToProps = (state) => {

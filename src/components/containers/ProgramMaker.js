@@ -36,7 +36,10 @@ const ProgramMaker = ({
           {eventsResults.length > 0 && <EventsList />}
         </div>
         <div className="map-container">
-          <MyMap />
+          <MyMap
+            restaurant={currentRestaurant ? currentRestaurant : null}
+            event={currentEvent ? currentEvent : null}
+            />
         </div>
       </div>}
 

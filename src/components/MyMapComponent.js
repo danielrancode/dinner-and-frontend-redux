@@ -32,7 +32,28 @@ const MyMapComponent = compose(
             }
           });
       }
+    },
+
+    componentDidUpdate() {
+      if (this.props.restaurant && this.props.event) {
+        const DirectionsService = new google.maps.DirectionsService();
+          DirectionsService.route({
+            origin: { lat: this.props.restaurant.coordinates.latitude, lng: this.props.restaurant.coordinates.longitude },
+            destination: {lat: this.props.event.venue.location.lat, lng: this.props.event.venue.location.lon},
+            travelMode: google.maps.TravelMode.WALKING,
+          }, (result, status) => {
+            if (status === google.maps.DirectionsStatus.OK) {
+              console.log(result)
+              this.setState({
+                directions: result,
+              });
+            } else {
+              console.error(`error fetching directions ${result}`);
+            }
+          });
+      }
     }
+
   })
 )((props) => {
     console.log("props", props)

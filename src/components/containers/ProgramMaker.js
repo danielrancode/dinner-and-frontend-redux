@@ -37,9 +37,8 @@ const ProgramMaker = ({
           {eventsResults.length > 0 && !currentEvent && <EventsList />}
           {currentEvent && <Event key={currentEvent.id} event={currentEvent} />}
         </div>
-        <div className="map=container">
-          {currentRestaurant && currentEvent && <MyMap />}
-          {!(currentRestaurant && currentEvent) && <div className="my-map"></div>}
+        <div className="map-container">
+          <MyMap />
         </div>
       </div>}
 

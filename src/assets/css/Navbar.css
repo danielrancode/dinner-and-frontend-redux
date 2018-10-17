@@ -1,20 +1,17 @@
 .navbar {
-  min-height: 112px;
-  position: relative;
-  /* border: 5px solid purple; */
-  align-self: flex-start;
-  background-color: lightgray;
   display: flex;
-  justify-content: center;
+  align-self: flex-start;
+  min-height: 112px;
+  background-color: lightgray;
 }
 
 .navbar-content {
-  min-width: 900px;
-  overflow: auto;
-  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 1000px;
+  overflow: auto;
+  width: 100vw;
 }
 
 .attached-to-left {

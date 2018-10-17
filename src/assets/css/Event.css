@@ -3,7 +3,7 @@
   background-color: white;
   margin-bottom: 30px;
   /* height: 500px; */
-  /* min-width: 300px; */
+  width: 300px;
   border: 2px solid white;
   border-radius: 20px;
   display: flex column;

@@ -9,25 +9,33 @@
   min-width: 1000px;
   overflow: auto;
   width: 100vw;
-  /* border: 2px dotted gray; */
   max-height: 75vh;
 
 }
 
 .results-wrapper > div {
-  padding: 5px;
-  border: 1px dotted gray;
+    overflow: scroll;
+}
+
+.rest-container {
   width: 300px;
-  margin: 5px;
-  overflow: scroll;
+  margin: 10px;
+  padding: 10px;
+  border: 2px dotted gray;
+
 }
 
-.restaurants-list {
-  box-sizing: border-box;
+.event-container {
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  border: 2px dotted gray;
 }
 
-.events-list {
-  box-sizing: border-box;
+.map-container {
+  width: 400px;
+  margin: 10px;
+
 }
 
 .my-map {

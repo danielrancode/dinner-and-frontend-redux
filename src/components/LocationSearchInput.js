@@ -22,7 +22,7 @@ export default class LocationSearchInput extends React.Component {
       .then(latLng => {
         console.log('Success', latLng)
         this.setState({ address })
-        return this.props.onChange(address, latLng)
+        return this.props.onChange(latLng)
       })
       .catch(error => console.error('Error', error));
   };

@@ -5,7 +5,7 @@ import * as types from './types.js'
 export const searchRestaurants = ({ params }) => {
   return (dispatch) => {
     dispatch({ type: types.START_ADDING_RESTAURANTS_REQUEST})
-    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/restaurants/search?term=${params.foodType}&location=${params.zipcode}`)
+    return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/restaurants/search?term=${params.foodType}&lat=${params.lat}&lon=${params.lon}`)
       .then(res => res.json())
       .then(data => dispatch({ type: types.ADD_RESTAURANTS, data }))
   }

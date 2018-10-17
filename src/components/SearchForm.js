@@ -66,15 +66,14 @@ class SearchForm extends Component {
     this.setState({params: {...this.state.params, date: date, dateParam: this.formatDate(date) }})
   }
 
-  handleLocationChange(address, latLng) {
-    console.log("hit handleLocationChange!!!!")
+  handleLocationChange(latLng) {
     this.setState({params: {...this.state.params, lat: latLng.lat, lon: latLng.lng}})
   }
 
   handleClickSearch(e) {
     e.preventDefault()
     let p = this.state.params
-    if (!!p.foodType && !!p.eventType && !!p.lat && !!p.lon && p.zipcode.length === 5) {
+    if (!!p.foodType && !!p.eventType && !!p.lat && !!p.lon) {
       this.setState({message: ''})
       this.props.searchRestaurants(this.state)
       this.props.searchEvents(this.state)

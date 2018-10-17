@@ -61,7 +61,12 @@ export default class LocationSearchInput extends React.Component {
                         // style,
                       })}
                     >
-                      <span>{suggestion.description}</span>
+                      <span className="matching-substring">
+                      {suggestion.description.slice(0, this.state.address.length)}
+                      </span>
+                      <span>
+                      {suggestion.description.slice(this.state.address.length)}
+                      </span>
                     </div>
                   );
                 })}

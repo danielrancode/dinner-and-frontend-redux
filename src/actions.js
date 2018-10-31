@@ -154,7 +154,7 @@ export const loginUser = (params) => {
         dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user})
         dispatch(fetchPrograms(jsonRes.user.id))
       })
-      .catch(res => res.json().then(jsonRes => dispatch({ type: types.LOGIN_FAILURE, message: jsonRes.message })))
+      .catch(res => dispatch({ type: types.LOGIN_FAILURE, message: res.statusText }))
   }
 }
 

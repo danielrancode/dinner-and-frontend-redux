@@ -6,9 +6,9 @@ export const searchRestaurants = ({ params }) => {
   return (dispatch) => {
     dispatch({ type: types.START_ADDING_RESTAURANTS_REQUEST})
     return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/restaurants/search?term=${params.foodType}&lat=${params.lat}&lon=${params.lon}`)
-    .then(res => console.log("res is:", res))
-     // .then(res => res.json())
-     // .then(data => dispatch({ type: types.ADD_RESTAURANTS, data }))
+    // .then(res => console.log("res is:", res))
+     .then(res => res.json())
+     .then(data => dispatch({ type: types.ADD_RESTAURANTS, data }))
   }
 }
 

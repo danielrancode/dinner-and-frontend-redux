@@ -179,7 +179,7 @@ export const fetchCurrentUser = () => {
     // .then(res => console.log("res:", res))
     .then(jsonRes => {
       dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user })
-      dispatch(fetchPrograms(jsonRes.user.id))
+      // dispatch(fetchPrograms(jsonRes.user.id))
     } )
   }
 }

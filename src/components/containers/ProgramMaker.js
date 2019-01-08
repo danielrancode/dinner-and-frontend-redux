@@ -46,6 +46,7 @@ const ProgramMaker = ({
       </div>}
 
       {currentRestaurant && currentEvent && currentUser.id && <button onClick={e => handleClick(e)}>Save Program</button>}
+      {currentRestaurant && currentEvent && !currentUser.id && <Link to="/login"><button>Save Program</button></Link>}
       {/*<MiniProgramsList />*/}
 
     </div>

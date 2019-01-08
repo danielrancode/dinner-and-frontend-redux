@@ -4,8 +4,10 @@
 
 .autocomplete-dropdown-container {
   position: absolute;
+  margin-left: -58px;
+  margin-top: 12px;
   width: 300px;
-  padding-top: 7px;
+  /* padding-top: 7px; */
 }
 
 /* .loading {

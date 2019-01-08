@@ -1,9 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import RestaurantsList from '../RestaurantsList';
 import Restaurant from '../Restaurant';
 import EventsList from '../EventsList';
 import Event from '../Event';
 import MiniProgramsList from '../MiniProgramsList';
+import LogIn from './LogIn'
 import MyMap from '../MyMap'
 import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
@@ -43,7 +45,7 @@ const ProgramMaker = ({
         </div>
       </div>}
 
-      {currentRestaurant && currentEvent && <button onClick={e => handleClick(e)}>Save Program</button>}
+      {currentRestaurant && currentEvent && currentUser.id && <button onClick={e => handleClick(e)}>Save Program</button>}
       {/*<MiniProgramsList />*/}
 
     </div>
@@ -54,4 +56,4 @@ const mapStateToProps = (state) => {
   return {...state.search, currentUser: state.user.currentUser}
 }
 
-export default withAuth(connect(mapStateToProps, { createProgram })(ProgramMaker))
+export default connect(mapStateToProps, { createProgram })(ProgramMaker)

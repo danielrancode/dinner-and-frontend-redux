@@ -17,10 +17,10 @@ const App = (props) => {
             <Navbar />
             {props.user.loggedIn && <button onClick={props.logout}>Log Out</button>}
 
-                <Link to='/programs'>My Programs</Link>
+            {/* <Link to='/programs'>My Programs</Link>
                 <Link to='/signup'>/signup</Link>
                 <Link to='/login'>/login</Link>
-                <Link to='/'>/</Link>
+                <Link to='/'>/</Link> */}
             <Route path="/" component={ProgramMaker} exact />
             <Route path="/programs" component={MyPrograms} exact />
             <Route path="/programs/:id" component={ProgramView} />

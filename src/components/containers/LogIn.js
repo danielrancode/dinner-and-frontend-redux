@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import LogInForm from '../LogInForm'
 // import '../../assets/css/Login.css'
 
-const LogIn = () => {
+const LogIn = (props) => {
+  // console.log("LogIn props", props)
   return (
     <Fragment>
-      <LogInForm />
+      <LogInForm from={props.location.state ? props.location.state.from.pathname : null}/>
       <div>
         <h5>Don't have an account? <Link to="/signup">Sign Up</Link></h5>
       </div>

@@ -5,7 +5,7 @@ import '../assets/css/Event.css'
 
 
 const Event = (props) => {
-  console.log("event props:", props)
+  // console.log("event props:", props)
   if (props.event) {
     const { performers, title, type, datetime_local, address, extended_address } = props.event
     return (

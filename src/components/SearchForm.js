@@ -86,7 +86,7 @@ class SearchForm extends Component {
     let params = this.state.params
     // const url=`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLEMAPS_API_KEY}&libraries=places`
     // console.log("url", url)
-    console.log("SearchForm params:", params)
+    // console.log("SearchForm params:", params)
 
     return (
         <form className="search-form">

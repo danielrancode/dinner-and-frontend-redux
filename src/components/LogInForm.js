@@ -6,7 +6,6 @@ import '../assets/css/LoginForm.css'
 
 
 class LogInForm extends Component {
-
   state = { username: '', password: '' }
 
   handleChange(e) {
@@ -20,8 +19,10 @@ class LogInForm extends Component {
   }
 
   render() {
+    // debugger
+
     if (this.props.loggedIn) {
-      return <Redirect to="/" />
+      return <Redirect to={this.props.from || "/"} />
     }
     return (
       <Fragment>

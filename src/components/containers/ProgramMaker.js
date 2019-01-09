@@ -57,4 +57,4 @@ const mapStateToProps = (state) => {
   return {...state.search, currentUser: state.user.currentUser}
 }
 
-export default connect(mapStateToProps, { createProgram })(ProgramMaker)
+export default withAuth(connect(mapStateToProps, { createProgram })(ProgramMaker))

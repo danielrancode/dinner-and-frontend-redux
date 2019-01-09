@@ -15,7 +15,8 @@ const withAuth = (WrappedComponent) => {
       } else if (localStorage.getItem('jwt') && this.props.loggingIn) {
         return (<h1>logging in........................</h1>)
       } else {
-        return <Redirect to="/login" />
+        console.log("with auth this.props.location", this.props.location)
+        return <Redirect to={{ pathname: "/login", state: { from: this.props.location } }} />
       }
     }
   }

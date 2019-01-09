@@ -15,7 +15,7 @@ export const searchRestaurants = ({ params }) => {
 // search events
 export const searchEvents = ({ params }) => {
   return (dispatch) => {
-    console.log('actions.js params.dateParam:', params.dateParam)
+    // console.log('actions.js params.dateParam:', params.dateParam)
     dispatch({ type: types.START_ADDING_EVENTS_REQUEST})
     return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/events/search?lat=${params.lat}&lon=${params.lon}&q=${params.eventType}&datetime_utc=${params.dateParam}`)
       .then(res => res.json())
@@ -55,7 +55,7 @@ export const createProgram = (userId, data) => {
       })
       .then(res => {
         if (res.ok) {
-          console.log(res)
+          // console.log(res)
           dispatch({ type: types.SAVE_SUCCESS })
           dispatch(fetchPrograms(userId))
       } else {
@@ -84,7 +84,7 @@ export const deleteProgram = (program) => {
       })
       .then(res => {
         if (res.ok) {
-          console.log(res)
+          // console.log(res)
           dispatch({ type: types.DELETE_SUCCESS })
       } else {
           throw res
@@ -119,7 +119,7 @@ export const createUser = (params) => {
         }}
       )
       .then(jsonRes => {
-        console.log("jsonRes:", jsonRes)
+        // console.log("jsonRes:", jsonRes)
         localStorage.setItem('jwt', jsonRes.jwt)
         dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user})
       })
@@ -167,8 +167,9 @@ export const logout = () => {
 }
 
 export const fetchCurrentUser = () => {
+  console.log("HIT FETCHCURRENTUSER!!!!!!!!!!!!")
   return (dispatch) => {
-    dispatch(() => ({ type: types.LOGIN_REQUEST}))
+    dispatch({ type: types.LOGIN_REQUEST})
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/user`, {
       method: "GET",
       headers: {

@@ -7,10 +7,10 @@ import withAuth from '../hoc/withAuth'
 
 const LogIn = (props) => {
   // console.log("LogIn props", props)
-  debugger
+  // debugger
   return (
     <Fragment>
-      <LogInForm from={props.location.state ? props.location.state.from.pathname : null}/>
+      <LogInForm from={ props ? props.location ? props.location.state ? props.location.state.from.pathname : null : null : null}/>
       <div>
         <h5>Don't have an account? <Link to="/signup">Sign Up</Link></h5>
       </div>

@@ -22,7 +22,7 @@ class SignUpForm extends Component {
 
   render() {
     if (this.props.loggedIn) {
-      return <Redirect to="/" />
+      return <Redirect to={this.props.from || "/"} />
     }
     return (
       <form onSubmit={this.handleSubmit.bind(this)} className="form-container">

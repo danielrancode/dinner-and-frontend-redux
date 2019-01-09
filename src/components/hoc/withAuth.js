@@ -18,7 +18,8 @@ const withAuth = (WrappedComponent) => {
 
         // if path is "login" or "signup", redirect to "/", return component for all other paths
         if (this.props.location.pathname == "/login" || this.props.location.pathname == "/signup") {
-          return <Redirect to={"/"}  />
+
+          return <Redirect to={this.props.location.state ? this.props.location.state.from : "/"}  />
         } else {
           return <WrappedComponent />
         }

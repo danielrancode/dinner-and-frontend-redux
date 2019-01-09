@@ -80,6 +80,8 @@ class SearchForm extends Component {
     } else {
       this.setState({message: 'invalid search params'})
     }
+
+    console.log("window.location.pathname !== '/':", window.location.pathname !== '/')
   }
 
   render() {

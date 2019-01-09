@@ -16,6 +16,7 @@ const App = (props) => {
           <div className="wrapper">
             <Navbar />
             {props.user.loggedIn && <button onClick={props.logout}>Log Out</button>}
+            {props.user.loggedIn && <Link to='/programs'><button>My Programs</button></Link>}
 
             {/* <Link to='/programs'>My Programs</Link>
                 <Link to='/signup'>/signup</Link>

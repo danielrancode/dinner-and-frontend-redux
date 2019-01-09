@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from  'react-redux'
 import { shuffle, searchRestaurants, searchEvents } from '../actions.js'
 import locationData from './locationData.js'
@@ -73,6 +74,7 @@ class SearchForm extends Component {
   handleClickSearch(e) {
     e.preventDefault()
     let p = this.state.params
+
     if (!!p.foodType && !!p.eventType && !!p.lat && !!p.lon) {
       this.setState({message: ''})
       this.props.searchRestaurants(this.state)
@@ -80,8 +82,6 @@ class SearchForm extends Component {
     } else {
       this.setState({message: 'invalid search params'})
     }
-
-    console.log("window.location.pathname !== '/':", window.location.pathname !== '/')
   }
 
   render() {
@@ -124,7 +124,7 @@ class SearchForm extends Component {
             </div>
           </div>
 
-          <button type='submit' id='search' onClick={(e) => this.handleClickSearch(e)}>Search</button>
+          <button type='submit' id='search' onClick={(e) => this.handleClickSearch(e)}><Link to="/">Search</Link></button>
 
           <h1>{!!this.state.message && this.state.message}</h1>
 

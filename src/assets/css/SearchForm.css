@@ -68,3 +68,9 @@ input {
   font-size: 15px;
   color: #333;
 }
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: pointer;
+    text-decoration: none;
+}

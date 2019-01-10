@@ -1,11 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import RestaurantsList from '../RestaurantsList';
-import Restaurant from '../Restaurant';
 import EventsList from '../EventsList';
-import Event from '../Event';
-import MiniProgramsList from '../MiniProgramsList';
-import LogIn from './LogIn'
 import MyMap from '../MyMap'
 import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'

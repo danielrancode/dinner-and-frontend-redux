@@ -5,7 +5,6 @@ import '../assets/css/Restaurant.css'
 // import { compose, withState, withHandlers } from 'recompose'
 
 const Restaurant = (props) => {
-  console.log("props.selected", props.selected)
   if (props.restaurant) {
     const {
       name,

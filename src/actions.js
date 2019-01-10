@@ -6,7 +6,6 @@ export const searchRestaurants = ({ params }) => {
   return (dispatch) => {
     dispatch({ type: types.START_ADDING_RESTAURANTS_REQUEST})
     return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/restaurants/search?term=${params.foodType}&lat=${params.lat}&lon=${params.lon}`)
-    // .then(res => console.log("res is:", res))
      .then(res => res.json())
      .then(data => dispatch({ type: types.ADD_RESTAURANTS, data }))
   }
@@ -15,7 +14,6 @@ export const searchRestaurants = ({ params }) => {
 // search events
 export const searchEvents = ({ params }) => {
   return (dispatch) => {
-    // console.log('actions.js params.dateParam:', params.dateParam)
     dispatch({ type: types.START_ADDING_EVENTS_REQUEST})
     return fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/events/search?lat=${params.lat}&lon=${params.lon}&q=${params.eventType}&datetime_utc=${params.dateParam}`)
       .then(res => res.json())
@@ -36,7 +34,6 @@ export const fetchPrograms = (userId) => {
     .then(data => {
       dispatch({ type: types.ADD_PROGRAMS, data}
       )})
-    // .then(data => console.log(data))
   }
 }
 
@@ -55,21 +52,12 @@ export const createProgram = (userId, data) => {
       })
       .then(res => {
         if (res.ok) {
-          // console.log(res)
           dispatch({ type: types.SAVE_SUCCESS })
           dispatch(fetchPrograms(userId))
       } else {
           throw res
         }}
       )
-      // .then(jsonRes => {
-      //   console.log("jsonRes:", jsonRes)
-        // dispatch({ type: types.SAVE_SUCCESS' })
-      // })
-      // .catch(res => res.json()
-      // .then(e => console.log(e)
-        // dispatch({ type: types.LOGIN_FAILURE', message: e.message }))
-      // ))
   }
 }
 
@@ -84,20 +72,11 @@ export const deleteProgram = (program) => {
       })
       .then(res => {
         if (res.ok) {
-          // console.log(res)
           dispatch({ type: types.DELETE_SUCCESS })
       } else {
           throw res
         }}
       ).then(x => dispatch(fetchPrograms(program.user_id)))
-      // .then(jsonRes => {
-      //   console.log("jsonRes:", jsonRes)
-        // dispatch({ type: types.SAVE_SUCCESS' })
-      // })
-      // .catch(res => res.json()
-      // .then(e => console.log(e)
-        // dispatch({ type: types.LOGIN_FAILURE', message: e.message }))
-      // ))
   }
 }
 
@@ -119,7 +98,6 @@ export const createUser = (params) => {
         }}
       )
       .then(jsonRes => {
-        // console.log("jsonRes:", jsonRes)
         localStorage.setItem('jwt', jsonRes.jwt)
         dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user})
       })
@@ -167,7 +145,6 @@ export const logout = () => {
 }
 
 export const fetchCurrentUser = () => {
-  console.log("HIT FETCHCURRENTUSER!!!!!!!!!!!!")
   return (dispatch) => {
     dispatch({ type: types.LOGIN_REQUEST})
     fetch(`${process.env.REACT_APP_API_ENDPOINT}/api/v1/user`, {
@@ -177,10 +154,8 @@ export const fetchCurrentUser = () => {
       }
     })
     .then(res => res.json())
-    // .then(res => console.log("res:", res))
     .then(jsonRes => {
       dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user })
-      // dispatch(fetchPrograms(jsonRes.user.id))
     } )
   }
 }

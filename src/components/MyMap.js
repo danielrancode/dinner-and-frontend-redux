@@ -30,7 +30,6 @@ const MyMap = ({restaurant, event}) => {
 
 
 const mapStateToProps = (state) => {
-// console.log("mapStateToProps, state.search.currentRestaurant", state.search.currentRestaurant, "state.search.currentEvent", state.search.currentEvent)
   return {restaurant: state.search.currentRestaurant, event: state.search.currentEvent}
 }
 

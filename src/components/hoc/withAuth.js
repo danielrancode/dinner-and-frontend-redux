@@ -17,7 +17,7 @@ const withAuth = (WrappedComponent) => {
       if (localStorage.getItem('jwt') && this.props.loggedIn) {
 
         // if path is "login" or "signup", redirect to "/", return component for all other paths
-        if (this.props.location.pathname == "/login" || this.props.location.pathname == "/signup") {
+        if (this.props.location.pathname === "/login" || this.props.location.pathname === "/signup") {
 
           return <Redirect to={this.props.location.state ? this.props.location.state.from : "/"}  />
         } else {
@@ -36,37 +36,13 @@ const withAuth = (WrappedComponent) => {
       }
 
       // if not logged in and paths are "/" or "/login" or "/signup", return component
-      if (this.props.location.pathname == "/" || this.props.location.pathname == "/login" || this.props.location.pathname == "/signup") {
+      if (this.props.location.pathname === "/" || this.props.location.pathname === "/login" || this.props.location.pathname === "/signup") {
         return <WrappedComponent />
       }
 
       // not logged in and paths are "/programs" (or anything else)
       return <Redirect to={{ pathname: "/login", state: { from: this.props.location } }} />
 
-
-      // // if logged in && pathname = "/login" or "/signup" => redirect to "/"
-      // if ((localStorage.getItem('jwt') && this.props.loggedIn) && (this.props.location.pathname == "/login" || this.props.location.pathname == "/signup")) {
-      //   debugger
-      //   return <Redirect to={this.props.location.state.from}  />
-      //
-      // // else if logged in or pathname = "/" return wrappedComponent
-      // } else if ((localStorage.getItem('jwt') && this.props.loggedIn) || this.props.location.pathname == "/") {
-      //   return <WrappedComponent />
-
-      // // else if logging in show temp
-      // } else if (localStorage.getItem('jwt') && this.props.loggingIn) {
-      //   return (<h1>logging in........................</h1>)
-
-    //   // else if no jwt, and pathname == "signup" or "login"
-    //
-    // } else if (!localStorage.getItem('jwt') && (this.props.location.pathname == "/login" || this.props.location.pathname == "/signup")) {
-    //     return <WrappedComponent location={this.props.location} />
-    //
-    //   // else redirect to "/login"
-    //   } else {
-    //     console.log("with auth this.props.location", this.props.location)
-    //     return <Redirect to={{ pathname: "/login", state: { from: this.props.location } }} />
-    //   }
     }
   }
 

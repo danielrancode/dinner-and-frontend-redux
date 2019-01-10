@@ -1,8 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from  'react-redux'
 import { shuffle, searchRestaurants, searchEvents } from '../actions.js'
-import locationData from './locationData.js'
 import DatePicker from 'react-datepicker'
 import LocationSearchInput from './LocationSearchInput.js'
 import 'react-datepicker/dist/react-datepicker.css';
@@ -14,32 +13,16 @@ import '../assets/css/SearchForm.css'
 
 class SearchForm extends Component {
   state = {
-    // locationLib: locationData,
-    // display: 'full',
-    // type: '',
     message: '',
     params: {
       foodType: 'dinner',
       eventType: 'concert',
-      // zipcode: '10019',
-      // within: '',
       lat: 40.7687,
       lon: -73.9918,
       date: moment(),
       dateParam: this.formatDate(moment()),
-      // time: {},
     },
   }
-
-  // lattitudeOfZipCode(zipcode) {
-  //   let i = this.state.locationLib.find(e => e.zip === zipcode)
-  //   return (i ? i.lat : 0)
-  // }
-  //
-  // longitudeOfZipCode(zipcode) {
-  //   let i = this.state.locationLib.find(e => e.zip === zipcode)
-  //   return (i ? i.lon : 0)
-  // }
 
   formatDate(date) {
     let yyyy = date._d.getFullYear().toString()
@@ -49,18 +32,7 @@ class SearchForm extends Component {
   }
 
   handleChange(e) {
-    // if (e.target.name === 'zipcode' && e.target.value !== this.state.params.zipcode && e.target.value.length === 5) {
-    //   let zip = e.target.value
-    //   let lat = this.lattitudeOfZipCode(zip)
-    //   let lon = this.longitudeOfZipCode(zip)
-    //   if (lat && lon ) {
-    //     this.setState({params: {...this.state.params, zipcode: zip, lat: lat, lon: lon }})
-    //   } else {
-    //     this.setState({params: {...this.state.params, zipcode: zip, lat: null, lon: null }})
-    //   }
-    // } else {
       this.setState({params: {...this.state.params, [e.target.name]: e.target.value }})
-    // }
   }
 
   handleDateChange(date) {
@@ -85,10 +57,6 @@ class SearchForm extends Component {
   }
 
   render() {
-    let params = this.state.params
-    // const url=`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLEMAPS_API_KEY}&libraries=places`
-    // console.log("url", url)
-    // console.log("SearchForm params:", params)
 
     return (
         <form className="search-form">

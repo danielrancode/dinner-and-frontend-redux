@@ -50,15 +50,10 @@ export default class LocationSearchInput extends React.Component {
                   const className = suggestion.active
                     ? 'suggestion-item--active'
                     : 'suggestion-item';
-                  // inline style for demonstration purpose
-                  // const style = suggestion.active
-                    // ? { backgroundColor: 'black', cursor: 'pointer' }
-                    // : { backgroundColor: 'purple', cursor: 'pointer' };
                   return (
                     <div
                       {...getSuggestionItemProps(suggestion, {
                         className,
-                        // style,
                       })}
                     >
                       <span className="matching-substring">

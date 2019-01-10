@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from  'react-redux'
 import { selectRestaurant } from '../actions'
 import '../assets/css/Restaurant.css'
-// import { compose, withState, withHandlers } from 'recompose'
 
 const Restaurant = (props) => {
   if (props.restaurant) {
@@ -45,12 +44,5 @@ const Restaurant = (props) => {
 const mapStateToProps = (state) => {
   return state.search
 }
-
-// const enhance = compose(
-//   withState('selected', 'setSelected', false),
-//   withHandlers({
-//     handleClick: props => event => props.setSelected(!props.selected)
-//   })
-// )
 
 export default connect(mapStateToProps, {selectRestaurant} )(Restaurant)

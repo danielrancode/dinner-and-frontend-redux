@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions'
 import '../assets/css/LoginForm.css'
@@ -47,7 +48,9 @@ class LogInForm extends Component {
         <div className="form-entry">
           <button type='submit' className="button">Log In</button>
         </div>
+        <div>Don't have an account? <Link to="/signup">Sign Up</Link></div>
       </form>
+
       </Fragment>
     )
   }

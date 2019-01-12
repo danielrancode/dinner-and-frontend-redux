@@ -11,9 +11,6 @@ const LogIn = (props) => {
   return (
     <Fragment>
       <LogInForm from={ props ? props.location ? props.location.state ? props.location.state.from.pathname : null : null : null}/>
-      <div>
-        <h5>Don't have an account? <Link to="/signup">Sign Up</Link></h5>
-      </div>
     </Fragment>
   )
 }

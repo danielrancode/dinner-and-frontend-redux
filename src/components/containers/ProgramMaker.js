@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import RestaurantsList from '../RestaurantsList';
 import EventsList from '../EventsList';
@@ -24,28 +24,26 @@ const ProgramMaker = ({
     }
 
   return (
-
-    <div className="program-maker">
-      {(restaurantsResults.length > 0 || eventsResults.length > 0) && <div className="results-wrapper">
-        <div className="rest-container">
-          {restaurantsResults.length > 0 && <RestaurantsList/>}
-        </div>
-        <div className="event-container">
-          {eventsResults.length > 0 && <EventsList />}
-        </div>
-        <div className="map-container">
-          <MyMap
-            restaurant={currentRestaurant ? currentRestaurant : null}
-            event={currentEvent ? currentEvent : null}
-            />
-        </div>
-      </div>}
-
-      {currentRestaurant && currentEvent && currentUser.id && <button onClick={e => handleClick(e)}>Save Program</button>}
-      {currentRestaurant && currentEvent && !currentUser.id && <Link to="/login"><button>Save Program</button></Link>}
-      {/*<MiniProgramsList />*/}
-
-    </div>
+    <Fragment>
+      <div className="program-maker">
+        {(restaurantsResults.length > 0 || eventsResults.length > 0) && <div className="results-wrapper">
+          <div className="rest-container">
+            {restaurantsResults.length > 0 && <RestaurantsList/>}
+          </div>
+          <div className="event-container">
+            {eventsResults.length > 0 && <EventsList />}
+          </div>
+          <div className="map-container">
+            <MyMap
+              restaurant={currentRestaurant ? currentRestaurant : null}
+              event={currentEvent ? currentEvent : null}
+              />
+          </div>
+        </div>}
+      </div>
+      {currentRestaurant && currentEvent && currentUser.id && <button className="save-program" onClick={e => handleClick(e)}>Save Program</button>}
+      {currentRestaurant && currentEvent && !currentUser.id && <Link to="/login"><button className="save-program">Save Program</button></Link>}
+    </Fragment>
   )
 }
 

@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-// import { connect } from  'react-redux'
+import { connect } from  'react-redux'
 import '../assets/css/Navbar.css'
 import logo from '../assets/logo-horizontal-onwhite.png'
 import SearchForm from './SearchForm';
+import { logout } from '../actions'
 
-
-
-const Navbar = () => {
+const Navbar = ({user, logout}) => {
   return (
       <div className="navbar">
         <div className="navbar-content">
@@ -20,8 +19,10 @@ const Navbar = () => {
             <SearchForm />
 
             <div className="side-buttons-container">
-              <Link to="/login"><button className="auth-button login">Log In</button></Link>
-              <Link to="/signup"><button className="auth-button signup">Sign Up</button></Link>
+              { !user.loggedIn && <Link to="/login"><button className="auth-button login">Log In</button></Link> }
+              { !user.loggedIn && <Link to="/signup"><button className="auth-button signup">Sign Up</button></Link> }
+              { user.loggedIn && <Link to="/programs"><button className="auth-button login">My Programs</button></Link> }
+              { user.loggedIn && <button className="auth-button" onClick={logout}>Log Out</button>}
             </div>
 
           </div>
@@ -30,4 +31,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default connect(state => state, { logout })(Navbar)

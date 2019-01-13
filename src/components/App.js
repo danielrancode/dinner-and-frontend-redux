@@ -15,16 +15,9 @@ const App = (props) => {
         <Router>
           <div className="wrapper">
             <Navbar />
-            {props.user.loggedIn && <button onClick={props.logout}>Log Out</button>}
-            {props.user.loggedIn && <Link to='/programs'><button>My Programs</button></Link>}
-
-            {/* <Link to='/programs'>My Programs</Link>
-                <Link to='/signup'>/signup</Link>
-                <Link to='/login'>/login</Link>
-                <Link to='/'>/</Link> */}
             <Route path="/" component={ProgramMaker} exact />
             <Route path="/programs" component={MyPrograms} exact />
-            <Route path="/programs/:id" component={ProgramView} />
+          {/*  <Route path="/programs/:id" component={ProgramView} /> */}
             <Route path="/signup" component={SignUp} />
             <Route path="/login" component={LogIn} />
           </div>

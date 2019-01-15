@@ -1,32 +1,36 @@
 .restaurant {
+  box-sizing: border-box;
+  border: 3px dotted black;
   color: black;
   background-color: white;
   margin-bottom: 30px;
   /* height: 600px; */
-  width: 300px;
-  border: 2px solid white;
+  width: 98%;
   display: flex column;
   align-items: center;
   justify-content: center;
 }
 
 .current-restaurant {
+  box-sizing: border-box;
   color: black;
-  background-color: green;
+  background: repeating-linear-gradient(
+    45deg,
+    #E0E0E0,
+    #C2C2C2 10px
+  );
+  border: 3px solid green;
   margin-bottom: 30px;
   /* height: 600px; */
-  width: 300px;
-  border: 2px solid white;
+  width: 98%;
   display: flex column;
   align-items: center;
   justify-content: center;
 }
 
-.selected {
-
-  border: 5px solid red
-
-}
+/* .selected {
+  border: 2px solid red
+} */
 
 .unselected > .restaurant {
 color: grey
@@ -41,16 +45,12 @@ color: grey
 
 .rest-data {
   margin: 0px;
+  padding: 5px;
   line-height: 1.6;
-  margin: 0px;
 }
 
 .rest-img {
   display: block;
-/* max-width:230px; */
-/* max-height:250px; */
-width: 100%;
-height: auto;
-  /* height: 250px; */
-  /* width: 230px; */
+  width: 100%;
+  height: auto;
 }

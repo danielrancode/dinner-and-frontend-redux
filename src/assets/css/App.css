@@ -13,8 +13,10 @@
   justify-content: center;
 }
 
-
-
+ul {
+  padding: 0;
+  margin: 0;
+}
 
 .ex {
   min-width: 600px;

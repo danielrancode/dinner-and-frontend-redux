@@ -4,7 +4,7 @@
   background-color: white;
   margin-bottom: 30px;
   width: 98%;
-  border: 3px dotted black;
+  border: 3px dotted lightgray;
   /* border-radius: 20px; */
   display: flex column;
   align-items: center;

@@ -7,6 +7,8 @@ import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
 import withAuth from '../hoc/withAuth'
 import '../../assets/css/ProgramMaker.css'
+import yelpLogo from '../../assets/yelp_fullcolor_outline.png'
+
 
 
 
@@ -28,6 +30,8 @@ const ProgramMaker = ({
       <div className="program-maker">
         {(restaurantsResults.length > 0 || eventsResults.length > 0) && <div className="results-wrapper">
           <div className="rest-container">
+          {/* <img id="yelp-logo" src={ yelpLogo } /> */}
+
             {restaurantsResults.length > 0 && <RestaurantsList/>}
           </div>
           <div className="event-container">

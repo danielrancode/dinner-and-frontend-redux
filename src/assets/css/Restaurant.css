@@ -1,6 +1,6 @@
 .restaurant {
   box-sizing: border-box;
-  border: 3px dotted black;
+  border: 3px dotted lightgray;
   color: black;
   background-color: white;
   margin-bottom: 30px;

@@ -160,13 +160,6 @@ export const fetchCurrentUser = () => {
   }
 }
 
-// export const saveSuccessMessage = () => {
-//   return {
-//     type: types.SAVE_SUCCESS_MESSAGE',
-//   }
-// }
-
-
 // select restaurant
 export const selectRestaurant = (restaurant) => {
   return {

@@ -18,6 +18,8 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 export const LOGOUT = 'LOGOUT'
 export const SELECT_RESTAURANT = 'SELECT_RESTAURANT'
 export const SELECT_EVENT = 'SELECT_EVENT'
+export const DISPLAY_MESSAGE = 'DISPLAY_MESSAGE'
+export const HIDE_MESSAGE = 'HIDE_MESSAGE'
 
 //////// to be implemented
 export const SHUFFLE = 'SHUFFLE'

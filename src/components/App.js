@@ -1,18 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom'
+import '../assets/css/App.css'
+
 import ProgramMaker from './containers/ProgramMaker'
 import MyPrograms from './containers/MyPrograms'
-// import ProgramView from './containers/ProgramView'
 import SignUp from './containers/SignUp'
 import LogIn from './containers/LogIn'
-import { connect } from 'react-redux'
-import { loginUser, logout } from '../actions'
-import '../assets/css/App.css'
 import Navbar from './Navbar.js'
+// import ProgramView from './containers/ProgramView'
 
-const App = (props) => {
+
+const App = () => {
   return (
-        <Router>
+        <BrowserRouter>
           <div className="wrapper">
             <Navbar />
             <Route path="/" component={ProgramMaker} exact />
@@ -21,13 +21,8 @@ const App = (props) => {
             <Route path="/signup" component={SignUp} />
             <Route path="/login" component={LogIn} />
           </div>
-        </Router>
+        </BrowserRouter>
     )
 }
 
-
-const mapStateToProps = (state) => {
-  return state
-}
-
-export default connect(mapStateToProps, { loginUser, logout })(App);
+export default App;

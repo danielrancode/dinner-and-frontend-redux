@@ -7,10 +7,7 @@ import { connect } from  'react-redux'
 import { createProgram } from '../../actions.js'
 import withAuth from '../hoc/withAuth'
 import '../../assets/css/ProgramMaker.css'
-import yelpLogo from '../../assets/yelp_fullcolor_outline.png'
-
-
-
+// import yelpLogo from '../../assets/yelp_fullcolor_outline.png'
 
 const ProgramMaker = ({
     restaurantsResults,

@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
 import LogInForm from '../LogInForm'
 import withAuth from '../hoc/withAuth'
 

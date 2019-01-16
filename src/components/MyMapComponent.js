@@ -46,7 +46,7 @@ const mapEnvironment = compose(
                 directions: result,
               });
             } else {
-              console.error(`error fetching directions ${result}`);
+              console.error(`error fetching directions, result = ${result}`);
             }
           });
       }

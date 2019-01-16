@@ -1,8 +1,8 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import ProgramMaker from './containers/ProgramMaker'
 import MyPrograms from './containers/MyPrograms'
-import ProgramView from './containers/ProgramView'
+// import ProgramView from './containers/ProgramView'
 import SignUp from './containers/SignUp'
 import LogIn from './containers/LogIn'
 import { connect } from 'react-redux'

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from  'react-redux'
-import { shuffle, searchRestaurants, searchEvents } from '../actions.js'
+import { searchRestaurants, searchEvents } from '../actions.js'
 import DatePicker from 'react-datepicker'
 import LocationSearchInput from './LocationSearchInput.js'
 import 'react-datepicker/dist/react-datepicker.css';
@@ -101,4 +101,4 @@ class SearchForm extends Component {
   }
 }
 
-export default connect(null, {shuffle, searchRestaurants, searchEvents})(SearchForm)
+export default connect(null, {searchRestaurants, searchEvents})(SearchForm)

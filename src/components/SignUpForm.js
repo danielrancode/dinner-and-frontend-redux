@@ -16,14 +16,16 @@ class SignUpForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log(this.state)
     this.props.createUser(this.state)
     this.setState({ name: '', username: '', password: '' })
   }
 
   render() {
-    if (this.props.loggedIn) {
-      return <Redirect to={this.props.from || "/"} />
+    const { loggedIn, from } = this.props
+    const { name, username, password } = this.state
+
+    if (loggedIn) {
+      return <Redirect to={from || "/"} />
     }
     return (
       <Fragment>
@@ -33,7 +35,7 @@ class SignUpForm extends Component {
               <label>Name:</label>
             </div>
             <div>
-              <input type='text' name='name' value={this.state.name} onChange={this.handleChange.bind(this)}/>
+              <input type='text' name='name' value={name} onChange={this.handleChange.bind(this)}/>
             </div>
           </div>
           <div className="form-entry">
@@ -41,7 +43,7 @@ class SignUpForm extends Component {
               <label>Username:</label>
             </div>
             <div>
-              <input type='text' name='username' value={this.state.username} onChange={this.handleChange.bind(this)}/>
+              <input type='text' name='username' value={username} onChange={this.handleChange.bind(this)}/>
             </div>
           </div>
           <div className="form-entry">
@@ -49,7 +51,7 @@ class SignUpForm extends Component {
               <label>Password:</label>
             </div>
             <div>
-              <input type='password' name='password' value={this.state.password} onChange={this.handleChange.bind(this)}/>
+              <input type='password' name='password' value={password} onChange={this.handleChange.bind(this)}/>
             </div>
           </div>
           <div className="form-entry">
@@ -62,8 +64,4 @@ class SignUpForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return state.user
-}
-
-export default connect(mapStateToProps, {createUser})(SignUpForm)
+export default connect(s => s.user, {createUser})(SignUpForm)

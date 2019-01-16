@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
-import Restaurant from './Restaurant'
-import Event from './Event'
 import { connect } from  'react-redux'
 import { deleteProgram, fetchPrograms } from '../actions'
-
+import Restaurant from './Restaurant'
+import Event from './Event'
 
 const Program = ({ program, deleteProgram }) => {
   let restaurant = JSON.parse(program.restaurant.json_data)
@@ -30,12 +29,4 @@ const Program = ({ program, deleteProgram }) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return state.program
-}
-
-// const mapDispatchToProps = (state) => {
-//   return state.program
-// }
-
-export default connect(mapStateToProps, {deleteProgram, fetchPrograms})(Program)
+export default connect(s => s.program, {deleteProgram, fetchPrograms})(Program)

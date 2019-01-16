@@ -3,8 +3,8 @@ import { connect } from  'react-redux'
 import { selectRestaurant } from '../actions'
 import '../assets/css/Restaurant.css'
 
-const Restaurant = (props) => {
-  if (props.restaurant) {
+const Restaurant = ({restaurant, selected, selectRestaurant}) => {
+  if (restaurant) {
     const {
       name,
       categories,
@@ -15,10 +15,10 @@ const Restaurant = (props) => {
       review_count,
       url,
       image_url
-    } = props.restaurant
+    } = restaurant
 
     return (
-        <div className={props.selected ? "current-restaurant" : "restaurant"} onClick={() => props.selectRestaurant(props.restaurant)}>
+        <div className={selected ? "current-restaurant" : "restaurant"} onClick={() => selectRestaurant(restaurant)}>
           <h4 className="rest-name">{name}</h4>
           <img className="rest-img" src={image_url} alt="text" />
             <div className="rest-data">{categories.map(c => c.title).join(', ')}<br/>
@@ -41,8 +41,4 @@ const Restaurant = (props) => {
 
 }
 
-const mapStateToProps = (state) => {
-  return state.search
-}
-
-export default connect(mapStateToProps, {selectRestaurant} )(Restaurant)
+export default connect(s => s.search, {selectRestaurant} )(Restaurant)

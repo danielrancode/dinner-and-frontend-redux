@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+
 import Event from './Event';
 
 const EventsList = ({ events, currentEvent }) => {

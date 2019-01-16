@@ -5,7 +5,6 @@ import '../assets/css/Event.css'
 
 
 const Event = (props) => {
-  // console.log("event props:", props)
   if (props.event) {
     const { performers, title, type, datetime_local, address, extended_address } = props.event
     return (
@@ -30,8 +29,4 @@ const Event = (props) => {
 
 }
 
-const mapStateToProps = (state) => {
-  return state.program
-}
-
-export default connect(mapStateToProps, {selectEvent} )(Event)
+export default connect(s => s.program, {selectEvent} )(Event)

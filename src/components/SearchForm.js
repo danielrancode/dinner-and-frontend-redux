@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from  'react-redux'
 import { searchRestaurants, searchEvents } from '../actions.js'
-import DatePicker from 'react-datepicker'
-import LocationSearchInput from './LocationSearchInput.js'
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment'
 import '../assets/css/SearchForm.css'
-
-
+import DatePicker from 'react-datepicker'
+import LocationSearchInput from './LocationSearchInput.js'
 
 
 class SearchForm extends Component {
@@ -44,13 +42,15 @@ class SearchForm extends Component {
   }
 
   handleClickSearch(e) {
-    e.preventDefault()
+    let { searchRestaurants, searchEvents } = this.props
     let p = this.state.params
 
-    if (!!p.foodType && !!p.eventType && !!p.lat && !!p.lon) {
+    e.preventDefault()
+
+    if (p.foodType && p.eventType && p.lat && p.lon) {
       this.setState({message: ''})
-      this.props.searchRestaurants(this.state)
-      this.props.searchEvents(this.state)
+      searchRestaurants(this.state)
+      searchEvents(this.state)
     } else {
       this.setState({message: 'invalid search params'})
     }

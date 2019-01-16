@@ -22,8 +22,7 @@ class MyPrograms extends Component {
     )
   }
 }
-const mapStateToProps = (state) => {
-  return state
-}
 
-export default withAuth(connect(mapStateToProps, { fetchPrograms })(MyPrograms))
+export default withAuth(
+  connect(state => state, { fetchPrograms })(MyPrograms)
+)

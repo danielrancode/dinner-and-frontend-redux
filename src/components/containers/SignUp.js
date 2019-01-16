@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import SignUpForm from '../SignUpForm'
 import withAuth from '../hoc/withAuth'
+import SignUpForm from '../SignUpForm'
 
 
 const SignUp = (props) => {

@@ -16,10 +16,4 @@ const ProgramsList = ({ programs }) => {
   }
 }
 
-
-const mapStateToProps = (state) => {
-  return { programs: state.program.programs }
-}
-
-
-export default connect(mapStateToProps)(ProgramsList)
+export default connect(s => s.program)(ProgramsList)

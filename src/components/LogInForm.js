@@ -20,21 +20,23 @@ class LogInForm extends Component {
   }
 
   render() {
-    // debugger
+    const { loggedIn, from, message } = this.props
+    const { username, password } = this.state
 
-    if (this.props.loggedIn) {
-      return <Redirect to={this.props.from || "/"} />
+    if (loggedIn) {
+      return <Redirect to={from || "/"} />
     }
+
     return (
       <Fragment>
-      <h1 style={{color: 'red'}}>{this.props.message}</h1>
+      <h1 style={{color: 'red'}}>{message}</h1>
       <form onSubmit={this.handleSubmit.bind(this)} className="form-container">
         <div className="form-entry">
           <div>
             <label>Username:</label>
           </div>
           <div>
-             <input type='text' name='username' value={this.state.username} onChange={this.handleChange.bind(this)}/>
+             <input type='text' name='username' value={username} onChange={this.handleChange.bind(this)}/>
           </div>
         </div>
         <div className="form-entry">
@@ -42,7 +44,7 @@ class LogInForm extends Component {
             <label>Password:</label>
           </div>
           <div>
-             <input type='password' name='password' value={this.state.password} onChange={this.handleChange.bind(this)}/>
+             <input type='password' name='password' value={password} onChange={this.handleChange.bind(this)}/>
           </div>
         </div>
         <div className="form-entry">
@@ -56,7 +58,4 @@ class LogInForm extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return state.user
-}
-export default connect(mapStateToProps, {loginUser})(LogInForm)
+export default connect(s => s.user, {loginUser})(LogInForm)

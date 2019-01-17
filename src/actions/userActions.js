@@ -5,25 +5,20 @@ const TOKEN = localStorage.getItem('jwt')
 
 export const createUser = (params) => {
   return (dispatch) => {
-    dispatch({ type: types.START_CREATE_USER_REQUEST})
+    dispatch({ type: types.START_CREATE_USER_REQUEST })
     fetch(`${ROOT}/users`, {
         method: 'POST', headers: { "Content-Type": "application/json" },
         body: JSON.stringify({user: params})
-      })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }}
-      )
+    })
+      .then(res => { if (res.ok) { return res.json() } else { throw res }})
       .then(jsonRes => {
         localStorage.setItem('jwt', jsonRes.jwt)
-        dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user})
+        dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user })
       })
-      .catch(res => res.json().then(jsonRes => {
-        dispatch({ type: types.LOGIN_FAILURE, message: jsonRes.error })
-      })
+      .catch(res => res.json()
+        .then(jsonRes => 
+          dispatch({ type: types.LOGIN_FAILURE, message: jsonRes.error })
+        )
       )
   }
 }
@@ -31,38 +26,33 @@ export const createUser = (params) => {
 
 export const loginUser = (params) => {
   return (dispatch) => {
-    dispatch({ type: types.LOGIN_REQUEST})
+    dispatch({ type: types.LOGIN_REQUEST })
     fetch(`${ROOT}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({user: params})
     })
-      .then(res => {
-        if (res.ok) {
-          return res.json()
-        } else {
-          throw res
-        }}
-      )
+      .then(res => { if (res.ok) { return res.json() } else { throw res }})
       .then(jsonRes => {
         localStorage.setItem('jwt', jsonRes.jwt)
-        dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user})
-        // dispatch(fetchPrograms(jsonRes.user.id))
+        dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user })
       })
-      .catch(res => dispatch({ type: types.LOGIN_FAILURE, message: res.statusText }))
+      .catch(res =>
+        dispatch({ type: types.LOGIN_FAILURE, message: res.statusText })
+      )
   }
 }
+
 
 export const logout = () => {
   localStorage.removeItem('jwt')
-  return {
-    type: types.LOGOUT,
-  }
+  return { type: types.LOGOUT }
 }
+
 
 export const fetchCurrentUser = () => {
   return (dispatch) => {
-    dispatch({ type: types.LOGIN_REQUEST})
+    dispatch({ type: types.LOGIN_REQUEST })
     fetch(`${ROOT}/user`, {
       method: "GET",
       headers: { Authorization: `Bearer ${TOKEN}` }
@@ -70,6 +60,6 @@ export const fetchCurrentUser = () => {
       .then(res => res.json())
       .then(jsonRes => {
         dispatch({ type: types.SET_CURRENT_USER, user: jsonRes.user })
-    })
+      })
   }
 }

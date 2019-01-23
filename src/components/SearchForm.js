@@ -7,6 +7,7 @@ import moment from 'moment'
 import '../assets/css/SearchForm.css'
 import DatePicker from 'react-datepicker'
 import LocationSearchInput from './LocationSearchInput.js'
+import YelpSearchInput from './YelpSearchInput.js'
 
 class SearchForm extends Component {
   state = {
@@ -80,7 +81,7 @@ class SearchForm extends Component {
               <label className="pseudo-input-restaurant">
                 <span className="pseudo-search-text" >Find</span>
                 <span>
-                  <input type='text' name='foodType' placeholder="dinner" onChange={this.handleFoodChange.bind(this)}/>
+                  <YelpSearchInput className="location-input"/>
                 </span>
               </label>
               <label className="pseudo-input-event">

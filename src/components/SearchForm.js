@@ -8,7 +8,6 @@ import '../assets/css/SearchForm.css'
 import DatePicker from 'react-datepicker'
 import LocationSearchInput from './LocationSearchInput.js'
 
-
 class SearchForm extends Component {
   state = {
     message: '',
@@ -31,6 +30,22 @@ class SearchForm extends Component {
 
   handleChange(e) {
       this.setState({params: {...this.state.params, [e.target.name]: e.target.value }})
+  }
+
+  handleFoodChange(e) {
+    const ROOT = `${process.env.REACT_APP_API_ENDPOINT}/api/v1`
+      this.setState(
+        {params: {...this.state.params, [e.target.name]: e.target.value }},
+        () => {
+          let params = this.state.params
+          fetch(`${ROOT}/restaurants/autocomplete?text=${params.foodType}&latitude=${params.lat}&longitude=${params.lon}`,
+          { method: 'GET',
+            headers: { Authorization: `Bearer ${process.env.YELP_API_KEY}` }
+          })
+        .then(res => res.json())
+        .then(data => console.log(data))
+      }
+      )
   }
 
   handleDateChange(date) {
@@ -65,7 +80,7 @@ class SearchForm extends Component {
               <label className="pseudo-input-restaurant">
                 <span className="pseudo-search-text" >Find</span>
                 <span>
-                  <input type='text' name='foodType' placeholder="dinner" onChange={this.handleChange.bind(this)}/>
+                  <input type='text' name='foodType' placeholder="dinner" onChange={this.handleFoodChange.bind(this)}/>
                 </span>
               </label>
               <label className="pseudo-input-event">

@@ -24,6 +24,18 @@ const ProgramMaker = ({
 
   return (
     <Fragment>
+    { (restaurantsResults.length == 0 && eventsResults.length == 0) &&
+      <div className="instructions">
+        <h1>Welcome to DINNER &.. ! </h1>
+        <h3>Enter a food/drink keyword in dinner search bar.</h3>
+        <h3>Enter an event type in event search bar.</h3>
+        <h3>Select location.</h3>
+        <h3>Select date.</h3>
+        <h3>Hit search.</h3>
+        <h3>Save your favorite restaurant+event combinations!</h3>
+      </div>
+    }
+
       <div className="program-maker">
         {(restaurantsResults.length > 0 || eventsResults.length > 0) && <div className="results-wrapper">
           <div className="rest-container">

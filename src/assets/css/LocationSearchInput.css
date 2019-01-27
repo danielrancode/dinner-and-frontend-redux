@@ -1,19 +1,18 @@
-/* .location-search-input {
-  background-color: red;
+.location-search-input {
 }
 
 .autocomplete-dropdown-container {
-  position: absolute;
+  /* position: absolute;
   margin-left: -58px;
   margin-top: 12px;
   width: 300px;
-  padding-top: 7px;
+  padding-top: 7px; */
 }
 
 .suggestion-item {
   padding: 4px;
   color: black;
-  font-size: 15px;
+  font-size: 0.8em;
   font-weight: bold;
   background-color: white;
 }
@@ -28,4 +27,4 @@
 
 .matching-substring {
   font-weight: normal;
-} */
+}

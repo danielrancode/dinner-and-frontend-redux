@@ -64,15 +64,15 @@ class SearchForm extends Component {
             <div className="form-row restaurant-and-event">
               <label className="pseudo-input-restaurant">
                 <span className="pseudo-search-text" >Find</span>
-                <span>
+              {/*  <span> */}
                   <input type='text' name='foodType' placeholder="dinner" onChange={this.handleChange.bind(this)}/>
-                </span>
+              {/* </span> */}
               </label>
               <label className="pseudo-input-event">
                   <span className="pseudo-search-text" >&</span>
-                  <span>
+                  {/*  <span> */}
                     <input type='text' name='eventType' placeholder="concert" onChange={this.handleChange.bind(this)}/>
-                  </span>
+                  {/* </span> */}
               </label>
             </div>
 

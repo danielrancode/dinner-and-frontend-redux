@@ -1,4 +1,4 @@
-.wrapper {
+/* .wrapper {
   color: white;
   height: 100vh;
   align-items: center;
@@ -25,24 +25,4 @@ ul {
   border: 3px solid white;
   display: flex;
   justify-content: center;
-}
-
-/* .one {
-  flex-grow:1;
-  font-size: 150px;
-  background-color: yellow;
-} */
-
-.two {
-  /* min-width: 100px; */
-  /* flex-grow:0; */
-  font-size: 150px;
-  background-color: red;
-}
-
-
-/* .three {
-  flex-grow:1;
-  font-size: 150px;
-  background-color: blue;
 } */

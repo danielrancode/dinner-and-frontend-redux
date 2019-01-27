@@ -1,11 +1,10 @@
-
+/*
 .form-container {
     text-align: center;
     font-size: 25px;
     margin: auto;
     padding: 30px;
     color: #464a4c;
-    /* border: 1px solid black; */
     background-color: #f2f2f2
 }
 
@@ -23,18 +22,8 @@ label {
 }
 
 .form-entry {
-  /* text-align: center; */
   justify-content: center;
   margin: 10px;
   display: flex;
   flex-direction: row;
-  /* font-size: 20px; */
-  /* padding: 20px */
-}
-
-
-/* input {
-  font-size: 30px;
-  border-radius: 5px;
-  border: dotted #464a4c 0.5px;
 } */

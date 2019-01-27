@@ -1,71 +1,81 @@
 .search-form {
+  width: 100%; /* NEW FOR MOBILE! */
   display: flex;
-  /* justify-content: flex-start; */
+  flex-flow: column; /* NEW FOR MOBILE! */
 }
 
 .search-form-main {
-  /* font-size: 20px; */
-  margin: 5px;
+  /* margin: 5px; */
 }
 
 #search {
-  border-radius: 5px;
+  /* border-radius: 5px;
   font-size: 15px;
-  height: 30px;
-  align-self: center;
+  height: 30px; */
+  /* align-self: center; */
 }
 
 .form-row {
-  width: 600px;
+  /* width: 600px; */
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border-radius: 5px;
+  flex-flow: column; /* NEW FOR MOBILE! */
+  padding: 0.5em; /* NEW FOR MOBILE! */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* background-color: white; */
+  border-radius: 0.5em;
   background: #fff;
-  margin: 10px;
-  height: 36px;
+  margin: 0.5rem;
+
+  /* height: 36px; */
+}
+
+.form-row > * {
+  padding: 0.2em /* NEW FOR MOBILE */
 }
 
 .pseudo-search-text {
-  /* float: left; */
-  /* vertical-align: baseline; */
-  margin-right: 5px;
+  margin-right: 0.3em;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 0.8em;
   color: #333;
 }
 
 .pseudo-input-restaurant {
-  width: 100%;
+  display: flex; /* NEW FOR MOBILE! */
+  border-bottom: 1px dotted black;/* NEW FOR MOBILE */
+  /* width: 100%; */
 }
 
 .pseudo-input-event {
-  width: 100%;
+  display: flex; /* NEW FOR MOBILE! */
+  /* width: 100%; */
 }
 
 .pseudo-input-location {
+  border-bottom: 1px dotted black;/* NEW FOR MOBILE */
   display: flex;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .pseudo-input-date {
   display: flex;
   align-items: center;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .location-input {
   outline-width: 0;
   border: none;
-  font-size: 15px;
+  /* font-size: 15px; */
   color: #333;
 }
 input {
   outline-width: 0;
   border: none;
-  font-size: 15px;
+  width: 100%; /* NEW FOR MOBILE */
+  /* font-size: 15px; */
   color: #333;
 }
 

@@ -12,6 +12,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import MUIPlacesAutocomplete, { geocodeByPlaceID } from 'mui-places-autocomplete'
 
 
 
@@ -62,6 +63,26 @@ class SearchForm extends Component {
     }
   }
 
+  onSuggestionSelected(suggestion) {
+    geocodeByPlaceID(suggestion.place_id).then((results) => {
+      // Add your business logic here. In this case we simply set our state with the coordinates of
+      // the selected suggestion...
+
+      // Just use the first result in the list to get the geometry coordinates
+      const { geometry } = results[0]
+
+      const coordinates = {
+        lat: geometry.location.lat(),
+        lon: geometry.location.lng(),
+      }
+
+      this.setState( { params: {...this.state.params, lat: coordinates.lat, lon: coordinates.lon }})
+    }).catch((err) => {
+      // Handle any errors that occurred when we tried to get geospatial data for a selected
+      // suggestion...
+    })
+  }
+
   render() {
 
     return (
@@ -76,20 +97,15 @@ class SearchForm extends Component {
                     InputProps={{ startAdornment: <InputAdornment position="start">&</InputAdornment>, }}
                     name='eventType' placeholder="concert" onChange={this.handleChange.bind(this)}
                   />
+                  <MUIPlacesAutocomplete
+                    onSuggestionSelected={this.onSuggestionSelected}
+                    renderTarget={() => console.log("state:", this.state)}
+                    textFieldProps={{variant: 'outlined', InputProps: { startAdornment: <InputAdornment position="start">near</InputAdornment>, }}}
+                    />
 
             <div className="form-row location-and-date">
-              <label className="pseudo-input-location">
-                <span className="pseudo-search-text">Near</span>
-                <span>
-                  <LocationSearchInput className="location-input" onChange={this.handleLocationChange.bind(this)}/>
-                </span>
-              </label>
-              <label className="pseudo-input-date">
-                <span className="pseudo-search-text">On</span>
-                <span>
-                  <DatePicker className="date-input" selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/>
-                </span>
-              </label>
+                {/*  <LocationSearchInput className="location-input" onChange={this.handleLocationChange.bind(this)}/> */}
+                {/* <DatePicker className="date-input" selected={this.state.params.date} onChange={this.handleDateChange.bind(this)}/> */}
             </div>
 
           <button type='submit' id='search' onClick={(e) => this.handleClickSearch(e)}><Link to="/">Search</Link></button>

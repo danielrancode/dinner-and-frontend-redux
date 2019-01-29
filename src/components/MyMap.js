@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import '../assets/css/MyMap.css'
+// import '../assets/css/MyMap.css'
 import MyMapComponent from './MyMapComponent'
 
 const MyMap = ({restaurant, event}) => {

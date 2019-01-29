@@ -2,32 +2,34 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from  'react-redux'
 import { logout } from '../actions'
-import '../assets/css/Navbar.css'
-import logo from '../assets/logo-horizontal-onwhite.png'
+// import '../assets/css/Navbar.css'
+import logo from '../assets/DinnerAndWhite.png'
 import SearchForm from './SearchForm';
+
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+
+
 
 const Navbar = ({loggedIn, logout}) => {
   return (
-      <div className="navbar">
-        <div className="navbar-content">
-      {/* NOTE: MAYBE NEEDED FOR CSS <div className="attached-to-left"> */}
-
-          <div className="logo-horizontal">
-            <img src={logo} alt="logo"/>
-          </div>
-
+    <AppBar>
+      <Toolbar>
+      <ButtonBase><img src={logo} style={{width: '50%', padding: '5%'}}/></ButtonBase>
           <SearchForm />
 
           <div className="side-buttons-container">
-            { !loggedIn && <Link to="/login"><button className="auth-button login">Log In</button></Link> }
-            { !loggedIn && <Link to="/signup"><button className="auth-button signup">Sign Up</button></Link> }
-            { loggedIn && <Link to="/programs"><button className="auth-button login">My Programs</button></Link> }
-            { loggedIn && <button className="auth-button" onClick={logout}>Log Out</button>}
+            { !loggedIn && <Link to="/login"><Button>Log In</Button></Link> }
+            { !loggedIn && <Link to="/signup"><Button>Sign Up</Button></Link> }
+            { loggedIn && <Link to="/programs"><Button >My Programs</Button></Link> }
+            { loggedIn && <Button onClick={logout}>Log Out</Button>}
           </div>
+          </Toolbar>
 
-        {/*</div>*/}
-      </div>
-    </div>
+    </AppBar>
   )
 }
 

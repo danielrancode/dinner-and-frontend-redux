@@ -1,12 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from  'react-redux'
 import { searchRestaurants, searchEvents } from '../actions.js'
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from 'moment'
-import '../assets/css/SearchForm.css'
+// import '../assets/css/SearchForm.css'
 import DatePicker from 'react-datepicker'
 import LocationSearchInput from './LocationSearchInput.js'
+
+import ButtonBase from '@material-ui/core/ButtonBase';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
 
 
 class SearchForm extends Component {
@@ -59,22 +65,17 @@ class SearchForm extends Component {
   render() {
 
     return (
-        <form className="search-form">
-          <div className="search-form-main">
-            <div className="form-row restaurant-and-event">
-              <label className="pseudo-input-restaurant">
-                <span className="pseudo-search-text" >Find</span>
-              {/*  <span> */}
-                  <input type='text' name='foodType' placeholder="dinner" onChange={this.handleChange.bind(this)}/>
-              {/* </span> */}
-              </label>
-              <label className="pseudo-input-event">
-                  <span className="pseudo-search-text" >&</span>
-                  {/*  <span> */}
-                    <input type='text' name='eventType' placeholder="concert" onChange={this.handleChange.bind(this)}/>
-                  {/* </span> */}
-              </label>
-            </div>
+        <Fragment>
+                  <TextField
+                    variant='outlined'
+                    InputProps={{ startAdornment: <InputAdornment position="start">Find</InputAdornment>, }}
+                    name='foodType' placeholder="dinner" onChange={this.handleChange.bind(this)}
+                  />
+                  <TextField
+                    variant='outlined'
+                    InputProps={{ startAdornment: <InputAdornment position="start">&</InputAdornment>, }}
+                    name='eventType' placeholder="concert" onChange={this.handleChange.bind(this)}
+                  />
 
             <div className="form-row location-and-date">
               <label className="pseudo-input-location">
@@ -90,13 +91,12 @@ class SearchForm extends Component {
                 </span>
               </label>
             </div>
-          </div>
 
           <button type='submit' id='search' onClick={(e) => this.handleClickSearch(e)}><Link to="/">Search</Link></button>
 
           <h1>{!!this.state.message && this.state.message}</h1>
 
-        </form>
+        </Fragment>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import Restaurant from './Restaurant';
-import '../assets/css/RestaurantList.css'
+// import '../assets/css/RestaurantList.css'
 
 const RestaurantsList = ({ restaurants, currentRestaurant }) => {
     return (

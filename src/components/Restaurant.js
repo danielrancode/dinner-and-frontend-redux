@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from  'react-redux'
 import { selectRestaurant } from '../actions'
-import '../assets/css/Restaurant.css'
+// import '../assets/css/Restaurant.css'
 
 const Restaurant = ({restaurant, selected, selectRestaurant}) => {
   if (restaurant) {

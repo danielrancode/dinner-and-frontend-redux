@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from  'react-redux'
 import { selectEvent } from '../actions'
-import '../assets/css/Event.css'
+// import '../assets/css/Event.css'
 
 
 const Event = (props) => {

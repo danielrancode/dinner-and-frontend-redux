@@ -9,6 +9,7 @@ const initialSearchState = {
     currentRestaurant: null,
     loadingEvents: false,
     loadingRestaurants: false,
+    programSaved: false
   }
 
 const search = (state = initialSearchState, action) => {
@@ -23,16 +24,18 @@ const search = (state = initialSearchState, action) => {
       return { ...state, eventsResults: action.data.events, loadingEvents: false }
     case types.SELECT_EVENT:
       if (state.currentEvent === action.payload) {
-        return { ...state, currentEvent: null }
+        return { ...state, currentEvent: null, programSaved: false }
       } else {
-        return { ...state, currentEvent: action.payload }
+        return { ...state, currentEvent: action.payload, programSaved: false }
       }
     case types.SELECT_RESTAURANT:
       if (state.currentRestaurant === action.payload) {
-        return { ...state, currentRestaurant: null }
+        return { ...state, currentRestaurant: null, programSaved: false }
       } else {
-        return { ...state, currentRestaurant: action.payload }
+        return { ...state, currentRestaurant: action.payload, programSaved: false }
       }
+    case types.SAVE_SUCCESS:
+      return { ...state, programSaved: true}
     case types.SHUFFLE:
       return state
     case types.LOGOUT:

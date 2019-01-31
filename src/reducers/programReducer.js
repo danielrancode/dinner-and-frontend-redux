@@ -18,8 +18,6 @@ export const program = (state = initialProgramState, action) => {
       return { ...state, currentProgram: action.program}
     case types.START_SAVING_PROGRAM_REQUEST:
       return state
-    case types.SAVE_SUCCESS:
-      return { ...state, message: "Program saved!"}
     case types.START_DELETING_PROGRAM_REQUEST:
       return state
     case types.DELETE_SUCCESS:

@@ -13,7 +13,7 @@ const ProgramMaker = ({
     restaurantsResults,
     eventsResults,
     currentEvent,
-    currentRestaurant, currentUser, createProgram, message}) => {
+    currentRestaurant, currentUser, createProgram, programSaved}) => {
 
   const handleClick = (e) => {
       createProgram(currentUser.id, {
@@ -54,16 +54,15 @@ const ProgramMaker = ({
           </div>
         </div>}
       </div>
-      {currentRestaurant && currentEvent && currentUser.id && <button className="save-program" onClick={e => handleClick(e)}>Save Program</button>}
+      {currentRestaurant && currentEvent && currentUser.id && !programSaved && <button className="save-program" onClick={e => handleClick(e)}>Save Program</button>}
+      {currentRestaurant && currentEvent && currentUser.id && programSaved && <button className="save-program">Program Saved</button>}
       {currentRestaurant && currentEvent && !currentUser.id && <Link to="/login"><button className="save-program">Save Program</button></Link>}
-
-      <h3 style={{color:"green"}}>{ message }</h3>
     </Fragment>
   )
 }
 
 const mapStateToProps = (state) => {
-  return {...state.search, currentUser: state.user.currentUser, message: state.program.message}
+  return {...state.search, currentUser: state.user.currentUser, programSaved: state.search.programSaved}
 }
 
 export default withAuth(connect(mapStateToProps, { createProgram })(ProgramMaker))

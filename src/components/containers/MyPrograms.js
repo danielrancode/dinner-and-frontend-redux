@@ -3,6 +3,8 @@ import ProgramsList from '../ProgramsList'
 import { connect } from 'react-redux'
 import { fetchPrograms } from '../../actions.js'
 import withAuth from '../hoc/withAuth'
+import '../../assets/css/MyPrograms.css'
+
 
 class MyPrograms extends Component {
 
@@ -14,7 +16,7 @@ class MyPrograms extends Component {
   render() {
     return (this.props.program.programs.length > 0) ?
     (
-      <div>
+      <div className="my-programs">
         <ProgramsList programs={this.props.programs}/>
       </div>
     ) : (

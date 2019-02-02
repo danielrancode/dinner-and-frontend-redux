@@ -1,0 +1,35 @@
+.program {
+  display: flex;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.program > div {
+  margin: 2%
+}
+
+#ampersand {
+  display: flex;
+  margin: 2%
+}
+
+#ampersand img {
+  height: 85px;
+  margin: auto
+}
+
+#delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#delete button {
+  border-radius: 10px;
+}
+
+#delete img {
+  height: 20px;
+  padding: 1em;
+  margin: auto
+}

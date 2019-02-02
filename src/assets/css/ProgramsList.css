@@ -1,0 +1,10 @@
+.programs-wrapper {
+  padding-right: 10%;
+  padding-left: 10%;
+  display: flex;
+  justify-content: center;
+  min-width: 1000px;
+  overflow: scroll;
+  width: 100vw;
+  max-height: 75vh;
+}

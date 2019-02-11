@@ -8,6 +8,7 @@ import { createProgram } from '../../actions.js'
 import withAuth from '../hoc/withAuth'
 import '../../assets/css/ProgramMaker.css'
 // import yelpLogo from '../../assets/yelp_fullcolor_outline.png'
+import RouteMeButton from '../RouteMeButton.js'
 
 const ProgramMaker = ({
     restaurantsResults,
@@ -51,12 +52,14 @@ const ProgramMaker = ({
               restaurant={currentRestaurant ? currentRestaurant : null}
               event={currentEvent ? currentEvent : null}
               />
+              {currentRestaurant && currentEvent && <RouteMeButton/>}
           </div>
         </div>}
       </div>
       {currentRestaurant && currentEvent && currentUser.id && !programSaved && <button className="save-program" onClick={e => handleClick(e)}>Save Program</button>}
       {currentRestaurant && currentEvent && currentUser.id && programSaved && <button className="save-program">Program Saved</button>}
       {currentRestaurant && currentEvent && !currentUser.id && <Link to="/login"><button className="save-program">Save Program</button></Link>}
+
     </Fragment>
   )
 }
